@@ -1,0 +1,292 @@
+<?php
+/**
+ * Demo content: Dijital Büyüme ve Yönetim category.
+ *
+ * @package AkilliCore
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+return array(
+	'title'    => 'Dijital Büyüme ve Yönetim',
+	'slug'     => 'dijital-buyume',
+	'icon'     => 'growth',
+	'excerpt'  => 'SEO, dijital reklam, sosyal medya, e-ticaret danışmanlığı ve özel yazılımla; dijital kanallarınızı ölçülebilir hedeflerle yönetiyoruz.',
+	'seo'      => array( 'Dijital Büyüme: SEO, Reklam, Sosyal Medya | Akıllı Creative', 'SEO, Google ve Meta reklam yönetimi, sosyal medya, e-ticaret danışmanlığı ve özel yazılım. Antalya merkezli, ölçülebilir hedeflerle dijital büyüme.' ),
+	'intro'    => array(
+		'Bir web sitesi veya mağaza açmak işin başlangıcıdır. Ziyaretçi getirmek, bu ziyaretçiyi müşteriye dönüştürmek ve süreci sürekli iyileştirmek ayrı bir uzmanlık ister. Dijital büyüme hizmetlerimizde kanalları tek tek değil, birbirini besleyen bir sistem olarak yönetiyoruz.',
+		'Her çalışmaya ölçüm altyapısını kurarak başlıyor, hedefleri sizinle birlikte belirliyor ve sonuçları anlaşılır raporlarla paylaşıyoruz. Sıralama, tıklama veya satış garantisi vermiyoruz; bunun yerine şeffaf çalışıyor, neyin işe yarayıp neyin yaramadığını verilerle birlikte konuşuyoruz.',
+	),
+	'common'   => array(
+		'Hedef ve KPI belirleme toplantısı',
+		'Google Analytics 4, Search Console ve dönüşüm ölçümü kurulumu',
+		'Aylık anlaşılır rapor ve değerlendirme görüşmesi',
+		'Tüm hesapların ve verilerin sizin adınıza açılması',
+		'Şeffaf bütçe ve harcama takibi',
+		'Sözleşme dönemi sonunda eksiksiz devir',
+	),
+	'faq'      => array(
+		array( 'Google’da ilk sıraya çıkmayı garanti ediyor musunuz?', 'Hayır. Arama sonuçlarındaki sıralamayı arama motorları belirler ve kimse bunu garanti edemez. Biz sitenizin teknik ve içerik kalitesini artırarak görünürlük şansını yükselten, ölçülebilir çalışmalar yapıyoruz.' ),
+		array( 'Reklam hesapları kimin adına açılıyor?', 'Reklam, analiz ve sosyal medya hesapları sizin işletmenizin adına açılır; biz yönetici olarak erişim alırız. Çalışmamız sona erdiğinde tüm hesaplar ve geçmiş veriler sizde kalır.' ),
+		array( 'Minimum çalışma süresi var mı?', 'SEO gibi zaman içinde sonuç veren hizmetlerde birkaç aylık bir dönem öneriyoruz. Koşulları teklifte açıkça yazıyoruz.' ),
+	),
+	'children' => array(
+		array(
+			'title'   => 'Arama Motoru Optimizasyonu (SEO)',
+			'slug'    => 'seo',
+			'icon'    => 'search',
+			'label'   => 'SEO',
+			'excerpt' => 'Teknik altyapı, içerik ve yerel görünürlük çalışmalarıyla sitenizin arama motorlarında doğru sorgularda bulunabilirliğini artırıyoruz.',
+			'seo'     => array( 'SEO Hizmeti Antalya | Teknik ve Yerel SEO | Akıllı Creative', 'Teknik SEO denetimi, içerik stratejisi, yerel SEO ve raporlama. Garanti yerine şeffaf, ölçülebilir ve sürdürülebilir arama motoru optimizasyonu.' ),
+			'intro'   => array(
+				'Arama motoru optimizasyonu (SEO), potansiyel müşterilerinizin sizin sunduğunuz hizmeti ararken sizi bulabilmesi için yapılan çalışmaların toplamıdır. Sitenin teknik olarak taranabilir ve hızlı olması, içeriklerin gerçekten aranan sorulara cevap vermesi ve işletmenizin yerel aramalarda doğru bilgilerle görünmesi bu çalışmanın temelidir.',
+				'Antalya’daki bir işletme için “Antalya + hizmet” aramalarında görünür olmak ile Türkiye genelinde rekabetçi bir terimde görünür olmak farklı stratejiler gerektirir. Önce mevcut durumunuzu ve rakiplerinizi analiz ediyor, ardından öncelikli bir yol haritası çıkarıyoruz. Yerel görünürlüğün temelleri için <a href="{post:antalyadaki-isletmeler-icin-yerel-seo-rehberi}">yerel SEO rehberimize</a> de göz atabilirsiniz.',
+			),
+			'scope'   => array(
+				array( 'Teknik SEO denetimi', 'Taranabilirlik, dizine eklenme, hız, mobil uyumluluk, yapılandırılmış veri ve yönlendirme hatalarının tespiti ve düzeltilmesi.' ),
+				array( 'Anahtar kelime ve içerik stratejisi', 'Müşterilerinizin gerçekten aradığı soruların ve sorguların çıkarılıp sayfalarla eşleştirilmesi.' ),
+				array( 'Sayfa içi optimizasyon', 'Başlıklar, meta açıklamalar, iç bağlantılar, görsel alternatif metinleri ve içerik düzeni.' ),
+				array( 'Yerel SEO', 'Google İşletme Profili, harita görünürlüğü ve yerel dizinlerde tutarlı işletme bilgileri.' ),
+				array( 'İçerik üretimi', 'Uzmanlığınızı gösteren rehber, blog ve hizmet sayfası içerikleri.' ),
+				array( 'Raporlama', 'Görünürlük, organik trafik ve dönüşümlerin aylık raporu.' ),
+			),
+			'for'     => array(
+				array( 'Yerel hizmet işletmeleri', 'Antalya ve çevresinde müşteri arayan klinik, büro ve hizmet firmaları.' ),
+				array( 'E-ticaret siteleri', 'Ürün ve kategori sayfalarıyla organik satış almak isteyen mağazalar.' ),
+				array( 'Reklam bağımlılığını azaltmak isteyenler', 'Uzun vadede sürdürülebilir trafik kaynağı oluşturmak isteyen işletmeler.' ),
+			),
+			'needs'   => array(
+				array( 'Site Google’da hiç görünmüyor', 'Dizine eklenme ve taranma sorunlarını tespit edip gideriyoruz.' ),
+				array( 'Trafik var ama talep yok', 'Doğru niyetteki aramalara yönelik sayfalar ve dönüşüm alanları kuruyoruz.' ),
+				array( 'Haritalarda görünmüyoruz', 'İşletme profilini ve yerel sinyalleri düzenliyoruz.' ),
+			),
+			'deliver' => array( 'Teknik SEO denetim raporu ve öncelik listesi', 'Anahtar kelime ve içerik haritası', 'Sayfa içi optimizasyon uygulamaları', 'Google İşletme Profili düzenlemesi', 'Search Console ve Analytics kurulumu', 'Aylık rapor ve değerlendirme görüşmesi' ),
+			'process' => array(
+				array( 'Analiz', 'Sitenizi, rakiplerinizi ve mevcut arama görünürlüğünüzü inceliyoruz.' ),
+				array( 'Yol haritası', 'Etkisi en yüksek işlerden başlayan, önceliklendirilmiş bir plan çıkarıyoruz.' ),
+				array( 'Teknik düzeltmeler', 'Taranma, hız ve yapı sorunlarını gideriyoruz.' ),
+				array( 'İçerik ve yerel çalışma', 'Sayfaları güçlendiriyor, yeni içerikler ve yerel görünürlük çalışmaları yapıyoruz.' ),
+				array( 'Ölçüm ve iyileştirme', 'Sonuçları aylık izliyor, planı verilere göre güncelliyoruz.' ),
+			),
+			'faq'     => array(
+				array( 'SEO sonuçları ne zaman görülür?', 'Teknik düzeltmelerin etkisi bazen birkaç hafta içinde görülebilir; içerik ve otorite çalışmalarının etkisi ise genellikle aylar içinde ortaya çıkar. Süre rekabete, sitenizin geçmişine ve yapılan çalışmanın kapsamına bağlıdır.' ),
+				array( 'Backlink satın alıyor musunuz?', 'Hayır. Arama motorlarının yönergelerine aykırı bağlantı satın alma veya otomatik bağlantı ağlarıyla çalışmıyoruz. Bunlar kalıcı zarar verebilir. Değerli içerik ve gerçek iş ilişkilerinden doğan bağlantılara odaklanıyoruz.' ),
+				array( 'SEO için sitemi yeniden yaptırmam gerekir mi?', 'Her zaman değil. Önce mevcut sitenizi denetliyoruz; çoğu sorun mevcut site üzerinde düzeltilebilir. Altyapı ciddi engel oluşturuyorsa bunu gerekçeleriyle paylaşıyoruz.' ),
+			),
+		),
+		array(
+			'title'   => 'Dijital Reklam Yönetimi',
+			'slug'    => 'dijital-reklam-yonetimi',
+			'icon'    => 'megaphone',
+			'label'   => 'Dijital Reklam',
+			'excerpt' => 'Google Ads ve Meta (Instagram, Facebook) reklamlarını doğru hedefleme, ölçüm ve sürekli optimizasyonla yönetiyoruz; bütçenizin nereye gittiğini şeffaf biçimde görürsünüz.',
+			'seo'     => array( 'Dijital Reklam Yönetimi | Google Ads ve Meta | Akıllı Creative', 'Google Ads, YouTube ve Instagram/Facebook reklam yönetimi. Dönüşüm ölçümü, hedefleme, kreatif testleri ve şeffaf raporlama.' ),
+			'intro'   => array(
+				'Dijital reklam, doğru kişilere doğru anda ulaşmanın en hızlı yoludur; ama ölçümsüz ve plansız yürütüldüğünde bütçeyi hızla tüketir. Reklam yönetiminde önce “başarı nedir?” sorusunu netleştiriyoruz: form doldurma, arama, WhatsApp mesajı, satış ya da mağaza ziyareti.',
+				'Ardından dönüşüm ölçümünü kuruyor, Google arama ve görüntülü ağ, YouTube, Instagram ve Facebook kampanyalarını bu hedefe göre yapılandırıyoruz. Reklamların yönlendirdiği sayfanın da en az reklam kadar önemli olduğunu biliyoruz; gerektiğinde <a href="{home}/hizmetlerimiz/web-tasarim/ozel-web-sitesi-tasarimi/">kampanya sayfası tasarımı</a> ve <a href="{home}/hizmetlerimiz/grafik-tasarim/afis-ve-banner-tasarimi/">reklam görselleri</a> de hazırlıyoruz.',
+			),
+			'scope'   => array(
+				array( 'Ölçüm altyapısı', 'Google Analytics 4, Google Ads dönüşümleri, Meta Pixel ve dönüşüm API’si kurulumu.' ),
+				array( 'Kampanya kurulumu', 'Arama, Performance Max, görüntülü, video ve sosyal medya kampanyalarının yapılandırılması.' ),
+				array( 'Hedefleme ve bütçe', 'Konum, ilgi alanı, anahtar kelime ve hedef kitle stratejisi; bütçe dağılımı.' ),
+				array( 'Reklam metinleri ve kreatifler', 'Farklı mesaj ve görsellerin test edilmesi.' ),
+				array( 'Optimizasyon', 'Düzenli teklif, anahtar kelime, hedef kitle ve kreatif iyileştirmeleri.' ),
+				array( 'Raporlama', 'Harcama, dönüşüm ve dönüşüm başı maliyeti gösteren anlaşılır raporlar.' ),
+			),
+			'for'     => array(
+				array( 'Hızlı talep isteyen işletmeler', 'Yeni açılan veya kampanya dönemindeki işletmeler.' ),
+				array( 'E-ticaret mağazaları', 'Ürün satışlarını reklamla ölçeklemek isteyen mağazalar.' ),
+				array( 'Sezonluk sektörler', 'Turizm, eğitim ve etkinlik gibi dönemsel talebi olan işletmeler.' ),
+			),
+			'needs'   => array(
+				array( 'Bütçe harcanıyor, sonuç belirsiz', 'Dönüşüm ölçümünü kurup hangi reklamın sonuç getirdiğini görünür kılıyoruz.' ),
+				array( 'Yanlış kişilere gösterim', 'Hedeflemeyi ve negatif anahtar kelimeleri düzenliyoruz.' ),
+				array( 'Reklam tıklanıyor, form gelmiyor', 'Açılış sayfasını ve teklif akışını iyileştiriyoruz.' ),
+			),
+			'deliver' => array( 'Reklam stratejisi ve bütçe planı', 'Dönüşüm ölçüm kurulumu', 'Kampanya, reklam grubu ve kreatif yapıları', 'Haftalık optimizasyon', 'Aylık rapor ve değerlendirme görüşmesi', 'Tüm hesapların sizin mülkiyetinizde olması' ),
+			'process' => array(
+				array( 'Hedef belirleme', 'İş hedefinizi ve ölçülecek dönüşümleri netleştiriyoruz.' ),
+				array( 'Ölçüm kurulumu', 'Analiz ve dönüşüm takibini kurup test ediyoruz.' ),
+				array( 'Kampanya kurulumu', 'Kampanyaları, hedeflemeyi ve kreatifleri hazırlıyoruz.' ),
+				array( 'Öğrenme dönemi', 'İlk haftalarda verileri izleyip hızlı düzeltmeler yapıyoruz.' ),
+				array( 'Sürekli optimizasyon', 'Sonuçlara göre bütçeyi ve kampanyaları iyileştiriyoruz.' ),
+			),
+			'faq'     => array(
+				array( 'Reklam bütçesi ile yönetim ücreti farklı mı?', 'Evet. Reklam bütçesi doğrudan Google veya Meta’ya ödenir ve sizin kartınızdan çekilir. Yönetim ücreti ise bizim hizmet bedelimizdir. Teklifte ikisini ayrı ayrı gösteriyoruz.' ),
+				array( 'Minimum reklam bütçesi nedir?', 'Sektöre, rekabete ve hedefe göre değişir. Çok düşük bütçelerde anlamlı veri toplanamayabilir; ilk görüşmede gerçekçi bir başlangıç bütçesi öneriyoruz.' ),
+				array( 'Sağlık veya hukuk gibi alanlarda reklam verebilir miyiz?', 'Bu alanlarda hem platform politikaları hem de mesleki/yasal düzenlemeler reklamı sınırlar. Avukatlık mesleğinde reklam yasağı bulunduğu için reklam önermiyoruz; sağlık alanında ise güncel mevzuatı ve platform kurallarını gözeten, bilgilendirme odaklı çalışmalar planlıyoruz.' ),
+			),
+		),
+		array(
+			'title'   => 'Sosyal Medya Yönetimi',
+			'slug'    => 'sosyal-medya-yonetimi',
+			'icon'    => 'chat',
+			'label'   => 'Sosyal Medya',
+			'excerpt' => 'Instagram başta olmak üzere sosyal medya hesaplarınızı içerik planı, tutarlı görsel dil ve düzenli paylaşımla yönetiyoruz.',
+			'seo'     => array( 'Sosyal Medya Yönetimi | Instagram İçerik Planı | Akıllı Creative', 'Instagram, Facebook ve LinkedIn için içerik stratejisi, aylık içerik takvimi, gönderi ve hikâye tasarımı, reels kurgusu ve raporlama.' ),
+			'intro'   => array(
+				'Sosyal medya, markanızın günlük sesi gibidir. Rastgele paylaşımlar yerine; markanızın kişiliğini yansıtan, hedef kitlenize faydalı veya ilgi çekici gelen ve tutarlı bir görsel dille üretilmiş içeriklerle güven ve tanınırlık oluşur.',
+				'Sosyal medya yönetiminde aylık içerik planını sizinle birlikte hazırlıyor, gönderi, hikâye ve kısa video içeriklerini üretiyor ve yayın takvimine göre paylaşıyoruz. Görsellerin <a href="{home}/hizmetlerimiz/grafik-tasarim/kurumsal-kimlik-tasarimi/">kurumsal kimliğinizle</a> uyumlu olmasına özen gösteriyoruz. Erişimi artırmak istediğiniz dönemlerde <a href="{home}/hizmetlerimiz/dijital-buyume/dijital-reklam-yonetimi/">sosyal medya reklamlarıyla</a> içerikleri destekleyebiliriz.',
+			),
+			'scope'   => array(
+				array( 'İçerik stratejisi', 'Hedef kitle, içerik başlıkları, ton ve paylaşım sıklığının belirlenmesi.' ),
+				array( 'Aylık içerik takvimi', 'Onayınıza sunulan, tarih ve metinleriyle hazırlanmış aylık plan.' ),
+				array( 'Tasarım ve kurgu', 'Gönderi, karusel, hikâye görselleri ve kısa video (reels) kurguları.' ),
+				array( 'Metin yazımı', 'Marka diline uygun açıklama metinleri ve etiket stratejisi.' ),
+				array( 'Profil düzeni', 'Biyografi, öne çıkan hikâyeler ve bağlantı sayfası düzenlemesi.' ),
+				array( 'Raporlama', 'Erişim, etkileşim ve takipçi gelişimini gösteren aylık rapor.' ),
+			),
+			'for'     => array(
+				array( 'Yerel işletmeler', 'Restoran, kafe, klinik, butik ve hizmet işletmeleri.' ),
+				array( 'Marka bilinirliği isteyenler', 'Yeni kurulan veya yeni bir pazara giren markalar.' ),
+				array( 'Zamanı olmayan ekipler', 'Sosyal medyayı düzenli yürütecek ekibi olmayan işletmeler.' ),
+			),
+			'needs'   => array(
+				array( 'Düzensiz paylaşım', 'Önceden onaylanan aylık takvimle süreklilik sağlıyoruz.' ),
+				array( 'Profiller birbirine benzemiyor', 'Tutarlı şablon ve görsel dil oluşturuyoruz.' ),
+				array( 'Ne paylaşacağımızı bilmiyoruz', 'Sektörünüze ve hedeflerinize göre içerik başlıkları belirliyoruz.' ),
+			),
+			'deliver' => array( 'Sosyal medya stratejisi dokümanı', 'Aylık içerik takvimi', 'Gönderi, hikâye ve kısa video içerikleri', 'Marka şablonları', 'Profil düzenlemesi', 'Aylık performans raporu' ),
+			'process' => array(
+				array( 'Tanışma ve analiz', 'Hesaplarınızı, rakipleri ve hedef kitlenizi inceliyoruz.' ),
+				array( 'Strateji', 'İçerik başlıklarını, tonu ve görsel dili belirliyoruz.' ),
+				array( 'Aylık plan', 'Her ay içerik takvimini onayınıza sunuyoruz.' ),
+				array( 'Üretim ve yayın', 'İçerikleri üretip planlanan tarihlerde paylaşıyoruz.' ),
+				array( 'Rapor ve iyileştirme', 'Ay sonunda sonuçları değerlendirip planı güncelliyoruz.' ),
+			),
+			'faq'     => array(
+				array( 'Yorum ve mesajlara siz mi cevap veriyorsunuz?', 'Kapsama göre değişir. Genel yorumlara marka diline uygun cevaplar verebiliriz; fiyat, randevu veya şikâyet gibi işletmenize özel konuları size yönlendiririz. Bu ayrımı başta birlikte belirliyoruz.' ),
+				array( 'Fotoğraf ve video çekimi yapıyor musunuz?', 'İhtiyaca göre çekim planlayabiliriz. Düzenli içerik için işletmenizde ayda bir kısa çekim günü planlamak genellikle verimli olur.' ),
+				array( 'Takipçi sayısını artırmayı garanti ediyor musunuz?', 'Hayır. Takipçi satın alma gibi yöntemler kullanmıyoruz; bunlar hesabınıza zarar verir. Gerçek ve ilgili bir kitleye ulaşmak için içerik ve gerekirse reklam desteğiyle çalışıyoruz.' ),
+			),
+		),
+		array(
+			'title'   => 'E-Ticaret Danışmanlığı',
+			'slug'    => 'e-ticaret-danismanligi',
+			'icon'    => 'compass',
+			'label'   => 'E-Ticaret Danışmanlığı',
+			'excerpt' => 'Altyapı seçiminden operasyona, dönüşüm iyileştirmeden pazarlama planına kadar e-ticaret yolculuğunuzda doğru kararları birlikte veriyoruz.',
+			'seo'     => array( 'E-Ticaret Danışmanlığı | Altyapı ve Dönüşüm | Akıllı Creative', 'E-ticarete başlayan ve büyüyen markalar için altyapı seçimi, operasyon kurgusu, dönüşüm oranı iyileştirme ve pazarlama planlaması danışmanlığı.' ),
+			'intro'   => array(
+				'E-ticarette en pahalı hatalar genellikle başta verilen kararlardan doğar: ihtiyaçtan büyük ya da küçük bir altyapı seçmek, kargo ve iade süreçlerini sonradan düşünmek, ölçüm kurmadan reklama başlamak. E-ticaret danışmanlığında bu kararları sizinle birlikte, verilere ve deneyime dayanarak veriyoruz.',
+				'Yeni başlayan bir marka için yol haritası çıkarabilir, mevcut mağazanız için ise ziyaretçinin satın almadan ayrıldığı noktaları tespit edip iyileştirme önerileri sunabiliriz. Önerilerin uygulanmasını isterseniz <a href="{home}/hizmetlerimiz/e-ticaret-yazilimi/">e-ticaret yazılımı</a> ve <a href="{home}/hizmetlerimiz/dijital-buyume/dijital-reklam-yonetimi/">dijital reklam</a> ekiplerimizle üstleniyoruz.',
+			),
+			'scope'   => array(
+				array( 'Altyapı ve maliyet analizi', 'Hazır paket, WooCommerce ve özel yazılım seçeneklerinin toplam maliyet karşılaştırması.' ),
+				array( 'Operasyon kurgusu', 'Sipariş, stok, kargo, iade ve müşteri hizmetleri süreçlerinin planlanması.' ),
+				array( 'Dönüşüm oranı iyileştirme', 'Ürün sayfası, sepet ve ödeme adımlarında kullanıcı davranışı analizi ve öneriler.' ),
+				array( 'Ölçüm ve raporlama', 'E-ticaret ölçümünün kurulması ve takip edilecek temel metriklerin belirlenmesi.' ),
+				array( 'Pazarlama planı', 'SEO, reklam, e-posta ve sosyal medya kanallarının önceliklendirilmesi.' ),
+			),
+			'for'     => array(
+				array( 'E-ticarete başlayacaklar', 'Hangi altyapıyla ve nasıl başlayacağına karar vermek isteyen markalar.' ),
+				array( 'Satışları durağan mağazalar', 'Trafiği olan ama satışa dönüştüremeyen mağazalar.' ),
+				array( 'Büyüme eşiğindekiler', 'Operasyonu ve altyapısı büyümeye yetişmeyen işletmeler.' ),
+			),
+			'needs'   => array(
+				array( 'Hangi altyapı?', 'İhtiyaç ve bütçeye göre somut karşılaştırma sunuyoruz.' ),
+				array( 'Sepetler terk ediliyor', 'Ödeme akışındaki engelleri tespit edip sadeleştiriyoruz.' ),
+				array( 'Neye odaklanacağımızı bilmiyoruz', 'Etki/efor dengesine göre önceliklendirilmiş bir yol haritası çıkarıyoruz.' ),
+			),
+			'deliver' => array( 'Mevcut durum analizi', 'Altyapı ve maliyet karşılaştırması', 'Dönüşüm iyileştirme önerileri listesi', 'Ölçüm planı', 'Önceliklendirilmiş yol haritası', 'Düzenli danışmanlık görüşmeleri' ),
+			'process' => array(
+				array( 'Ön görüşme', 'Hedeflerinizi ve mevcut durumunuzu konuşuyoruz.' ),
+				array( 'Veri ve site analizi', 'Analiz verilerinizi ve mağaza deneyimini inceliyoruz.' ),
+				array( 'Rapor ve öneriler', 'Bulguları ve önerileri önceliklendirilmiş şekilde sunuyoruz.' ),
+				array( 'Uygulama desteği', 'Önerilerin uygulanmasında ekibinize veya bize rehberlik ediyoruz.' ),
+				array( 'Takip', 'Değişikliklerin etkisini ölçüp sonraki adımları planlıyoruz.' ),
+			),
+			'faq'     => array(
+				array( 'Danışmanlık tek seferlik mi, sürekli mi?', 'İkisi de mümkün. Tek seferlik bir analiz ve yol haritası çalışması yapabilir veya aylık düzenli görüşmelerle süreç boyunca yanınızda olabiliriz.' ),
+				array( 'Pazar yerlerinde satış konusunda da destek veriyor musunuz?', 'Pazar yerlerinin kendi sitenizle birlikte nasıl konumlanacağı, stok ve fiyat yönetimi gibi konularda stratejik destek veriyoruz. Teknik entegrasyon ihtiyacını da ayrıca değerlendiriyoruz.' ),
+				array( 'Danışmanlık sonrası uygulamayı bizim ekibimiz yapabilir mi?', 'Elbette. Önerilerimizi ekibinizin uygulayabileceği netlikte yazıyor, gerekirse kısa eğitimlerle destekliyoruz.' ),
+			),
+		),
+		array(
+			'title'   => 'Sağlık Turizmi Dijital Pazarlama',
+			'slug'    => 'saglik-turizmi-dijital-pazarlama',
+			'icon'    => 'plane',
+			'label'   => 'Sağlık Turizmi',
+			'excerpt' => 'Yurt dışından hasta kabul eden klinik ve hastaneler için çok dilli web sitesi, hasta iletişim akışı ve mevzuata dikkat eden dijital pazarlama.',
+			'seo'     => array( 'Sağlık Turizmi Dijital Pazarlama | Çok Dilli | Akıllı Creative', 'Antalya ve Türkiye’de yabancı hasta kabul eden klinikler için çok dilli web sitesi, SEO, hasta talep yönetimi ve mevzuata dikkat eden dijital pazarlama.' ),
+			'intro'   => array(
+				'Antalya, yurt dışından gelen hastalar için önemli bir sağlık turizmi merkezi. Yabancı bir hasta için tedavi kararı; güven, şeffaf bilgi ve hızlı iletişim üzerine kuruludur. Hasta, kliniği kendi dilinde araştırır, hekimleri tanımak ister, süreci, konaklamayı ve ulaşımı merak eder ve sorularına hızlı cevap bekler.',
+				'Sağlık turizmi dijital pazarlamasında çok dilli web sitesini, hedef ülkelere göre arama görünürlüğünü, talep formu ve WhatsApp üzerinden gelen hasta iletişimini birlikte kurguluyoruz. Sağlık hizmetlerinin tanıtımına ilişkin Türkiye mevzuatını ve hedef ülkelerdeki platform kurallarını gözeten, abartıdan ve garanti vaadinden uzak bir iletişim dili kullanıyoruz. Web tarafı için <a href="{home}/hizmetlerimiz/web-tasarim/dis-klinigi-web-tasarimi/">diş kliniği web tasarımı</a> hizmetimiz bu çalışmanın temelini oluşturabilir.',
+			),
+			'scope'   => array(
+				array( 'Çok dilli web yapısı', 'Hedef ülkelere göre dil ve içerik yapısı; çeviri yerine yerelleştirilmiş metinler.' ),
+				array( 'Uluslararası SEO', 'Dil etiketleri (hreflang), ülke bazlı anahtar kelime araştırması ve içerik planı.' ),
+				array( 'Hasta yolculuğu', 'İlk temastan tedavi sonrasına kadar bilgilendirme sayfaları ve iletişim akışı.' ),
+				array( 'Talep yönetimi', 'Form ve mesajlaşma kanallarından gelen taleplerin kaybolmadan takip edilmesi.' ),
+				array( 'Dijital reklam', 'Platform politikalarına uygun, hedef ülkelere yönelik kampanyalar.' ),
+				array( 'İçerik üretimi', 'Tedavi süreçleri, şehir rehberi ve sık sorulan sorular gibi bilgilendirici içerikler.' ),
+			),
+			'for'     => array(
+				array( 'Diş klinikleri', 'Yabancı hasta kabul eden ağız ve diş sağlığı merkezleri.' ),
+				array( 'Estetik ve saç ekimi merkezleri', 'Uluslararası hastalara hizmet veren sağlık kuruluşları.' ),
+				array( 'Hastaneler ve aracı kuruluşlar', 'Sağlık turizmi birimi bulunan hastaneler ve yetkili kuruluşlar.' ),
+			),
+			'needs'   => array(
+				array( 'Yabancı hastalar siteyi anlamıyor', 'Hedef dile ve kültüre göre yerelleştirilmiş içerik hazırlıyoruz.' ),
+				array( 'Talepler kayboluyor', 'Tüm taleplerin kayıt altına alındığı ve takip edildiği bir akış kuruyoruz.' ),
+				array( 'Mevzuat ve platform kısıtları', 'Bilgilendirme odaklı, uyumlu bir iletişim dili kullanıyoruz.' ),
+			),
+			'deliver' => array( 'Hedef pazar ve dil planı', 'Çok dilli web sitesi veya mevcut sitenin genişletilmesi', 'Uluslararası SEO kurulumu', 'Hasta talep formu ve iletişim akışı', 'Bilgilendirici içerik planı', 'Aylık performans raporu' ),
+			'process' => array(
+				array( 'Pazar seçimi', 'Hangi ülkelerden, hangi tedaviler için hasta hedeflediğinizi belirliyoruz.' ),
+				array( 'Altyapı', 'Çok dilli yapıyı ve talep yönetimini kuruyoruz.' ),
+				array( 'İçerik ve yerelleştirme', 'Her dil için yerelleştirilmiş içerikleri hazırlıyoruz.' ),
+				array( 'Görünürlük', 'Uluslararası SEO ve uygun reklam kampanyalarını başlatıyoruz.' ),
+				array( 'Ölçüm ve iyileştirme', 'Ülke ve kanal bazında sonuçları izleyip planı güncelliyoruz.' ),
+			),
+			'faq'     => array(
+				array( 'Hangi dillerde içerik hazırlıyorsunuz?', 'İngilizce başta olmak üzere hedef pazarınıza göre Almanca, Rusça, Fransızca, Arapça gibi dillerde profesyonel çevirmenler ve ana dil kontrolüyle çalışıyoruz. Tıbbi terimlerin doğruluğunu hekiminizin onayına sunuyoruz.' ),
+				array( 'Sağlık turizmi için yasal yetki gerekiyor mu?', 'Türkiye’de uluslararası sağlık turizmi faaliyetleri ilgili mevzuata ve yetkilendirme süreçlerine tabidir. Kuruluşunuzun yetki durumunu ve tanıtım kurallarını hukuk danışmanınızla kontrol etmenizi öneririz.' ),
+				array( 'Hasta yorumlarını sitede kullanabilir miyiz?', 'Sağlık tanıtımına ilişkin mevzuat hasta beyanlarının kullanımını sınırlayabilir. Bu tür içerikleri yayınlamadan önce güncel mevzuatı kontrol etmenizi öneririz.' ),
+			),
+		),
+		array(
+			'title'   => 'Özel Yazılım Çözümleri',
+			'slug'    => 'ozel-yazilim-cozumleri',
+			'icon'    => 'code',
+			'label'   => 'Özel Yazılım',
+			'excerpt' => 'İş süreçlerinizi Excel tablolarından ve e-posta zincirlerinden çıkarıp; size özel web tabanlı panel, portal ve otomasyonlarla yönetilebilir hale getiriyoruz.',
+			'seo'     => array( 'Özel Yazılım Çözümleri | Web Tabanlı Panel ve Otomasyon | Akıllı Creative', 'İş süreçlerinize özel web tabanlı yazılım, müşteri/bayi portalı, rezervasyon, teklif ve raporlama sistemleri. Analizden bakıma uçtan uca geliştirme.' ),
+			'intro'   => array(
+				'Birçok işletme kritik süreçlerini Excel dosyaları, e-posta zincirleri ve mesajlaşma gruplarıyla yürütür. İş büyüdükçe bu yöntem hata, kayıp ve zaman kaybı demektir. Özel yazılım çözümlerinde süreçlerinizi analiz ediyor ve tam olarak sizin çalışma şeklinize uygun, web tabanlı bir sistem geliştiriyoruz.',
+				'Teklif ve sipariş takibi, rezervasyon, servis ve randevu yönetimi, müşteri veya bayi portalı, stok takibi, raporlama ekranları ya da sistemleriniz arasında otomatik veri aktarımı… Önce en çok zaman kaybettiren süreci ele alan küçük ama işe yarar bir ilk sürüm çıkarıyor, ardından ihtiyaca göre büyütüyoruz. Arayüz tarafında <a href="{home}/hizmetlerimiz/grafik-tasarim/ux-ui-tasarimi/">UX / UI tasarımı</a>, entegrasyon tarafında <a href="{home}/hizmetlerimiz/e-ticaret-yazilimi/api-ve-tum-sanal-poslar/">API entegrasyonu</a> deneyimimizi projeye katıyoruz.',
+			),
+			'scope'   => array(
+				array( 'Süreç analizi', 'Mevcut iş akışınızı, kullanıcıları ve sorun noktalarını belgeliyoruz.' ),
+				array( 'Yazılım mimarisi', 'Güvenli, ölçeklenebilir ve bakımı kolay bir mimari tasarlıyoruz.' ),
+				array( 'Web tabanlı paneller', 'Tarayıcıdan ve mobilden erişilebilen, rol bazlı yetkilendirmeli yönetim ekranları.' ),
+				array( 'Portal ve müşteri alanları', 'Müşteri, bayi veya tedarikçilerinizin giriş yapıp işlem yapabildiği alanlar.' ),
+				array( 'Otomasyon ve entegrasyon', 'E-posta/SMS bildirimleri, zamanlanmış işler ve diğer sistemlerle veri alışverişi.' ),
+				array( 'Bakım ve geliştirme', 'Yayın sonrası izleme, yedekleme, güvenlik güncellemeleri ve yeni özellikler.' ),
+			),
+			'for'     => array(
+				array( 'Süreçleri tablolarla yürüyen ekipler', 'Excel ve e-postayla yönetilen işleri sisteme taşımak isteyenler.' ),
+				array( 'Hizmet ve servis firmaları', 'Randevu, servis kaydı, saha ekibi takibi yapan işletmeler.' ),
+				array( 'Bayi ve tedarikçi ağları', 'Paydaşlarıyla tek bir platform üzerinden çalışmak isteyen firmalar.' ),
+			),
+			'needs'   => array(
+				array( 'Bilgi dağınık ve kayboluyor', 'Tüm veriyi tek, yetkili kişilerin erişebildiği bir sistemde topluyoruz.' ),
+				array( 'Tekrarlayan elle işler', 'Rutin işleri otomatik bildirim ve işlemlerle hızlandırıyoruz.' ),
+				array( 'Yönetim anlık durumu göremiyor', 'İhtiyaca göre tasarlanmış rapor ve gösterge ekranları geliştiriyoruz.' ),
+			),
+			'deliver' => array( 'Süreç analizi ve gereksinim dokümanı', 'Arayüz tasarımları ve prototip', 'Web tabanlı yazılım ve kaynak kodu', 'Kullanıcı rolleri ve yetkilendirme', 'Test ve kabul süreci', 'Kurulum, yedekleme ve izleme', 'Kullanıcı eğitimi ve dokümantasyon' ),
+			'process' => array(
+				array( 'Keşif', 'Süreci yaşayan kişilerle görüşüp ihtiyaçları belgeliyoruz.' ),
+				array( 'İlk sürüm planı', 'En çok değer üretecek çekirdek özellikleri belirliyoruz.' ),
+				array( 'Tasarım ve prototip', 'Ekranları prototipleyip kullanıcılarla doğruluyoruz.' ),
+				array( 'Aşamalı geliştirme', 'Kısa döngülerle geliştirip düzenli demo yapıyoruz.' ),
+				array( 'Yayın ve gelişim', 'Sistemi devreye alıp kullanım verilerine göre geliştiriyoruz.' ),
+			),
+			'faq'     => array(
+				array( 'Hazır bir yazılım varken neden özel yazılım?', 'Hazır yazılımlar ihtiyacınızı karşılıyorsa çoğu zaman daha ekonomiktir ve bunu açıkça söyleriz. Özel yazılım; süreçleriniz standart dışıysa, birden fazla sistemi birleştirmeniz gerekiyorsa veya rekabet avantajınız iş yapış şeklinizdeyse anlamlıdır.' ),
+				array( 'Yazılım hangi teknolojilerle geliştiriliyor?', 'Projeye göre seçiyoruz; çoğunlukla PHP (Laravel) veya Node.js tabanlı arka uç, modern JavaScript ön yüz ve MySQL/PostgreSQL veritabanı kullanıyoruz. Seçimi bakım kolaylığı ve ekibinizin ileride devralabilmesi açısından da değerlendiriyoruz.' ),
+				array( 'Verilerimiz nerede saklanıyor?', 'Tercihinize göre sizin adınıza açılan bir bulut sunucusunda veya kendi sunucunuzda. Kişisel veri içeren sistemlerde KVKK gerekliliklerini (erişim yetkileri, kayıt tutma, saklama süreleri) tasarımın parçası olarak ele alıyoruz.' ),
+			),
+		),
+	),
+);

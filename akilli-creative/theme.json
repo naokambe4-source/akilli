@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.5/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": false,
+		"layout": { "contentSize": "736px", "wideSize": "1320px" },
+		"color": {
+			"defaultPalette": false,
+			"defaultGradients": false,
+			"palette": [
+				{ "slug": "ink", "name": "Mürekkep", "color": "#0f1430" },
+				{ "slug": "primary", "name": "Akıllı mavi", "color": "#3b46f1" },
+				{ "slug": "tint", "name": "Periwinkle", "color": "#8698ff" },
+				{ "slug": "accent", "name": "Mercan", "color": "#ff6b3d" },
+				{ "slug": "paper", "name": "Kâğıt", "color": "#f6f5f1" },
+				{ "slug": "white", "name": "Beyaz", "color": "#ffffff" }
+			]
+		},
+		"typography": {
+			"defaultFontSizes": false,
+			"fontSizes": [
+				{ "slug": "small", "name": "Küçük", "size": "0.92rem" },
+				{ "slug": "medium", "name": "Normal", "size": "1.0625rem" },
+				{ "slug": "large", "name": "Büyük", "size": "1.35rem" },
+				{ "slug": "x-large", "name": "Çok büyük", "size": "clamp(1.8rem, 1.2rem + 2vw, 2.6rem)" }
+			]
+		},
+		"spacing": { "units": [ "px", "rem", "%", "vw" ] }
+	}
+}
