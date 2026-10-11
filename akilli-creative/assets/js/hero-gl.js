@@ -1,7 +1,7 @@
 /**
  * Akıllı Creative — "living light" hero field.
- * A tiny dependency-free WebGL fragment shader: brand colours drift like light
- * through layered glass and bend softly around the pointer.
+ * A tiny dependency-free WebGL fragment shader: slowly breathing satin folds
+ * in the brand's champagne tone, lit by a light that follows the pointer.
  * Skipped on small screens (unless enabled), without WebGL, or when motion is off
  * (then a single still frame is drawn). The CSS orb layer stays as fallback.
  */
@@ -23,26 +23,34 @@
 	var hero = canvas.closest( '.ak-hero' );
 
 	var vs = 'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
+	// Satin drapery: long folds along one direction, slowly breathing; the light follows the pointer.
 	var fs = [
 		'precision mediump float;',
 		'uniform vec2 r;uniform float t;uniform vec2 m;uniform vec3 c1,c2,c3,bg;',
-		'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}',
-		'float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1.,0.)),f.x),mix(h(i+vec2(0.,1.)),h(i+vec2(1.,1.)),f.x),f.y);}',
-		'float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}',
+		'float H(vec2 p){',
+		' float a=1.05;vec2 d=vec2(cos(a),sin(a));vec2 e=vec2(-d.y,d.x);',
+		' float u=dot(p,d),v=dot(p,e);',
+		' float w=.32*sin(v*2.3+t*.21)+.18*sin(v*4.1-t*.17+u*.6);',
+		' float h=sin(u*3.1+w*3.+t*.12);',
+		' h+=.55*sin(u*5.3-v*.9+w*2.2-t*.09+1.7);',
+		' h+=.28*sin(u*9.1+v*1.7+w*1.4+t*.15+4.1);',
+		' h+=.12*sin(u*15.+v*3.1-t*.2+2.3);',
+		' return h;',
+		'}',
 		'void main(){',
-		' vec2 uv=gl_FragCoord.xy/r;float ar=r.x/r.y;vec2 p=vec2(uv.x*ar,uv.y);vec2 mm=vec2(m.x*ar,m.y);',
-		' float d=distance(p,mm);',
-		' vec2 q=vec2(fbm(p*1.5+t*.045),fbm(p*1.5+vec2(5.2,1.3)-t*.038));',
-		' q+=(p-mm)*.35*exp(-d*2.6);',
-		' vec2 s=vec2(fbm(p*1.3+2.*q+vec2(1.7,9.2)+t*.05),fbm(p*1.3+2.*q+vec2(8.3,2.8)-t*.042));',
-		' float f=fbm(p*1.1+2.3*s);',
-		' vec3 col=bg;',
-		' col=mix(col,c1,smoothstep(.32,.86,f)*.80);',
-		' col=mix(col,c3,smoothstep(.52,.98,s.x)*.42);',
-		' col=mix(col,c2,smoothstep(.58,1.,s.y)*.50);',
-		' col=mix(col,bg,(1.-uv.x)*.38+(1.-uv.y)*.12);',
-		' col+=vec3(.07)*exp(-d*d*14.);',
-		' float g=h(gl_FragCoord.xy+t)*.035-.0175;',
+		' vec2 uv=gl_FragCoord.xy/r;float ar=r.x/r.y;vec2 p=vec2(uv.x*ar,uv.y)*1.25;',
+		' float e=.0025;float h=H(p);',
+		' vec3 n=normalize(vec3(-(H(p+vec2(e,0.))-h)/e*.085,-(H(p+vec2(0.,e))-h)/e*.085,1.));',
+		' vec3 L=normalize(vec3((m.x-.5)*1.4+.35,(m.y-.5)*1.2+.45,.85));',
+		' float diff=clamp(dot(n,L),0.,1.);',
+		' vec3 Hh=normalize(L+vec3(0.,0.,1.));',
+		' float spec=pow(clamp(dot(n,Hh),0.,1.),22.);',
+		' float sheen=pow(1.-clamp(n.z,0.,1.),2.)*.35;',
+		' vec3 col=c1*(.6+.48*diff)+vec3(1.,.97,.92)*spec*.32+c2*sheen*.25;',
+		' col=mix(col,bg,.08);',
+		' float vg=1.-.22*length(uv-vec2(.5,.45));',
+		' col*=vg;',
+		' float g=fract(sin(dot(gl_FragCoord.xy+t,vec2(12.9898,78.233)))*43758.5453)*.022-.011;',
 		' gl_FragColor=vec4(col+g,1.);',
 		'}'
 	].join( '\n' );
@@ -92,12 +100,12 @@
 			return x + ( 1 - x ) * k;
 		} );
 	}
-	gl.uniform3fv( u.c1, lighten( color( '--ak-tint', '#8698ff' ), 0.18 ) );
-	gl.uniform3fv( u.c2, lighten( color( '--ak-accent', '#ff6b3d' ), 0.35 ) );
-	gl.uniform3fv( u.c3, lighten( color( '--ak-primary', '#3b46f1' ), 0.3 ) );
-	gl.uniform3fv( u.bg, color( '--ak-paper', '#f6f5f1' ) );
+	gl.uniform3fv( u.c1, lighten( color( '--ak-tint', '#d8c6a6' ), 0.12 ) );
+	gl.uniform3fv( u.c2, lighten( color( '--ak-accent', '#8c5a34' ), 0.2 ) );
+	gl.uniform3fv( u.c3, color( '--ak-ink', '#15130f' ) );
+	gl.uniform3fv( u.bg, color( '--ak-paper', '#f3efe7' ) );
 
-	var scale = 0.55;
+	var scale = 0.75;
 	function resize() {
 		var dpr = Math.min( window.devicePixelRatio || 1, 1.5 ) * scale;
 		var w = Math.max( 1, Math.round( canvas.clientWidth * dpr ) );
@@ -110,16 +118,16 @@
 		gl.uniform2f( u.r, w, h );
 	}
 
-	var mouse = [ 0.72, 0.55 ];
-	var target = [ 0.72, 0.55 ];
+	var mouse = [ 0.62, 0.7 ];
+	var target = [ 0.62, 0.7 ];
 	var visible = true;
 	var running = false;
 	var start = performance.now();
 	var still = 12.0;
 
 	function draw( time ) {
-		mouse[ 0 ] += ( target[ 0 ] - mouse[ 0 ] ) * 0.05;
-		mouse[ 1 ] += ( target[ 1 ] - mouse[ 1 ] ) * 0.05;
+		mouse[ 0 ] += ( target[ 0 ] - mouse[ 0 ] ) * 0.025;
+		mouse[ 1 ] += ( target[ 1 ] - mouse[ 1 ] ) * 0.025;
 		gl.uniform1f( u.t, time );
 		gl.uniform2f( u.m, mouse[ 0 ], mouse[ 1 ] );
 		gl.drawArrays( gl.TRIANGLE_STRIP, 0, 4 );
@@ -169,7 +177,7 @@
 	document.addEventListener( 'visibilitychange', update );
 	document.addEventListener( 'akilli:motion', update );
 	if ( hero && window.matchMedia( '(hover: hover) and (pointer: fine)' ).matches ) {
-		hero.addEventListener( 'pointermove', function ( e ) {
+		( hero.querySelector( '[data-ak-plate]' ) || hero ).addEventListener( 'pointermove', function ( e ) {
 			var r = canvas.getBoundingClientRect();
 			target[ 0 ] = ( e.clientX - r.left ) / r.width;
 			target[ 1 ] = 1 - ( e.clientY - r.top ) / r.height;

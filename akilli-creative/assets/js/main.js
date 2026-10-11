@@ -265,6 +265,26 @@
 		}
 	}
 
+	/* Hero plate: opens from a framed inset to full bleed while scrolling ---- */
+	var plate = doc.querySelector( '[data-ak-plate]' );
+	if ( plate ) {
+		var onPlate = rafThrottle( function () {
+			if ( ! fullMotion() ) {
+				plate.style.setProperty( '--p', 0 );
+				return;
+			}
+			var r = plate.getBoundingClientRect();
+			var vh = window.innerHeight;
+			var head = header ? header.offsetHeight : 0;
+			var p = 1 - ( r.top - head ) / ( vh * 0.55 );
+			plate.style.setProperty( '--p', Math.max( 0, Math.min( 1, p ) ).toFixed( 3 ) );
+		} );
+		window.addEventListener( 'scroll', onPlate, { passive: true } );
+		window.addEventListener( 'resize', onPlate );
+		doc.addEventListener( 'akilli:motion', onPlate );
+		onPlate();
+	}
+
 	/* Rotating words ------------------------------------------------------ */
 	$$( '[data-ak-rotator]' ).forEach( function ( rot ) {
 		var words;

@@ -94,11 +94,13 @@ add_action(
 	'wp_head',
 	function () {
 		$map     = array(
-			'bricolage' => 'bricolage-grotesque-latin-wght-normal.woff2',
-			'fraunces'  => 'fraunces-latin-wght-normal.woff2',
-			'space'     => 'space-grotesk-latin-wght-normal.woff2',
-			'inter'     => 'inter-latin-wght-normal.woff2',
+			'instrument' => 'instrument-serif-latin-400-normal.woff2',
+			'bodoni'     => 'bodoni-moda-latin-wght-normal.woff2',
+			'cormorant'  => 'cormorant-garamond-latin-wght-normal.woff2',
+			'hanken'     => 'hanken-grotesk-latin-wght-normal.woff2',
+			'jost'       => 'jost-latin-wght-normal.woff2',
 		);
+
 		$display = akilli_mod( 'akilli_font_display' );
 		$body    = akilli_mod( 'akilli_font_body' );
 		foreach ( array_unique( array( $display, $body ) ) as $font ) {

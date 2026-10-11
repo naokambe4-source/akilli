@@ -7,6 +7,6 @@ License: GPLv2 or later
 Akıllı Creative için açık temalı, immersive dijital ajans teması. "Akıllı Creative Çekirdek" eklentisiyle birlikte kullanılır.
 
 == Üçüncü taraf kaynaklar ve lisanslar ==
-* Bricolage Grotesque, Inter, Fraunces, Space Grotesk — SIL Open Font License 1.1 (assets/fonts/OFL-*.txt). Fontsource paketlerinden alınmış woff2 dosyaları; tema sunucusundan yüklenir.
+* Instrument Serif, Hanken Grotesk, Bodoni Moda, Cormorant Garamond, Jost — SIL Open Font License 1.1 (assets/fonts/OFL-*.txt). Fontsource paketlerinden alınmış woff2 dosyaları; tema sunucusundan yüklenir, yalnızca seçili olanlar indirilir.
 * Akıllı Creative logosu ve favicon — marka sahibine aittir.
 * İkon seti, WebGL gölgelendirici, CSS ve JavaScript — bu tema için özgün olarak yazılmıştır (GPLv2+). Harici JS kütüphanesi kullanılmaz.

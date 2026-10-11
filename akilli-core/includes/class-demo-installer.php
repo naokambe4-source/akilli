@@ -559,7 +559,7 @@ class Akilli_Demo_Installer {
 	 * @return array slug => ID
 	 */
 	private function pages( $images ) {
-		$images  = wp_parse_args( $images, array( 'studio-katmanlar' => 0 ) );
+		$images  = wp_parse_args( $images, array( 'studio-katmanlar' => 0, 'hero-saten' => 0 ) );
 		$builder = include AKILLI_CORE_DIR . 'demo/pages.php';
 		$out     = array();
 		foreach ( $builder( $images ) as $slug => $p ) {

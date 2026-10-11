@@ -87,26 +87,19 @@ function akilli_project_card( $post, $args = array() ) {
 					echo '<span class="ak-pcard__placeholder" aria-hidden="true"></span>';
 				}
 				?>
-				<?php if ( $demo ) : ?>
-					<span class="ak-badge ak-badge--demo">Örnek çalışma</span>
-				<?php endif; ?>
 			</div>
 			<div class="ak-pcard__body">
 				<p class="ak-pcard__meta">
-					<?php echo esc_html( implode( ' · ', array_filter( array_merge( array( $sector ), $names ) ) ) ); ?>
+					<span><?php echo esc_html( implode( ' — ', array_filter( array_merge( array( $sector ), array_slice( $names, 0, 1 ) ) ) ) ); ?></span>
+					<?php if ( $demo ) : ?>
+						<span class="ak-pcard__demo">Örnek proje</span>
+					<?php endif; ?>
 				</p>
 				<<?php echo tag_escape( $tag ); ?> class="ak-pcard__title"><?php echo esc_html( get_the_title( $post ) ); ?></<?php echo tag_escape( $tag ); ?>>
 				<?php if ( has_excerpt( $post ) ) : ?>
 					<p class="ak-pcard__excerpt"><?php echo esc_html( get_the_excerpt( $post ) ); ?></p>
 				<?php endif; ?>
-				<?php if ( $services ) : ?>
-					<ul class="ak-tags" aria-label="Verilen hizmetler">
-						<?php foreach ( array_slice( $services, 0, 3 ) as $name ) : ?>
-							<li><?php echo esc_html( $name ); ?></li>
-						<?php endforeach; ?>
-					</ul>
-				<?php endif; ?>
-				<span class="ak-pcard__cta" aria-hidden="true"><?php echo akilli_icon( 'arrow-up-right' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+				<span class="ak-pcard__cta" aria-hidden="true">Projeyi incele</span>
 			</div>
 		</a>
 	</article>
@@ -144,12 +137,10 @@ function akilli_post_card( $post, $heading = 'h3' ) {
  * @param bool    $excerpt Show excerpt.
  */
 function akilli_service_card( $svc, $heading = 'h3', $excerpt = true ) {
-	$icon  = get_post_meta( $svc->ID, '_ak_icon', true );
 	$label = get_post_meta( $svc->ID, '_ak_menu_label', true );
 	?>
 	<li class="ak-scard">
 		<a href="<?php echo esc_url( get_permalink( $svc ) ); ?>" class="ak-scard__link">
-			<span class="ak-scard__icon"><?php echo akilli_icon( $icon ? $icon : 'spark' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 			<<?php echo tag_escape( $heading ); ?> class="ak-scard__title"><?php echo esc_html( $label ? $label : get_the_title( $svc ) ); ?></<?php echo tag_escape( $heading ); ?>>
 			<?php if ( $excerpt && has_excerpt( $svc ) ) : ?>
 				<p class="ak-scard__text"><?php echo esc_html( get_the_excerpt( $svc ) ); ?></p>

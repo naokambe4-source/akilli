@@ -24,7 +24,7 @@ $paras = array_filter( array_map( 'trim', preg_split( '/\n\s*\n/', (string) $a['
 			<?php if ( $items ) : ?>
 				<ul class="ak-split__list">
 					<?php foreach ( $items as $item ) : ?>
-						<li data-reveal><?php echo akilli_icon( 'check' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><span><?php akilli_inline( $item ); ?></span></li>
+						<li data-reveal><span><?php akilli_inline( $item ); ?></span></li>
 					<?php endforeach; ?>
 				</ul>
 			<?php endif; ?>
@@ -32,7 +32,6 @@ $paras = array_filter( array_map( 'trim', preg_split( '/\n\s*\n/', (string) $a['
 		</div>
 		<?php if ( $a['image'] ) : ?>
 			<figure class="ak-split__media" data-reveal data-parallax>
-				<span class="ak-split__layer" aria-hidden="true"></span>
 				<?php echo wp_get_attachment_image( (int) $a['image'], 'large', false, array( 'loading' => 'lazy', 'sizes' => '(max-width: 900px) 100vw, 50vw' ) ); ?>
 			</figure>
 		<?php endif; ?>

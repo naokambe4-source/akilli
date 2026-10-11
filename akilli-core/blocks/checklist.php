@@ -16,7 +16,7 @@ if ( ! $items ) {
 		<?php akilli_section_head( $a ); ?>
 		<ul class="ak-checklist__list">
 			<?php foreach ( $items as $i => $item ) : ?>
-				<li data-reveal style="--i:<?php echo (int) $i; ?>"><span class="ak-checklist__icon" aria-hidden="true"><?php echo akilli_icon( 'check' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><span><?php akilli_inline( $item ); ?></span></li>
+				<li data-reveal style="--i:<?php echo (int) $i; ?>"><span class="ak-checklist__num" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span><span><?php akilli_inline( $item ); ?></span></li>
 			<?php endforeach; ?>
 		</ul>
 	</div>

@@ -178,7 +178,7 @@ class Akilli_Meta_Boxes {
 		self::field( 'ak_results', 'Doğrulanmış sonuçlar', $m( 'results' ), 'textarea', 'Her satıra bir sonuç. Yalnızca müşteriyle doğrulanmış verileri yazın.' );
 		echo '<p><label><input type="checkbox" name="ak_results_verified" value="1"' . checked( $m( 'results_verified' ), '1', false ) . '> Sonuçlar doğrulandı, sitede gösterilsin</label></p>';
 		$accent = $m( 'accent' );
-		echo '<p class="ak-field"><label for="ak_accent"><strong>Proje vurgu rengi</strong></label><input type="color" id="ak_accent" name="ak_accent" value="' . esc_attr( $accent ? $accent : '#3b46f1' ) . '"> <span class="description">Detay sayfasındaki ışık katmanının tonu.</span></p>';
+		echo '<p class="ak-field"><label for="ak_accent"><strong>Proje vurgu rengi</strong></label><input type="color" id="ak_accent" name="ak_accent" value="' . esc_attr( $accent ? $accent : '#8c5a34' ) . '"> <span class="description">Detay sayfasındaki ışık katmanının tonu.</span></p>';
 	}
 
 	/**

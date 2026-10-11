@@ -10,7 +10,6 @@ defined( 'ABSPATH' ) || exit;
 <section class="ak-cta"<?php echo $a['_id'] ? ' id="' . esc_attr( $a['_id'] ) . '"' : ''; ?>>
 	<div class="ak-wrap">
 		<div class="ak-cta__panel" data-reveal>
-			<div class="ak-cta__layers" aria-hidden="true"><span></span><span></span><span></span></div>
 			<div class="ak-cta__copy">
 				<?php if ( $a['eyebrow'] ) : ?>
 					<p class="ak-eyebrow"><?php echo esc_html( $a['eyebrow'] ); ?></p>

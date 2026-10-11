@@ -41,20 +41,24 @@ while ( have_posts() ) :
 						<div class="ak-svc-hero__actions">
 							<a class="ak-btn ak-btn--primary ak-btn--lg" href="<?php echo esc_url( $quote ); ?>"><span class="ak-btn__label"><?php echo esc_html( $is_parent ? 'Teklif al' : 'Bu hizmet için teklif al' ); ?></span><?php echo akilli_icon( 'arrow-right' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
 							<?php if ( $wa ) : ?>
-								<a class="ak-btn ak-btn--ghost ak-btn--lg" href="<?php echo esc_url( $wa ); ?>" target="_blank" rel="noopener"><span class="ak-btn__label">WhatsApp’tan sorun</span><?php echo akilli_icon( 'whatsapp' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
+								<a class="ak-btn ak-btn--link" href="<?php echo esc_url( $wa ); ?>" target="_blank" rel="noopener"><span class="ak-btn__label">WhatsApp’tan sorun</span><?php echo akilli_icon( 'arrow-up-right' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
 							<?php endif; ?>
 						</div>
 					</div>
-					<aside class="ak-svc-card" aria-label="Hizmet özeti" data-reveal>
-						<span class="ak-svc-card__icon" aria-hidden="true"><?php echo akilli_icon( $icon ? $icon : 'spark' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
-						<?php if ( $is_parent && $children ) : ?>
-							<h2><?php echo esc_html( count( $children ) ); ?> alt hizmet</h2>
-							<p>Aşağıda bu kategorideki hizmetlerin her birinin kapsamını, sürecini ve sık sorulan sorularını ayrı sayfalarda bulabilirsiniz.</p>
-						<?php else : ?>
-							<h2>Nasıl başlıyoruz?</h2>
-							<p>Teklif formunda bu hizmet otomatik seçili gelir. Kısa bir görüşmeyle ihtiyacınızı netleştirip yazılı teklif hazırlarız.</p>
-						<?php endif; ?>
-						<?php akilli_contact_links( 'ak-clinks--stack' ); ?>
+					<aside class="ak-svc-card" aria-label="Hizmet özeti">
+						<p class="ak-svc-card__label"><?php echo esc_html( $is_parent && $children ? 'Bu disiplinde' : 'Bu sayfada' ); ?></p>
+						<ol class="ak-svc-card__list">
+							<?php if ( $is_parent && $children ) : ?>
+								<?php foreach ( $children as $child ) : ?>
+									<li><a href="<?php echo esc_url( get_permalink( $child ) ); ?>"><?php echo esc_html( get_the_title( $child ) ); ?></a></li>
+								<?php endforeach; ?>
+							<?php else : ?>
+								<?php foreach ( $anchors as $aid => $label ) : ?>
+									<li><a href="#<?php echo esc_attr( $aid ); ?>"><?php echo esc_html( $label ); ?></a></li>
+								<?php endforeach; ?>
+							<?php endif; ?>
+						</ol>
+						<p class="ak-svc-card__note"><?php echo esc_html( $is_parent ? 'Her hizmetin kapsamı, süreci ve sık sorulan soruları kendi sayfasında.' : 'Teklif formunda bu hizmet seçili gelir; bir iş günü içinde dönüş yapıyoruz.' ); ?></p>
 					</aside>
 				</div>
 			</div>
@@ -79,7 +83,7 @@ while ( have_posts() ) :
 				<div class="ak-wrap">
 					<header class="ak-head">
 						<p class="ak-eyebrow">Hizmetler</p>
-						<h2 class="ak-title" id="alt-hizmetler-baslik"><?php echo esc_html( get_the_title() ); ?> <em>hizmetlerimiz</em></h2>
+						<h2 class="ak-title" id="alt-hizmetler-baslik"><?php echo esc_html( get_the_title() ); ?> <em>disiplini</em></h2>
 					</header>
 					<ul class="ak-scard-grid">
 						<?php
@@ -175,7 +179,6 @@ while ( have_posts() ) :
 		<section class="ak-cta" id="teklif">
 			<div class="ak-wrap">
 				<div class="ak-cta__panel" data-reveal data-ak-pointer>
-					<div class="ak-cta__layers" aria-hidden="true"><span></span><span></span><span></span></div>
 					<div class="ak-cta__copy">
 						<p class="ak-eyebrow">Bir sonraki adım</p>
 						<h2 class="ak-cta__title"><?php echo esc_html( get_the_title() ); ?> için <em>teklif</em> alın.</h2>

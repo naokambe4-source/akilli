@@ -13,7 +13,7 @@ if ( ! $items ) {
 $row = function ( $hidden ) use ( $items ) {
 	echo '<ul class="ak-marquee__row"' . ( $hidden ? ' aria-hidden="true"' : '' ) . '>';
 	foreach ( $items as $item ) {
-		echo '<li>' . esc_html( $item ) . '<span class="ak-marquee__star" aria-hidden="true">' . akilli_icon( 'spark' ) . '</span></li>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '<li>' . esc_html( $item ) . '<span class="ak-marquee__sep" aria-hidden="true"></span></li>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 	echo '</ul>';
 };

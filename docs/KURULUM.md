@@ -1,5 +1,10 @@
 # Akıllı Creative — Kurulum ve Yönetim Rehberi
 
+## Tasarım dili: "Ölçüye Göre"
+Terzilik metaforu üzerine kurulu, sessiz bir lüks: fildişi kâğıt zemin (#f3efe7), mürekkep siyahı (#15130f) ve yalnızca ince detaylarda kullanılan konyak vurgu (#8c5a34). Başlıklar editoryal serif (Instrument Serif) ve italik vurgularla, etiketler aralıklı büyük harflerle (Hanken Grotesk) yazılır. Keskin köşeler, saç teli çizgiler, roma rakamlı dizinler ve otomatik bölüm numaraları (01, 02…) kullanılır; ikon kutusu, gradyan ve süs yoktur. Giriş ekranında kaydırdıkça çerçeveden tam genişliğe açılan, imleci takip eden ışıkla aydınlanan bir saten plakası (WebGL; desteklenmeyen cihazlarda aynı görselin durağan hali) bulunur.
+
+Customizer'dan alternatif yazı tipleri seçilebilir: Bodoni Moda (moda dergisi), Cormorant Garamond (klasik) ve Jost (geometrik gövde).
+
 Teslimat iki ZIP dosyasından oluşur (`dist/` klasörü):
 
 | Dosya | İçerik |
@@ -28,7 +33,7 @@ Teslimat iki ZIP dosyasından oluşur (`dist/` klasörü):
 | Ne | Nerede |
 |---|---|
 | Logo, favicon | Görünüm → Özelleştir → Site Kimliği |
-| Renkler, yazı tipleri, header butonu, footer metinleri, mobil alt çubuk | Görünüm → Özelleştir → Akıllı Creative tema ayarları |
+| Renkler (zemin, metin, buton, konyak vurgu, saten tonu), yazı tipleri, header butonu, footer metinleri, mobil alt çubuk | Görünüm → Özelleştir → Akıllı Creative tema ayarları |
 | Efekt seviyesi (Tam / Hafif / Kapalı), WebGL, mobilde WebGL, imleç, sayfa geçişleri, ziyaretçi "Hareketi azalt" düğmesi | Özelleştir → Immersive efektler |
 | Çerez şeridi, varsayılan paylaşım görseli | Özelleştir → Çerez bildirimi ve paylaşım |
 | Menüler | Görünüm → Menüler (Hizmetlerimiz altındaki 2 seviyeli öğeler otomatik mega menü olur) |
@@ -70,7 +75,7 @@ Hizmet sayfalarındaki "Teklif al" bağlantıları `/teklif-al/?hizmet=<kısa-ad
 
 ## 4. Performans ve erişilebilirlik notları
 - Yazı tipleri sitenin kendi sunucusundan yüklenir; seçilen iki yazı tipi önceden yüklenir. Harici JS kütüphanesi yoktur.
-- WebGL (≈6 KB) yalnızca Hero bloğu olan sayfada, portföy filtresi yalnızca filtreli proje bloğunda, galeri/lightbox yalnızca proje detayında, form betiği yalnızca form olan sayfalarda yüklenir.
+- WebGL saten plakası (≈6 KB) yalnızca Hero bloğu olan sayfada, portföy filtresi yalnızca filtreli proje bloğunda, galeri/lightbox yalnızca proje detayında, form betiği yalnızca form olan sayfalarda yüklenir.
 - WebGL telefonlarda varsayılan olarak kapalıdır (CSS alternatifi gösterilir), ekran dışında ve sekme arka plandayken durur.
 - "Hareketi azalt" sistem tercihi veya footer düğmesi tüm animasyonları kapatır; JS kapalıyken menü (`#site-nav`), sekmeler, filtreler (sunucu tarafı) ve formlar çalışır.
 
@@ -87,7 +92,7 @@ WordPress 7.1.3 (PHP 8.3, SQLite) üzerinde:
 
 ### Bilinen sınırlamalar
 - Gerçek Rank Math/Yoast eklentileriyle değil, algılama filtresiyle test edildi.
-- Demo görselleri soyut temsillerdir; gerçek proje görselleriyle değiştirilmelidir.
+- Demo görselleri prosedürel olarak üretilmiş sunum panoları ve saten dokularıdır; gerçek proje görselleri ve fotoğraflarla değiştirilmelidir. Lüks hissin en büyük kaynağı gerçek, iyi çekilmiş fotoğraflar olacaktır.
 - Hukuki metinler şablondur; hukuki danışmanlık yerine geçmez.
 - Safari ve Firefox'ta görsel test yapılmadı (Chromium ile test edildi); View Transitions desteklemeyen tarayıcılarda geçişler animasyonsuz olur.
 - Test ortamında e-posta sunucusu olmadığından başarılı gönderim değil, başarısızlık akışı doğrulandı.

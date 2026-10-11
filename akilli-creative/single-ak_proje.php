@@ -31,12 +31,12 @@ while ( have_posts() ) :
 				<?php akilli_breadcrumbs(); ?>
 				<div class="ak-proj-hero__top">
 					<?php if ( $m( 'is_demo' ) ) : ?>
-						<span class="ak-badge ak-badge--demo">Örnek çalışma — gerçek bir müşteri projesi değildir</span>
+						<span class="ak-proj-hero__demo">Örnek proje — hizmet yaklaşımımızı anlatmak için hazırlanmıştır; gerçek bir müşteri çalışması değildir.</span>
 					<?php endif; ?>
 					<?php
 					if ( $terms && ! is_wp_error( $terms ) ) {
 						foreach ( $terms as $t ) {
-							echo '<a class="ak-badge" href="' . esc_url( get_term_link( $t ) ) . '">' . esc_html( $t->name ) . '</a>';
+							echo '<a class="ak-proj-hero__cat" href="' . esc_url( get_term_link( $t ) ) . '">' . esc_html( $t->name ) . '</a>';
 						}
 					}
 					?>
@@ -197,7 +197,6 @@ while ( have_posts() ) :
 		<section class="ak-cta">
 			<div class="ak-wrap">
 				<div class="ak-cta__panel" data-reveal data-ak-pointer>
-					<div class="ak-cta__layers" aria-hidden="true"><span></span><span></span><span></span></div>
 					<div class="ak-cta__copy">
 						<p class="ak-eyebrow">Benzer bir proje mi?</p>
 						<h2 class="ak-cta__title">Sizin için de <em>kurgulayalım</em>.</h2>

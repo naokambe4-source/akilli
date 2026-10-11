@@ -28,7 +28,7 @@ $layout = 'grid' === $a['layout'] ? 'grid' : 'explorer';
 						?>
 						<li>
 							<a class="ak-explorer__tab" href="#<?php echo esc_attr( $uid . '-' . $p->ID ); ?>" id="<?php echo esc_attr( $uid . '-tab-' . $p->ID ); ?>" data-ak-tab>
-								<span class="ak-explorer__num"><?php echo esc_html( sprintf( '%02d', $n ) ); ?></span>
+								<span class="ak-explorer__num"><?php echo esc_html( array( 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII' )[ $n - 1 ] ?? $n ); ?></span>
 								<span class="ak-explorer__name"><?php echo esc_html( get_the_title( $p ) ); ?></span>
 								<span class="ak-explorer__count"><?php echo esc_html( count( $node['children'] ) ); ?></span>
 							</a>
@@ -43,7 +43,6 @@ $layout = 'grid' === $a['layout'] ? 'grid' : 'explorer';
 						?>
 						<div class="ak-explorer__panel" id="<?php echo esc_attr( $uid . '-' . $p->ID ); ?>" data-ak-panel>
 							<div class="ak-explorer__intro">
-								<span class="ak-explorer__icon" aria-hidden="true"><?php echo akilli_icon( $icon ? $icon : 'spark' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 								<h3 class="ak-explorer__title"><a href="<?php echo esc_url( get_permalink( $p ) ); ?>"><?php echo esc_html( get_the_title( $p ) ); ?></a></h3>
 								<?php if ( has_excerpt( $p ) ) : ?>
 									<p><?php echo esc_html( get_the_excerpt( $p ) ); ?></p>
@@ -74,8 +73,7 @@ $layout = 'grid' === $a['layout'] ? 'grid' : 'explorer';
 					?>
 					<section class="ak-svc-group" data-reveal aria-labelledby="<?php echo esc_attr( $uid . '-g-' . $p->ID ); ?>">
 						<header class="ak-svc-group__head">
-							<span class="ak-svc-group__num"><?php echo esc_html( sprintf( '%02d', $n ) ); ?></span>
-							<span class="ak-svc-group__icon" aria-hidden="true"><?php echo akilli_icon( $icon ? $icon : 'spark' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+							<span class="ak-svc-group__num"><?php echo esc_html( array( 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII' )[ $n - 1 ] ?? $n ); ?></span>
 							<h3 id="<?php echo esc_attr( $uid . '-g-' . $p->ID ); ?>"><a href="<?php echo esc_url( get_permalink( $p ) ); ?>"><?php echo esc_html( get_the_title( $p ) ); ?></a></h3>
 							<?php if ( has_excerpt( $p ) ) : ?>
 								<p><?php echo esc_html( get_the_excerpt( $p ) ); ?></p>

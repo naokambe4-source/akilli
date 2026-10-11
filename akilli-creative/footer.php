@@ -99,7 +99,7 @@ $mail = akilli_get_setting( 'email' );
 			</div>
 		</div>
 	</div>
-	<p class="ak-footer__word" aria-hidden="true">akıllı creative</p>
+	<p class="ak-footer__word" aria-hidden="true" data-word="akıllı creative"></p>
 </footer>
 
 <?php if ( akilli_mod( 'akilli_mobile_bar' ) && ( $tel || $wa ) ) : ?>

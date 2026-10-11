@@ -20,11 +20,7 @@ $style = in_array( $a['style'], array( 'cards', 'list', 'numbered' ), true ) ? $
 		<ul class="ak-features__list ak-cols-<?php echo esc_attr( min( 4, max( 2, count( $items ) % 3 === 0 ? 3 : ( count( $items ) === 2 || count( $items ) === 4 ? 2 : 3 ) ) ) ); ?>">
 			<?php foreach ( $items as $i => $item ) : ?>
 				<li class="ak-feature" data-reveal style="--i:<?php echo (int) $i; ?>">
-					<?php if ( 'numbered' === $style ) : ?>
-						<span class="ak-feature__num" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span>
-					<?php elseif ( ! empty( $item['icon'] ) ) : ?>
-						<span class="ak-feature__icon" aria-hidden="true"><?php echo akilli_icon( $item['icon'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
-					<?php endif; ?>
+					<span class="ak-feature__num" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span>
 					<?php if ( ! empty( $item['title'] ) ) : ?>
 						<h3 class="ak-feature__title">
 							<?php if ( ! empty( $item['url'] ) ) : ?>

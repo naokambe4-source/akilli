@@ -12,28 +12,28 @@ return function ( $img ) {
 		'process',
 		array(
 			'eyebrow' => 'Nasıl çalışıyoruz',
-			'title'   => 'Belirsizliği azaltan <em>beş adım</em>',
-			'text'    => 'Her projede aynı soruyu soruyoruz: Bu iş, sizin hedefinize nasıl hizmet edecek? Süreç bu sorunun cevabını adım adım netleştirir.',
+			'title'   => 'Bir terzinin <em>sabrıyla</em>.',
+			'text'    => 'İyi bir kıyafet gibi iyi bir dijital ürün de ölçüyle başlar, provayla olgunlaşır. Her adımın sonunda onayınızı alır, sonra devam ederiz.',
 			'steps'   => akilli_demo_pairs(
 				array(
-					array( 'Keşif', 'Hedeflerinizi, müşterilerinizi, rakiplerinizi ve mevcut durumunuzu dinliyoruz. Gerekirse kısa bir analizle başlıyoruz.' ),
-					array( 'Strateji ve kapsam', 'Ne yapılacağını, neyin şimdilik yapılmayacağını, takvimi ve bütçeyi yazılı olarak netleştiriyoruz.' ),
-					array( 'Tasarım', 'Kritik ekranları ve görsel dili tasarlıyor, sizinle birlikte test edip inceltiyoruz.' ),
-					array( 'Geliştirme ve test', 'Tasarımı hızlı, güvenli ve yönetilebilir bir ürüne dönüştürüp farklı cihazlarda test ediyoruz.' ),
-					array( 'Yayın ve büyüme', 'Yayına alıyor, ekibinizi eğitiyor ve ölçüm verileriyle sonraki adımları planlıyoruz.' ),
+					array( 'Ölçü — keşif', 'Hedeflerinizi, müşterilerinizi, rakiplerinizi ve mevcut durumunuzu dinliyoruz. Gerekirse kısa bir analizle başlıyoruz.' ),
+					array( 'Kalıp — strateji ve kapsam', 'Ne yapılacağını, neyin şimdilik yapılmayacağını, takvimi ve bütçeyi yazılı olarak netleştiriyoruz.' ),
+					array( 'Prova — tasarım', 'Kritik ekranları ve görsel dili tasarlıyor, sizinle birlikte deneyip inceltiyoruz.' ),
+					array( 'Dikiş — geliştirme ve test', 'Tasarımı hızlı, güvenli ve yönetilebilir bir ürüne dönüştürüp farklı cihazlarda test ediyoruz.' ),
+					array( 'Teslim — yayın ve bakım', 'Yayına alıyor, ekibinizi eğitiyor ve ölçüm verileriyle sonraki adımları planlıyoruz.' ),
 				)
 			),
 		)
 	);
 
-	$cta = function ( $title = 'Aklınızdaki projeyi <em>birlikte</em> netleştirelim.' ) {
+	$cta = function ( $title = 'Projenizi <em>konuşalım</em>.' ) {
 		return akilli_demo_block(
 			'cta',
 			array(
-				'eyebrow'      => 'Bir sonraki adım',
+				'eyebrow'      => 'Randevu',
 				'title'        => $title,
-				'text'         => 'Kısa bir görüşmeyle ihtiyacınızı dinleyelim; size uygun kapsamı, takvimi ve bütçeyi yazılı olarak paylaşalım.',
-				'btn1_text'    => 'Teklif al',
+				'text'         => 'Kısa bir görüşmede ihtiyacınızı dinler; kapsamı, takvimi ve bütçeyi yazılı olarak paylaşırız. Bir iş günü içinde dönüş yaparız.',
+				'btn1_text'    => 'Görüşme planlayın',
 				'btn1_url'     => '/teklif-al/',
 				'btn2_text'    => 'İletişime geç',
 				'btn2_url'     => '/iletisim/',
@@ -56,7 +56,7 @@ return function ( $img ) {
 		'faq',
 		array(
 			'eyebrow' => 'SSS',
-			'title'   => 'Merak edilenler',
+			'title'   => 'Sık <em>sorulanlar</em>',
 			'items'   => akilli_demo_pairs(
 				array(
 					array( 'Sadece Antalya’daki firmalarla mı çalışıyorsunuz?', 'Hayır. Ofisimiz Antalya’da; Türkiye’nin farklı şehirlerindeki firmalarla da çevrim içi toplantılar ve düzenli raporlamayla verimli şekilde çalışıyoruz. Antalya’daki müşterilerimizle yüz yüze görüşmeyi de seviyoruz.' ),
@@ -77,16 +77,16 @@ return function ( $img ) {
 			'content' => akilli_demo_block(
 				'hero',
 				array(
-					'eyebrow'       => 'Antalya merkezli dijital ajans · Türkiye geneli',
-					'title'         => 'Markanız için {kelime} tasarlıyor ve geliştiriyoruz.',
-					'words'         => "web siteleri\ne-ticaret altyapıları\nmarka kimlikleri\nözel yazılımlar\ndijital kampanyalar",
-					'text'          => 'Web tasarımdan e-ticaret yazılımına, kurumsal kimlikten SEO ve dijital reklama kadar; markanızın dijitaldeki her adımını tek ekipte, uçtan uca planlıyor ve hayata geçiriyoruz.',
-					'btn1_text'     => 'Teklif al',
+					'eyebrow'       => 'Akıllı Creative · Antalya · Dijital ajans',
+					'title'         => 'Markalar için <em>ölçüye göre</em> dijital deneyimler.',
+					'words'         => '',
+					'text'          => 'Web siteleri, e-ticaret altyapıları, kimlik sistemleri ve dijital büyüme. Hazır kalıplarla değil; markanızın ölçüsüne, hedefine ve ritmine göre tasarlıyor, kodluyor ve yönetiyoruz.',
+					'btn1_text'     => 'Görüşme planlayın',
 					'btn1_url'      => '/teklif-al/',
-					'btn2_text'     => 'Hizmetleri keşfet',
+					'btn2_text'     => 'Hizmetler',
 					'btn2_url'      => '#hizmetler',
 					'visual'        => 'gl',
-					'image'         => $img['studio-katmanlar'],
+					'image'         => $img['hero-saten'],
 					'show_services' => true,
 				)
 			)
@@ -95,9 +95,9 @@ return function ( $img ) {
 				'services',
 				array(
 					'anchor'    => 'hizmetler',
-					'eyebrow'   => 'Hizmetlerimiz',
-					'title'     => 'Dört alanda, <em>tek ekip</em>.',
-					'text'      => 'Tasarım, yazılım ve büyüme çalışmalarını birbirinden kopuk işler olarak değil, aynı hedefe hizmet eden bir bütün olarak planlıyoruz. Bir kategori seçin, alt hizmetleri inceleyin.',
+					'eyebrow'   => 'Hizmetler',
+					'title'     => 'Dört disiplin, <em>tek</em> imza.',
+					'text'      => 'Tasarım, yazılım ve büyüme aynı masada, aynı hedefe bakarak çalışır. Bir disiplin seçin; altındaki hizmetlerin her biri kendi sayfasında ayrıntılı anlatılır.',
 					'layout'    => 'explorer',
 					'btn1_text' => 'Tüm hizmetleri gör',
 					'btn1_url'  => '/hizmetlerimiz/',
@@ -106,9 +106,9 @@ return function ( $img ) {
 			. akilli_demo_block(
 				'projects',
 				array(
-					'eyebrow'   => 'Çalışmalar',
-					'title'     => 'Nasıl düşündüğümüzü <em>gösteren</em> işler',
-					'text'      => 'Bu bölümdeki çalışmalar, hizmetlerimizin nasıl kurgulandığını anlatmak için hazırlanmış örnek projelerdir ve “Örnek çalışma” etiketiyle gösterilir.',
+					'eyebrow'   => 'Seçili çalışmalar',
+					'title'     => 'Ölçüyle kurgulanmış <em>işler</em>.',
+					'text'      => 'Bu bölümdeki çalışmalar yaklaşımımızı anlatmak için hazırlanmış örnek projelerdir; her birinde “Örnek proje” notu yer alır.',
 					'layout'    => 'showcase',
 					'count'     => 4,
 					'btn1_text' => 'Tüm çalışmalar',
@@ -119,7 +119,7 @@ return function ( $img ) {
 				'statement',
 				array(
 					'eyebrow' => 'Yaklaşımımız',
-					'text'    => 'İyi bir dijital ürün; güzel görünen, hızlı açılan, kolay yönetilen ve işinize gerçekten <em>iş katan</em> üründür. Biz bu dördünü aynı anda kurmak için çalışıyoruz.',
+					'text'    => 'Kalite, fazlalıkta değil <em>özendedir</em>. Doğru yazı tipi, yerinde bir boşluk, bir saniye daha hızlı açılan bir sayfa. Markayı büyüten, görünmeyen ayrıntılardır.',
 					'caption' => 'Antalya’dan, Türkiye’nin dört bir yanındaki markalara.',
 				)
 			)
@@ -127,8 +127,8 @@ return function ( $img ) {
 			. akilli_demo_block(
 				'features',
 				array(
-					'eyebrow' => 'Neden Akıllı Creative?',
-					'title'   => 'Söz verdiğimizi <em>ölçülebilir</em> kılıyoruz.',
+					'eyebrow' => 'İlkeler',
+					'title'   => 'Sessiz ama <em>kesin</em> bir çalışma biçimi.',
 					'style'   => 'cards',
 					'items'   => array(
 						array(
@@ -176,8 +176,8 @@ return function ( $img ) {
 			. akilli_demo_block(
 				'posts',
 				array(
-					'eyebrow'   => 'Blog',
-					'title'     => 'Dijitalde doğru kararlar için <em>rehberler</em>',
+					'eyebrow'   => 'Notlar',
+					'title'     => 'Doğru kararlar için <em>notlar</em>.',
 					'count'     => 3,
 					'btn1_text' => 'Tüm yazılar',
 					'btn1_url'  => '/blog/',
@@ -194,7 +194,7 @@ return function ( $img ) {
 				'page-hero',
 				array(
 					'eyebrow'   => 'Hakkımızda',
-					'title'     => 'Tasarımı, yazılımı ve büyümeyi <em>aynı masada</em> düşünen bir ekip.',
+					'title'     => 'Kalıp değil, <em>ölçü</em>.',
 					'text'      => 'Akıllı Creative, Antalya merkezli bir dijital ajans. Türkiye genelindeki firmalar, klinikler, hukuk büroları, dernekler ve e-ticaret markalarıyla web, yazılım, tasarım ve dijital pazarlama projeleri yürütüyoruz.',
 					'btn1_text' => 'Çalışmalarımızı incele',
 					'btn1_url'  => '/calismalarimiz/',
@@ -204,7 +204,7 @@ return function ( $img ) {
 				'split',
 				array(
 					'eyebrow'   => 'Biz kimiz?',
-					'title'     => 'Fikirden ekrana, <em>kopmadan</em>.',
+					'title'     => 'Tek masa, <em>tek</em> ekip.',
 					'text'      => "Dijital projelerde en sık yaşanan sorun, işin farklı parçalarının birbirinden habersiz ilerlemesidir: tasarımcı bir şey düşünür, yazılımcı başka bir şey uygular, pazarlama ekibi ise bambaşka bir mesaj verir.\n\nAkıllı Creative’i bu kopukluğu ortadan kaldırmak için kurduk. Strateji, tasarım, yazılım ve dijital pazarlama aynı ekipte, aynı hedefe bakarak çalışır. Böylece ortaya çıkan iş hem güzel görünür, hem hızlı çalışır, hem de gerçekten işinize yarar.",
 					'items'     => "Web tasarım ve yazılım\nE-ticaret ve ödeme sistemleri\nMarka ve grafik tasarım\nSEO, reklam ve sosyal medya",
 					'image'     => $img['studio-katmanlar'],
@@ -216,14 +216,14 @@ return function ( $img ) {
 				'statement',
 				array(
 					'eyebrow' => 'İnandığımız şey',
-					'text'    => 'Bir işi yapmanın en akıllıca yolu, onu <em>ilk seferde</em> doğru planlamaktır. Bu yüzden kod yazmadan önce soru sorar, tasarlamadan önce dinleriz.',
+					'text'    => 'Bir işi yapmanın en akıllıca yolu, onu <em>ilk seferde</em> doğru ölçmektir. Kod yazmadan önce soru sorar, tasarlamadan önce dinleriz.',
 				)
 			)
 			. akilli_demo_block(
 				'features',
 				array(
 					'eyebrow' => 'Çalışma ilkelerimiz',
-					'title'   => 'Birlikte çalışırken <em>nelere</em> güvenebilirsiniz?',
+					'title'   => 'Birlikte çalışırken <em>güvenebileceğiniz</em> şeyler.',
 					'style'   => 'cards',
 					'items'   => array(
 						array(
@@ -261,7 +261,7 @@ return function ( $img ) {
 			)
 			. $process
 			. $stats
-			. $cta( 'Sizi ve projenizi <em>tanımak</em> isteriz.' ),
+			. $cta( 'Sizi <em>tanımak</em> isteriz.' ),
 		),
 		'hizmetlerimiz'        => array(
 			'title'   => 'Hizmetlerimiz',
@@ -271,7 +271,7 @@ return function ( $img ) {
 				'page-hero',
 				array(
 					'eyebrow'   => 'Hizmetlerimiz',
-					'title'     => 'İhtiyacınıza göre <em>bir araya gelen</em> hizmetler.',
+					'title'     => 'Dört disiplin, <em>yirmi dört</em> hizmet.',
 					'text'      => 'Dört ana alanda 24 hizmet sunuyoruz. İster tek bir hizmetle başlayın, ister tasarımdan yazılıma ve büyümeye kadar uçtan uca bir proje planlayalım.',
 					'btn1_text' => 'Teklif al',
 					'btn1_url'  => '/teklif-al/',
@@ -281,7 +281,7 @@ return function ( $img ) {
 				'services',
 				array(
 					'eyebrow' => 'Tüm hizmetler',
-					'title'   => 'Kategori ve <em>alt hizmetler</em>',
+					'title'   => 'Tüm <em>hizmetler</em>',
 					'layout'  => 'grid',
 				)
 			)
@@ -289,7 +289,7 @@ return function ( $img ) {
 				'features',
 				array(
 					'eyebrow' => 'Nereden başlamalı?',
-					'title'   => 'Durumunuza göre <em>önerimiz</em>',
+					'title'   => 'Nereden <em>başlamalı</em>?',
 					'style'   => 'numbered',
 					'items'   => array(
 						array(
@@ -327,7 +327,7 @@ return function ( $img ) {
 				'page-hero',
 				array(
 					'eyebrow' => 'Referanslarımız',
-					'title'   => 'Güveni <em>işle</em> kazanırız.',
+					'title'   => 'Güven, <em>işle</em> kazanılır.',
 					'text'    => 'Farklı sektörlerden markalarla web, e-ticaret, tasarım ve dijital pazarlama projeleri yürütüyoruz. Referans logolarını yalnızca müşterilerimizin izniyle paylaşıyoruz.',
 				)
 			)
@@ -407,8 +407,8 @@ return function ( $img ) {
 				'page-hero',
 				array(
 					'eyebrow' => 'Çalışmalarımız',
-					'title'   => 'Her proje, bir <em>problemin</em> çözümüdür.',
-					'text'    => 'Çalışmaları kategoriye veya hizmete göre filtreleyin; her projede ihtiyacı, çözümü ve kullanılan altyapıyı bulabilirsiniz. “Örnek çalışma” etiketli projeler, hizmetlerimizi anlatmak için hazırlanmış örneklerdir.',
+					'title'   => 'Her proje, bir <em>sorunun</em> zarif cevabı.',
+					'text'    => 'Çalışmaları kategoriye veya hizmete göre filtreleyin; her projede ihtiyacı, çözümü ve kullanılan altyapıyı bulabilirsiniz. “Örnek proje” notu taşıyan çalışmalar, yaklaşımımızı anlatmak için hazırlanmış örneklerdir.',
 				)
 			)
 			. akilli_demo_block(
@@ -420,7 +420,7 @@ return function ( $img ) {
 					'title'        => '',
 				)
 			)
-			. $cta( 'Sıradaki proje <em>sizinki</em> olsun.' ),
+			. $cta( 'Sıradaki <em>sizinki</em> olsun.' ),
 		),
 		'blog'                 => array(
 			'title'   => 'Blog',
@@ -436,7 +436,7 @@ return function ( $img ) {
 				'page-hero',
 				array(
 					'eyebrow' => 'Teklif al',
-					'title'   => 'Projenizi <em>anlatın</em>, yol haritasını birlikte çıkaralım.',
+					'title'   => 'Projenizi <em>anlatın</em>.',
 					'text'    => 'Formu doldurmanız birkaç dakika sürer. İhtiyacınızı inceleyip size uygun kapsamı, takvimi ve ücreti yazılı olarak paylaşıyoruz.',
 				)
 			)
@@ -473,8 +473,8 @@ return function ( $img ) {
 				'page-hero',
 				array(
 					'eyebrow' => 'İletişim',
-					'title'   => 'Merhaba deyin, <em>gerisini</em> birlikte düşünelim.',
-					'text'    => 'Muratpaşa’daki ofisimize kahveye bekleriz. Telefon, WhatsApp veya e-postayla da bize hızlıca ulaşabilirsiniz.',
+					'title'   => 'Bir kahve, bir <em>görüşme</em>.',
+					'text'    => 'Muratpaşa’daki ofisimizde sizi ağırlamaktan memnuniyet duyarız. Telefon, WhatsApp veya e-postayla da ulaşabilirsiniz.',
 				)
 			)
 			. akilli_demo_block(
