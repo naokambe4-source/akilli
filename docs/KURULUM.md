@@ -23,8 +23,11 @@ Teslimat iki ZIP dosyasından oluşur (`dist/` klasörü):
    - 4 hizmet kategorisi + 24 alt hizmet sayfası (içerik, SSS ve meta başlık/açıklama taslaklarıyla)
    - 6 örnek proje ("Örnek çalışma" etiketli; müşteri, yorum veya sonuç uydurulmamıştır), 6 blog yazısı
    - 4 menü (ana menü + hizmetler mega menüsü, footer menüleri, yasal bağlantılar)
-4. Kurulum **tekrar çalıştırılabilir**: aynı içerik varsa atlanır, hiçbir şey silinmez veya üzerine yazılmaz. WordPress'in düzenlenmemiş "Merhaba dünya" yazısı ve "Örnek sayfa" yalnızca taslağa alınır.
-5. Kalıcı bağlantılar "Düz" ise otomatik olarak `/%postname%/` yapılır. Statik ana sayfa zaten ayarlıysa değiştirilmez.
+4. Tema ve eklentinin kurulum sırası önemli değildir (1.0.1 ile düzeltildi).
+5. Kurulum **tekrar çalıştırılabilir**: aynı içerik varsa atlanır, hiçbir şey silinmez veya üzerine yazılmaz. WordPress'in düzenlenmemiş "Merhaba dünya" yazısı ve "Örnek sayfa" yalnızca taslağa alınır.
+6. Kalıcı bağlantılar "Düz" ise otomatik olarak `/%postname%/` yapılır. Statik ana sayfa zaten ayarlıysa değiştirilmez.
+
+**Daha önce hata aldıysanız:** Eklentiler sayfasında "Akıllı Creative Çekirdek"i silin, yeni `akilli-core.zip`'i yükleyip etkinleştirin. İçerik kaybı olmaz (henüz hiçbir şey oluşturulmamıştı).
 
 Önerilen ek: güvenilir e-posta için bir SMTP eklentisi (ör. WP Mail SMTP).
 

@@ -16,6 +16,7 @@ require_once __DIR__ . '/template-functions.php';
  *
  * @return array
  */
+if ( ! function_exists( 'akilli_settings_defaults' ) ) :
 function akilli_settings_defaults() {
 	return array(
 		// Contact.
@@ -56,6 +57,7 @@ function akilli_settings_defaults() {
 		'rate_limit'      => 5,
 	);
 }
+endif;
 
 /**
  * Get one plugin setting.
@@ -63,6 +65,7 @@ function akilli_settings_defaults() {
  * @param string $key Setting key.
  * @return mixed
  */
+if ( ! function_exists( 'akilli_get_setting' ) ) :
 function akilli_get_setting( $key ) {
 	static $cache = null;
 	if ( null === $cache || doing_action( 'update_option_akilli_core_settings' ) ) {
@@ -70,6 +73,7 @@ function akilli_get_setting( $key ) {
 	}
 	return isset( $cache[ $key ] ) ? $cache[ $key ] : null;
 }
+endif;
 
 /**
  * Digits-only phone for tel: links, e.g. +905306118280.
@@ -77,11 +81,13 @@ function akilli_get_setting( $key ) {
  * @param string $key Setting key holding the number.
  * @return string
  */
+if ( ! function_exists( 'akilli_phone_href' ) ) :
 function akilli_phone_href( $key = 'phone' ) {
 	$raw    = (string) akilli_get_setting( $key );
 	$digits = preg_replace( '/[^0-9+]/', '', $raw );
 	return $digits ? 'tel:' . $digits : '';
 }
+endif;
 
 /**
  * WhatsApp click-to-chat URL.
@@ -89,6 +95,7 @@ function akilli_phone_href( $key = 'phone' ) {
  * @param string $text Optional prefilled message.
  * @return string
  */
+if ( ! function_exists( 'akilli_whatsapp_url' ) ) :
 function akilli_whatsapp_url( $text = '' ) {
 	$digits = preg_replace( '/[^0-9]/', '', (string) akilli_get_setting( 'whatsapp' ) );
 	if ( ! $digits ) {
@@ -97,12 +104,14 @@ function akilli_whatsapp_url( $text = '' ) {
 	$text = $text ? $text : (string) akilli_get_setting( 'whatsapp_text' );
 	return 'https://wa.me/' . $digits . ( $text ? '?text=' . rawurlencode( $text ) : '' );
 }
+endif;
 
 /**
  * Social profile list (only filled ones).
  *
  * @return array network => url
  */
+if ( ! function_exists( 'akilli_social_links' ) ) :
 function akilli_social_links() {
 	$out = array();
 	foreach ( array( 'instagram', 'linkedin', 'facebook', 'youtube', 'x' ) as $net ) {
@@ -113,6 +122,7 @@ function akilli_social_links() {
 	}
 	return $out;
 }
+endif;
 
 /**
  * Whether Yoast SEO or Rank Math is active. When true, the plugin outputs no
@@ -120,10 +130,12 @@ function akilli_social_links() {
  *
  * @return bool
  */
+if ( ! function_exists( 'akilli_seo_plugin_active' ) ) :
 function akilli_seo_plugin_active() {
 	$active = defined( 'WPSEO_VERSION' ) || class_exists( 'RankMath' ) || defined( 'RANK_MATH_VERSION' );
 	return (bool) apply_filters( 'akilli_seo_plugin_active', $active );
 }
+endif;
 
 /**
  * Locate a block template; themes may override at
@@ -132,16 +144,19 @@ function akilli_seo_plugin_active() {
  * @param string $name Template name.
  * @return string
  */
+if ( ! function_exists( 'akilli_locate_block_template' ) ) :
 function akilli_locate_block_template( $name ) {
 	$theme = locate_template( 'akilli-core/blocks/' . $name . '.php' );
 	return $theme ? $theme : AKILLI_CORE_DIR . 'blocks/' . $name . '.php';
 }
+endif;
 
 /**
  * Service tree: top-level categories with ordered children.
  *
  * @return array[] Each: [ 'post' => WP_Post, 'children' => WP_Post[] ]
  */
+if ( ! function_exists( 'akilli_get_service_tree' ) ) :
 function akilli_get_service_tree() {
 	static $tree = null;
 	if ( null !== $tree ) {
@@ -172,12 +187,14 @@ function akilli_get_service_tree() {
 	}
 	return $tree;
 }
+endif;
 
 /**
  * Allowed inline HTML for short editable texts (titles, intros).
  *
  * @return array
  */
+if ( ! function_exists( 'akilli_inline_kses' ) ) :
 function akilli_inline_kses() {
 	return array(
 		'em'     => array(),
@@ -192,15 +209,18 @@ function akilli_inline_kses() {
 		),
 	);
 }
+endif;
 
 /**
  * Echo sanitized inline HTML.
  *
  * @param string $html Input.
  */
+if ( ! function_exists( 'akilli_inline' ) ) :
 function akilli_inline( $html ) {
 	echo wp_kses( (string) $html, akilli_inline_kses() );
 }
+endif;
 
 /**
  * Split multi-line textarea values into a clean array.
@@ -208,9 +228,11 @@ function akilli_inline( $html ) {
  * @param string $text Text.
  * @return string[]
  */
+if ( ! function_exists( 'akilli_lines' ) ) :
 function akilli_lines( $text ) {
 	return array_values( array_filter( array_map( 'trim', preg_split( '/\r\n|\r|\n/', (string) $text ) ), 'strlen' ) );
 }
+endif;
 
 /**
  * Get services attached to a project.
@@ -218,9 +240,11 @@ function akilli_lines( $text ) {
  * @param int $post_id Project ID.
  * @return int[]
  */
+if ( ! function_exists( 'akilli_project_service_ids' ) ) :
 function akilli_project_service_ids( $post_id ) {
 	return array_map( 'absint', (array) get_post_meta( $post_id, '_ak_service', false ) );
 }
+endif;
 
 /**
  * Projects related to a service (and its children when it is a category).
@@ -229,6 +253,7 @@ function akilli_project_service_ids( $post_id ) {
  * @param int $limit      Max results.
  * @return WP_Post[]
  */
+if ( ! function_exists( 'akilli_projects_for_service' ) ) :
 function akilli_projects_for_service( $service_id, $limit = 3 ) {
 	$ids      = array( (int) $service_id );
 	$children = get_children(
@@ -254,6 +279,7 @@ function akilli_projects_for_service( $service_id, $limit = 3 ) {
 		)
 	);
 }
+endif;
 
 /**
  * Blog posts related to a service via the "İlgili hizmetler" box.
@@ -262,6 +288,7 @@ function akilli_projects_for_service( $service_id, $limit = 3 ) {
  * @param int $limit      Max results.
  * @return WP_Post[]
  */
+if ( ! function_exists( 'akilli_posts_for_service' ) ) :
 function akilli_posts_for_service( $service_id, $limit = 3 ) {
 	$ids = array( (int) $service_id );
 	$p   = get_post( $service_id );
@@ -282,6 +309,7 @@ function akilli_posts_for_service( $service_id, $limit = 3 ) {
 		)
 	);
 }
+endif;
 
 /**
  * URL of the quote page, optionally with a preselected service.
@@ -289,6 +317,7 @@ function akilli_posts_for_service( $service_id, $limit = 3 ) {
  * @param int|WP_Post|null $service Service.
  * @return string
  */
+if ( ! function_exists( 'akilli_quote_url' ) ) :
 function akilli_quote_url( $service = null ) {
 	$page_id = (int) get_option( 'akilli_page_teklif' );
 	$url     = $page_id && get_post_status( $page_id ) === 'publish' ? get_permalink( $page_id ) : home_url( '/teklif-al/' );
@@ -300,6 +329,7 @@ function akilli_quote_url( $service = null ) {
 	}
 	return $url . '#teklif-formu';
 }
+endif;
 
 /**
  * Estimated reading time in minutes.
@@ -307,8 +337,10 @@ function akilli_quote_url( $service = null ) {
  * @param int|WP_Post $post Post.
  * @return int
  */
+if ( ! function_exists( 'akilli_reading_time' ) ) :
 function akilli_reading_time( $post = null ) {
 	$post  = get_post( $post );
 	$words = $post ? count( preg_split( '/\s+/u', wp_strip_all_tags( $post->post_content ), -1, PREG_SPLIT_NO_EMPTY ) ) : 0;
 	return max( 1, (int) ceil( $words / 200 ) );
 }
+endif;

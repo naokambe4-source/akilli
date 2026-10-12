@@ -751,6 +751,7 @@ class Akilli_Blocks {
  * @param array $a Attributes.
  * @return string
  */
+if ( ! function_exists( 'akilli_block_anchor' ) ) :
 function akilli_block_anchor( $a ) {
 	if ( ! empty( $a['anchor'] ) ) {
 		return sanitize_title( $a['anchor'] );
@@ -760,6 +761,7 @@ function akilli_block_anchor( $a ) {
 	}
 	return '';
 }
+endif;
 
 /**
  * Section heading markup shared by blocks.
@@ -768,6 +770,7 @@ function akilli_block_anchor( $a ) {
  * @param string $tag   Heading tag.
  * @param string $class Extra class.
  */
+if ( ! function_exists( 'akilli_section_head' ) ) :
 function akilli_section_head( $a, $tag = 'h2', $class = '' ) {
 	if ( empty( $a['eyebrow'] ) && empty( $a['title'] ) && empty( $a['text'] ) ) {
 		return;
@@ -788,6 +791,7 @@ function akilli_section_head( $a, $tag = 'h2', $class = '' ) {
 	}
 	echo '</header>';
 }
+endif;
 
 /**
  * Button markup.
@@ -798,6 +802,7 @@ function akilli_section_head( $a, $tag = 'h2', $class = '' ) {
  * @param string $icon  Icon.
  * @return string
  */
+if ( ! function_exists( 'akilli_button' ) ) :
 function akilli_button( $text, $url, $style = 'primary', $icon = 'arrow-right' ) {
 	if ( ! $text || ! $url ) {
 		return '';
@@ -808,6 +813,7 @@ function akilli_button( $text, $url, $style = 'primary', $icon = 'arrow-right' )
 	$external = 0 === strpos( $url, 'http' ) && false === strpos( $url, wp_parse_url( home_url(), PHP_URL_HOST ) );
 	return '<a class="ak-btn ak-btn--' . esc_attr( $style ) . '" href="' . esc_url( $url ) . '"' . ( $external ? ' target="_blank" rel="noopener"' : '' ) . '><span class="ak-btn__label">' . esc_html( $text ) . '</span>' . akilli_icon( $icon ) . '</a>';
 }
+endif;
 
 /**
  * Resolve a stored relative URL.
@@ -815,9 +821,11 @@ function akilli_button( $text, $url, $style = 'primary', $icon = 'arrow-right' )
  * @param string $url URL.
  * @return string
  */
+if ( ! function_exists( 'akilli_url' ) ) :
 function akilli_url( $url ) {
 	if ( $url && 0 === strpos( $url, '/' ) && 0 !== strpos( $url, '//' ) ) {
 		return home_url( $url );
 	}
 	return $url;
 }
+endif;

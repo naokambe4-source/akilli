@@ -18,9 +18,11 @@ if ( function_exists( 'akilli_demo_block' ) ) {
  * @param array  $attrs Attributes.
  * @return string
  */
+if ( ! function_exists( 'akilli_demo_block' ) ) :
 function akilli_demo_block( $name, $attrs = array() ) {
 	return get_comment_delimited_block_content( 'akilli/' . $name, $attrs, '' ) . "\n\n";
 }
+endif;
 
 /**
  * Core paragraph.
@@ -28,9 +30,11 @@ function akilli_demo_block( $name, $attrs = array() ) {
  * @param string $html Inline HTML.
  * @return string
  */
+if ( ! function_exists( 'akilli_demo_p' ) ) :
 function akilli_demo_p( $html ) {
 	return "<!-- wp:paragraph -->\n<p>" . $html . "</p>\n<!-- /wp:paragraph -->\n\n";
 }
+endif;
 
 /**
  * Core heading.
@@ -39,10 +43,12 @@ function akilli_demo_p( $html ) {
  * @param int    $level Level.
  * @return string
  */
+if ( ! function_exists( 'akilli_demo_h' ) ) :
 function akilli_demo_h( $text, $level = 2 ) {
 	$attrs = 2 === $level ? '' : ' {"level":' . (int) $level . '}';
 	return '<!-- wp:heading' . $attrs . " -->\n<h" . (int) $level . ' class="wp-block-heading">' . $text . '</h' . (int) $level . ">\n<!-- /wp:heading -->\n\n";
 }
+endif;
 
 /**
  * Core list.
@@ -51,6 +57,7 @@ function akilli_demo_h( $text, $level = 2 ) {
  * @param bool     $ordered Ordered.
  * @return string
  */
+if ( ! function_exists( 'akilli_demo_list' ) ) :
 function akilli_demo_list( $items, $ordered = false ) {
 	$tag   = $ordered ? 'ol' : 'ul';
 	$attrs = $ordered ? ' {"ordered":true}' : '';
@@ -60,6 +67,7 @@ function akilli_demo_list( $items, $ordered = false ) {
 	}
 	return $out . '</' . $tag . ">\n<!-- /wp:list -->\n\n";
 }
+endif;
 
 /**
  * Pairs [title, text] → repeater items.
@@ -69,6 +77,7 @@ function akilli_demo_list( $items, $ordered = false ) {
  * @param string $b     Second key.
  * @return array
  */
+if ( ! function_exists( 'akilli_demo_pairs' ) ) :
 function akilli_demo_pairs( $pairs, $a = 'title', $b = 'text' ) {
 	$out = array();
 	foreach ( (array) $pairs as $p ) {
@@ -79,6 +88,7 @@ function akilli_demo_pairs( $pairs, $a = 'title', $b = 'text' ) {
 	}
 	return $out;
 }
+endif;
 
 /**
  * Service detail page body.
@@ -86,6 +96,7 @@ function akilli_demo_pairs( $pairs, $a = 'title', $b = 'text' ) {
  * @param array $s Service data.
  * @return string
  */
+if ( ! function_exists( 'akilli_demo_service_blocks' ) ) :
 function akilli_demo_service_blocks( $s ) {
 	$out = '';
 	foreach ( (array) $s['intro'] as $p ) {
@@ -157,6 +168,7 @@ function akilli_demo_service_blocks( $s ) {
 	}
 	return $out;
 }
+endif;
 
 /**
  * Service category page body.
@@ -164,6 +176,7 @@ function akilli_demo_service_blocks( $s ) {
  * @param array $c Category data.
  * @return string
  */
+if ( ! function_exists( 'akilli_demo_category_blocks' ) ) :
 function akilli_demo_category_blocks( $c ) {
 	$out = akilli_demo_block(
 		'split',
@@ -191,6 +204,7 @@ function akilli_demo_category_blocks( $c ) {
 	);
 	return $out;
 }
+endif;
 
 /**
  * Blog post body.
@@ -198,6 +212,7 @@ function akilli_demo_category_blocks( $c ) {
  * @param array $content Content rows.
  * @return string
  */
+if ( ! function_exists( 'akilli_demo_post_blocks' ) ) :
 function akilli_demo_post_blocks( $content ) {
 	$out = '';
 	foreach ( $content as $row ) {
@@ -220,3 +235,4 @@ function akilli_demo_post_blocks( $content ) {
 	}
 	return $out;
 }
+endif;

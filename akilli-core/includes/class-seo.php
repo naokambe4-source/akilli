@@ -396,6 +396,7 @@ class Akilli_SEO {
  *
  * @return array[] Each [name, url].
  */
+if ( ! function_exists( 'akilli_breadcrumb_trail' ) ) :
 function akilli_breadcrumb_trail() {
 	$trail = array(
 		array(
@@ -503,3 +504,4 @@ function akilli_breadcrumb_trail() {
 	}
 	return $trail;
 }
+endif;

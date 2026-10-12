@@ -13,10 +13,12 @@ defined( 'ABSPATH' ) || exit;
  * @param int $id Service ID.
  * @return int
  */
+if ( ! function_exists( 'akilli_service_root' ) ) :
 function akilli_service_root( $id ) {
 	$anc = get_post_ancestors( $id );
 	return $anc ? (int) end( $anc ) : (int) $id;
 }
+endif;
 
 /**
  * Service names attached to a project.
@@ -24,6 +26,7 @@ function akilli_service_root( $id ) {
  * @param int $post_id Project.
  * @return string[] id => title
  */
+if ( ! function_exists( 'akilli_project_service_names' ) ) :
 function akilli_project_service_names( $post_id ) {
 	$out = array();
 	foreach ( akilli_project_service_ids( $post_id ) as $sid ) {
@@ -34,6 +37,7 @@ function akilli_project_service_names( $post_id ) {
 	}
 	return $out;
 }
+endif;
 
 /**
  * Project card.
@@ -41,6 +45,7 @@ function akilli_project_service_names( $post_id ) {
  * @param WP_Post|int $post Project.
  * @param array       $args heading (h2|h3), size (image size), eager (bool), class.
  */
+if ( ! function_exists( 'akilli_project_card' ) ) :
 function akilli_project_card( $post, $args = array() ) {
 	$post = get_post( $post );
 	if ( ! $post ) {
@@ -105,6 +110,7 @@ function akilli_project_card( $post, $args = array() ) {
 	</article>
 	<?php
 }
+endif;
 
 /**
  * Blog post card (theme may override via template-parts/card-post.php).
@@ -112,6 +118,7 @@ function akilli_project_card( $post, $args = array() ) {
  * @param WP_Post|int $post Post.
  * @param string      $heading Heading tag.
  */
+if ( ! function_exists( 'akilli_post_card' ) ) :
 function akilli_post_card( $post, $heading = 'h3' ) {
 	$post = get_post( $post );
 	if ( ! $post ) {
@@ -128,6 +135,7 @@ function akilli_post_card( $post, $heading = 'h3' ) {
 	echo get_the_post_thumbnail( $post, 'medium_large', array( 'loading' => 'lazy' ) );
 	echo '<' . tag_escape( $heading ) . '>' . esc_html( get_the_title( $post ) ) . '</' . tag_escape( $heading ) . '></a></article>';
 }
+endif;
 
 /**
  * Service link card.
@@ -136,6 +144,7 @@ function akilli_post_card( $post, $heading = 'h3' ) {
  * @param string  $heading Heading.
  * @param bool    $excerpt Show excerpt.
  */
+if ( ! function_exists( 'akilli_service_card' ) ) :
 function akilli_service_card( $svc, $heading = 'h3', $excerpt = true ) {
 	$label = get_post_meta( $svc->ID, '_ak_menu_label', true );
 	?>
@@ -150,12 +159,14 @@ function akilli_service_card( $svc, $heading = 'h3', $excerpt = true ) {
 	</li>
 	<?php
 }
+endif;
 
 /**
  * Contact quick links (phone, WhatsApp, e-mail).
  *
  * @param string $class Wrapper class.
  */
+if ( ! function_exists( 'akilli_contact_links' ) ) :
 function akilli_contact_links( $class = '' ) {
 	$items = array();
 	$tel   = akilli_phone_href();
@@ -174,3 +185,4 @@ function akilli_contact_links( $class = '' ) {
 		echo '<div class="ak-clinks ' . esc_attr( $class ) . '">' . implode( '', $items ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above.
 	}
 }
+endif;
