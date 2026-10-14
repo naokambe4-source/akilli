@@ -1,9 +1,16 @@
 # Akıllı Creative — Kurulum ve Yönetim Rehberi
 
-## Tasarım dili: "Ölçüye Göre"
-Terzilik metaforu üzerine kurulu, sessiz bir lüks: fildişi kâğıt zemin (#f3efe7), mürekkep siyahı (#15130f) ve yalnızca ince detaylarda kullanılan konyak vurgu (#8c5a34). Başlıklar editoryal serif (Instrument Serif) ve italik vurgularla, etiketler aralıklı büyük harflerle (Hanken Grotesk) yazılır. Keskin köşeler, saç teli çizgiler, roma rakamlı dizinler ve otomatik bölüm numaraları (01, 02…) kullanılır; ikon kutusu, gradyan ve süs yoktur. Giriş ekranında kaydırdıkça çerçeveden tam genişliğe açılan, imleci takip eden ışıkla aydınlanan bir saten plakası (WebGL; desteklenmeyen cihazlarda aynı görselin durağan hali) bulunur.
+## Tasarım dili: "Canlı" (1.1.0)
+Açık zemin (#faf8f5), lacivert metin (#0e1530), mercan renk blokları (#ff5b2e) ve şeftali yüzeyler (#ffe7dc). Kalın geometrik başlıklar (Jost), hap butonlar, yuvarlak kartlar. Hareketler: yüzen proje kartları (fareyle derinlik), iki yönlü kayan bant, mercan blokta sabit duran animasyonlu hizmet illüstrasyonları, kaydırdıkça dolan süreç çizgisi, sayaçlar, mıknatıslı butonlar, kart eğimi ve imleç noktası. "Hareketi azalt" tercihinde hepsi durur.
 
-Customizer'dan alternatif yazı tipleri seçilebilir: Bodoni Moda (moda dergisi), Cormorant Garamond (klasik) ve Jost (geometrik gövde).
+**Önceki sürümden güncelliyorsanız:** iki ZIP'i yükleyip "Değiştir" deyin, sonra **Akıllı Creative → Kurulum** ekranında "Ana Sayfa ve Hakkımızda sayfalarını güncel demo düzeniyle yenile" kutusunu işaretleyip çalıştırın (eski içerik Revizyonlar'da kalır).
+
+### Gerçek içeriklerinizi ekleme
+- **Ekip fotoğrafları:** Ana Sayfa / Hakkımızda → "Ekip" bloğu → sağ panelden kişi ekleyin (fotoğraf, ad, görev) → "Bu bölümü sitede gizle" işaretini kaldırın.
+- **Müşteri yorumları:** "Müşteri yorumları" bloğu → yorum, ad, unvan, fotoğraf → gizleme işaretini kaldırın. Yalnızca izinli, gerçek yorumları kullanın.
+- **Rakamlar:** "Rakamlar" bloğu → değer (örn. 120+) ve açıklama → gizlemeyi kaldırın. Rakamlar ekrana gelince sayarak artar.
+- **Görüşme günü:** "Görüşme günü seçici" bloğu sonraki iş günlerini listeler; seçilen gün teklif formunda dolu gelir, talep ekranında ve bildirim e-postasında görünür.
+- **Giriş kartları:** Hero bloğu → "Yüzen kartlar" alanından görsel/başlık değiştirilebilir (ekip veya proje fotoğrafları).
 
 Teslimat iki ZIP dosyasından oluşur (`dist/` klasörü):
 

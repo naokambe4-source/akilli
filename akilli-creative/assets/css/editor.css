@@ -1,6 +1,6 @@
 /* Block editor helpers (main.css is loaded as an editor style as well). */
-.ak-ed-block{position:relative;outline:1px dashed rgba(59,70,241,.25);outline-offset:-1px;border-radius:6px}
-.ak-ed-tag{position:sticky;top:0;z-index:5;display:inline-block;margin:6px;padding:4px 10px;border-radius:99px;background:#3b46f1;color:#fff;font:600 11px/1.4 system-ui,sans-serif}
+.ak-ed-block{position:relative;outline:1px dashed rgba(255,91,46,.35);outline-offset:-1px;border-radius:6px}
+.ak-ed-tag{position:sticky;top:0;z-index:5;display:inline-block;margin:6px;padding:4px 10px;border-radius:99px;background:#0e1530;color:#fff;font:600 11px/1.4 system-ui,sans-serif}
 .ak-ed-preview .ak-hero{margin-top:0;min-height:auto;padding-top:64px}
 .ak-ed-preview [data-reveal]{opacity:1!important;transform:none!important}
 .ak-ed-label{font-weight:600;margin:0 0 8px}

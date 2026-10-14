@@ -17,6 +17,13 @@ defined( 'ABSPATH' ) || exit;
 class Akilli_Demo_Installer {
 
 	/**
+	 * Whether existing demo Home/About pages get the current layout.
+	 *
+	 * @var bool
+	 */
+	private $refresh = false;
+
+	/**
 	 * Report lines.
 	 *
 	 * @var array
@@ -98,6 +105,9 @@ class Akilli_Demo_Installer {
 				<input type="hidden" name="action" value="akilli_install_demo">
 				<p><label><input type="checkbox" name="with_demo" value="1" checked> Örnek projeleri ve blog yazılarını da oluştur</label></p>
 				<p><label><input type="checkbox" name="noindex" value="1" <?php checked( ! get_option( 'akilli_demo_installed' ) ); ?>> Siteyi arama motorlarına kapat (demo/geliştirme ortamı için önerilir)</label></p>
+				<?php if ( get_option( 'akilli_demo_installed' ) ) : ?>
+					<p><label><input type="checkbox" name="refresh_layout" value="1"> Ana Sayfa ve Hakkımızda sayfalarını güncel demo düzeniyle yenile</label><br><span class="description">Yalnızca kurulumun oluşturduğu bu iki sayfanın içeriği ve kurulumun eklediği demo görselleri güncellenir; sizin yüklediğiniz görsellere ve diğer sayfalara dokunulmaz. Önceki sayfa içeriği <strong>Revizyonlar</strong> bölümünden geri yüklenebilir.</span></p>
+				<?php endif; ?>
 				<?php submit_button( get_option( 'akilli_demo_installed' ) ? 'Eksik içerikleri tamamla' : 'Kurulumu başlat', 'primary', 'submit', false ); ?>
 			</form>
 		</div>
@@ -128,6 +138,7 @@ class Akilli_Demo_Installer {
 			array(
 				'with_demo' => ! empty( $_POST['with_demo'] ),
 				'noindex'   => ! empty( $_POST['noindex'] ),
+				'refresh'   => ! empty( $_POST['refresh_layout'] ),
 			)
 		);
 		set_transient( 'akilli_demo_report_' . get_current_user_id(), $report, 10 * MINUTE_IN_SECONDS );
@@ -147,8 +158,10 @@ class Akilli_Demo_Installer {
 			array(
 				'with_demo' => true,
 				'noindex'   => true,
+				'refresh'   => false,
 			)
 		);
+		$this->refresh = (bool) $opts['refresh'];
 		require_once AKILLI_CORE_DIR . 'demo/builder.php';
 		require_once ABSPATH . 'wp-admin/includes/image.php';
 		require_once ABSPATH . 'wp-admin/includes/file.php';
@@ -319,6 +332,9 @@ class Akilli_Demo_Installer {
 			$key  = 'img:' . $name;
 			$have = $this->find( $key, 'attachment' );
 			if ( $have ) {
+				if ( $this->refresh && get_post_meta( $have, '_ak_demo_key', true ) === $key ) {
+					$this->refresh_image( $have, $file );
+				}
 				$out[ $name ] = $have;
 				continue;
 			}
@@ -466,6 +482,30 @@ class Akilli_Demo_Installer {
 	}
 
 	/**
+	 * Replace the file of a demo attachment created by this installer with the
+	 * bundled version (used by "refresh layout"; never touches user uploads).
+	 *
+	 * @param int    $id   Attachment ID.
+	 * @param string $file Bundled source file.
+	 */
+	private function refresh_image( $id, $file ) {
+		$path = get_attached_file( $id );
+		if ( ! $path || ! wp_is_writable( dirname( $path ) ) || md5_file( $path ) === md5_file( $file ) ) {
+			return;
+		}
+		$old = wp_get_attachment_metadata( $id );
+		if ( ! empty( $old['sizes'] ) ) {
+			foreach ( $old['sizes'] as $size ) {
+				wp_delete_file( path_join( dirname( $path ), $size['file'] ) );
+			}
+		}
+		if ( copy( $file, $path ) ) {
+			wp_update_attachment_metadata( $id, wp_generate_attachment_metadata( $id, $path ) );
+			$this->log['notes'][] = 'Demo görseli yenilendi: ' . basename( $file );
+		}
+	}
+
+	/**
 	 * Cached map of demo images.
 	 *
 	 * @return array
@@ -559,11 +599,11 @@ class Akilli_Demo_Installer {
 	 * @return array slug => ID
 	 */
 	private function pages( $images ) {
-		$images  = wp_parse_args( $images, array( 'studio-katmanlar' => 0, 'hero-saten' => 0 ) );
+		$images  = wp_parse_args( $images, array_fill_keys( array( 'studio-katmanlar', 'hero-saten', 'proje-otel', 'proje-moda', 'proje-klinik', 'proje-b2b', 'proje-hukuk', 'proje-dernek' ), 0 ) );
 		$builder = include AKILLI_CORE_DIR . 'demo/pages.php';
 		$out     = array();
 		foreach ( $builder( $images ) as $slug => $p ) {
-			list( $id ) = $this->ensure(
+			list( $id, $created ) = $this->ensure(
 				'page:' . $slug,
 				array(
 					'post_type'    => 'page',
@@ -575,6 +615,18 @@ class Akilli_Demo_Installer {
 				$p['seo'],
 				'Sayfa: ' . $p['title']
 			);
+			if ( $id && ! $created && $this->refresh && in_array( $slug, array( 'ana-sayfa', 'hakkimizda' ), true ) && get_post_meta( $id, '_ak_demo_key', true ) ) {
+				wp_save_post_revision( $id );
+				wp_update_post(
+					wp_slash(
+						array(
+							'ID'           => $id,
+							'post_content' => $p['content'],
+						)
+					)
+				);
+				$this->log['notes'][] = 'Sayfa düzeni yenilendi: ' . $p['title'] . ' (önceki hâli revizyonlarda).';
+			}
 			if ( $id ) {
 				$out[ $slug ] = $id;
 			}

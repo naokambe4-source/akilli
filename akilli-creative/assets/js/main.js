@@ -438,34 +438,168 @@
 		onStatement();
 	}
 
-	/* Process: progress meter + active step ------------------------------- */
+	/* Process: timeline fill + active step ---------------------------------- */
 	$$( '[data-ak-process]' ).forEach( function ( sec ) {
-		var meter = sec.querySelector( '.ak-process__meter span' );
 		var steps = $$( '.ak-process__step', sec );
 		var list = sec.querySelector( '.ak-process__steps' );
 		var onProcess = rafThrottle( function () {
 			var vh = window.innerHeight;
 			var r = list.getBoundingClientRect();
-			var p = ( vh * 0.6 - r.top ) / r.height;
-			p = Math.max( 0, Math.min( 1, p ) );
-			if ( meter ) {
-				meter.style.setProperty( '--progress', motion() ? p.toFixed( 3 ) : 1 );
+			var horizontal = r.width > 900 && steps.length > 1 && steps[ 0 ].getBoundingClientRect().top === steps[ 1 ].getBoundingClientRect().top;
+			var p = horizontal ? ( vh * 0.85 - r.top ) / ( vh * 0.6 ) : ( vh * 0.6 - r.top ) / r.height;
+			p = motion() ? Math.max( 0, Math.min( 1, p ) ) : 1;
+			list.style.setProperty( '--progress', p.toFixed( 3 ) );
+			var active = horizontal ? Math.min( steps.length - 1, Math.floor( p * steps.length - 0.001 ) ) : -1;
+			if ( ! horizontal ) {
+				steps.forEach( function ( s, i ) {
+					if ( s.getBoundingClientRect().top < vh * 0.62 ) {
+						active = i;
+					}
+				} );
 			}
-			var active = -1;
-			steps.forEach( function ( s, i ) {
-				var sr = s.getBoundingClientRect();
-				if ( sr.top < vh * 0.62 ) {
-					active = i;
-				}
-			} );
 			steps.forEach( function ( s, i ) {
 				s.classList.toggle( 'is-active', i === active );
+				s.classList.toggle( 'is-done', i < active );
 			} );
 		} );
 		window.addEventListener( 'scroll', onProcess, { passive: true } );
 		window.addEventListener( 'resize', onProcess );
 		onProcess();
 	} );
+
+	/* Services showcase: active category drives the sticky illustration ----- */
+	$$( '[data-ak-show]' ).forEach( function ( box ) {
+		var items = $$( '[data-ak-show-item]', box );
+		var illus = $$( '[data-ak-illus]', box );
+		function activate( idx ) {
+			items.forEach( function ( it, i ) {
+				it.classList.toggle( 'is-active', i === idx );
+			} );
+			illus.forEach( function ( il, i ) {
+				il.classList.toggle( 'is-active', i === idx );
+			} );
+		}
+		if ( 'IntersectionObserver' in window ) {
+			var showIO = new IntersectionObserver( function ( entries ) {
+				entries.forEach( function ( en ) {
+					if ( en.isIntersecting ) {
+						activate( items.indexOf( en.target ) );
+					}
+				} );
+			}, { rootMargin: '-45% 0px -45% 0px' } );
+			items.forEach( function ( it ) {
+				showIO.observe( it );
+			} );
+		}
+		items.forEach( function ( it, i ) {
+			it.addEventListener( 'pointerenter', function () {
+				activate( i );
+			} );
+			it.addEventListener( 'focusin', function () {
+				activate( i );
+			} );
+		} );
+	} );
+
+	/* Count-up numbers (stats) ------------------------------------------------ */
+	var counters = $$( '[data-ak-count]' );
+	if ( counters.length && 'IntersectionObserver' in window ) {
+		var countIO = new IntersectionObserver( function ( entries ) {
+			entries.forEach( function ( en ) {
+				if ( ! en.isIntersecting ) {
+					return;
+				}
+				countIO.unobserve( en.target );
+				var el = en.target;
+				var raw = el.textContent;
+				var m = raw.match( /(\d+(?:[.,]\d+)*)/ );
+				if ( ! m || ! motion() ) {
+					return;
+				}
+				var numStr = m[ 1 ];
+				var decimals = /,\d+$/.test( numStr ) ? numStr.split( ',' ).pop().length : 0;
+				var target = parseFloat( numStr.replace( /\./g, '' ).replace( ',', '.' ) );
+				if ( ! isFinite( target ) || target === 0 ) {
+					return;
+				}
+				var start = null;
+				var dur = 1600;
+				var tick = function ( t ) {
+					if ( ! start ) {
+						start = t;
+					}
+					var k = Math.min( 1, ( t - start ) / dur );
+					var e = 1 - Math.pow( 1 - k, 4 );
+					var v = target * e;
+					var txt = decimals ? v.toFixed( decimals ).replace( '.', ',' ) : Math.round( v ).toLocaleString( 'tr-TR' );
+					el.textContent = raw.replace( numStr, txt );
+					if ( k < 1 ) {
+						requestAnimationFrame( tick );
+					} else {
+						el.textContent = raw;
+					}
+				};
+				requestAnimationFrame( tick );
+			} );
+		}, { threshold: 0.6 } );
+		counters.forEach( function ( c ) {
+			countIO.observe( c );
+		} );
+	}
+
+	/* Hero floating cards follow the pointer (depth parallax) ---------------- */
+	var heroCards = doc.querySelector( '.ak-hero__cards' );
+	if ( heroCards && finePointer.matches ) {
+		var heroSec = heroCards.closest( '[data-ak-hero]' );
+		heroSec.addEventListener( 'pointermove', function ( e ) {
+			if ( ! fullMotion() ) {
+				return;
+			}
+			var r = heroSec.getBoundingClientRect();
+			heroCards.style.setProperty( '--hx', ( ( e.clientX - r.left ) / r.width - 0.5 ).toFixed( 3 ) );
+			heroCards.style.setProperty( '--hy', ( ( e.clientY - r.top ) / r.height - 0.5 ).toFixed( 3 ) );
+		}, { passive: true } );
+		heroSec.addEventListener( 'pointerleave', function () {
+			heroCards.style.setProperty( '--hx', 0 );
+			heroCards.style.setProperty( '--hy', 0 );
+		} );
+	}
+
+	/* Magnetic pill buttons + tilting project cards (mouse, full motion) ----- */
+	if ( finePointer.matches ) {
+		doc.addEventListener( 'pointermove', function ( e ) {
+			if ( ! fullMotion() || ! e.target.closest ) {
+				return;
+			}
+			var btn = e.target.closest( '.ak-btn:not(.ak-btn--link)' );
+			if ( btn ) {
+				var b = btn.getBoundingClientRect();
+				btn.style.setProperty( '--mx', ( ( e.clientX - b.left - b.width / 2 ) * 0.22 ).toFixed( 1 ) + 'px' );
+				btn.style.setProperty( '--my', ( ( e.clientY - b.top - b.height / 2 ) * 0.3 ).toFixed( 1 ) + 'px' );
+			}
+			var media = e.target.closest( '.ak-pcard__media' );
+			if ( media ) {
+				var m = media.getBoundingClientRect();
+				media.style.setProperty( '--rx', ( ( ( e.clientX - m.left ) / m.width - 0.5 ) * 6 ).toFixed( 2 ) + 'deg' );
+				media.style.setProperty( '--ry', ( ( 0.5 - ( e.clientY - m.top ) / m.height ) * 6 ).toFixed( 2 ) + 'deg' );
+			}
+		}, { passive: true } );
+		doc.addEventListener( 'pointerout', function ( e ) {
+			if ( ! e.target.closest ) {
+				return;
+			}
+			var btn = e.target.closest( '.ak-btn' );
+			if ( btn && ! btn.contains( e.relatedTarget ) ) {
+				btn.style.removeProperty( '--mx' );
+				btn.style.removeProperty( '--my' );
+			}
+			var media = e.target.closest( '.ak-pcard__media' );
+			if ( media && ! media.contains( e.relatedTarget ) ) {
+				media.style.removeProperty( '--rx' );
+				media.style.removeProperty( '--ry' );
+			}
+		} );
+	}
 
 	/* Marquee: subtle skew from scroll velocity (full motion only) --------- */
 	var marquees = $$( '.ak-marquee' );
@@ -553,6 +687,32 @@
 				cursor.style.setProperty( '--y', e.clientY + 'px' );
 			}
 		}, { passive: true } );
+	}
+
+	/* Cursor dot (mouse, full motion) --------------------------------------- */
+	if ( cfg.cursor && finePointer.matches ) {
+		var dot = null;
+		doc.addEventListener( 'pointermove', function ( e ) {
+			if ( ! fullMotion() || e.pointerType !== 'mouse' ) {
+				return;
+			}
+			if ( ! dot ) {
+				dot = doc.createElement( 'div' );
+				dot.className = 'ak-dot';
+				dot.setAttribute( 'aria-hidden', 'true' );
+				doc.body.appendChild( dot );
+			}
+			dot.style.setProperty( '--x', e.clientX + 'px' );
+			dot.style.setProperty( '--y', e.clientY + 'px' );
+			var t = e.target.closest && e.target.closest( 'a,button,summary,[data-cursor]' );
+			dot.classList.toggle( 'is-hover', !! t && ! t.closest( '[data-cursor]' ) );
+			dot.classList.toggle( 'is-hidden', !! ( t && t.closest( '[data-cursor]' ) ) );
+		}, { passive: true } );
+		doc.addEventListener( 'pointerleave', function () {
+			if ( dot ) {
+				dot.classList.add( 'is-hidden' );
+			}
+		} );
 	}
 
 	/* Service page sub-nav: highlight current section -------------------- */

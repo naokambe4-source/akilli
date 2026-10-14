@@ -127,7 +127,7 @@ class Akilli_Blocks {
 			'hero'          => array(
 				'title'       => 'Ana sayfa girişi (Hero)',
 				'icon'        => 'star-filled',
-				'description' => 'Canlı ışık katmanı, hareketli tipografi ve hızlı hizmet bağlantılarıyla açılış ekranı.',
+				'description' => 'Kalın başlık, yüzen kartlar (ekip fotoğrafı / proje), kanıt etiketleri ve hizmet kısayollarıyla açılış ekranı.',
 				'fields'      => array_merge(
 					$heading,
 					array(
@@ -141,13 +141,42 @@ class Akilli_Blocks {
 							'label'   => 'Arka plan görseli',
 							'options' => $opts(
 								array(
-									'gl'    => 'Canlı ışık alanı (WebGL, hafif)',
+									'cards' => 'Yüzen kartlar (ekip / proje)',
+									'gl'    => 'Saten ışık plakası (WebGL)',
 									'image' => 'Görsel',
 									'none'  => 'Sade',
 								)
 							),
-							'default' => 'gl',
+							'default' => 'cards',
 							'group'   => 'Görsel',
+						),
+						'chips'         => array(
+							'type'  => 'textarea',
+							'label' => 'Kanıt etiketleri',
+							'help'  => 'Her satıra bir kısa ifade (örn. Ücretsiz ön görüşme). Yalnızca doğru bilgiler yazın.',
+						),
+						'cards'         => array(
+							'type'   => 'repeater',
+							'label'  => 'Yüzen kartlar',
+							'group'  => 'Görsel',
+							'fields' => array(
+								'image' => array(
+									'type'  => 'image',
+									'label' => 'Fotoğraf / görsel',
+								),
+								'title' => array(
+									'type'  => 'text',
+									'label' => 'Başlık (örn. kişi adı)',
+								),
+								'text'  => array(
+									'type'  => 'text',
+									'label' => 'Alt yazı (örn. unvan)',
+								),
+								'url'   => array(
+									'type'  => 'url',
+									'label' => 'Bağlantı (isteğe bağlı)',
+								),
+							),
 						),
 						'image'         => array(
 							'type'  => 'image',
@@ -205,11 +234,12 @@ class Akilli_Blocks {
 							'label'   => 'Yerleşim',
 							'options' => $opts(
 								array(
+									'showcase' => 'Renkli vitrin (animasyonlu)',
 									'explorer' => 'Gezgin (kategori sekmeleri)',
 									'grid'     => 'Tüm hizmetler (ızgara)',
 								)
 							),
-							'default' => 'explorer',
+							'default' => 'showcase',
 						),
 					),
 					$btn( 1, 'Buton' )
@@ -510,6 +540,85 @@ class Akilli_Blocks {
 							'type'    => 'toggle',
 							'label'   => 'İletişim formunu göster',
 							'default' => true,
+						),
+					)
+				),
+			),
+			'booking'       => array(
+				'title'       => 'Görüşme günü şeridi',
+				'icon'        => 'calendar-alt',
+				'description' => 'Önümüzdeki iş günlerini gösterir; tıklanan gün teklif formuna "tercih edilen görüşme günü" olarak gelir.',
+				'fields'      => array_merge(
+					$heading,
+					array(
+						'days' => array(
+							'type'    => 'number',
+							'label'   => 'Gösterilecek iş günü sayısı',
+							'default' => 10,
+						),
+						'note' => array(
+							'type'  => 'text',
+							'label' => 'Alt not',
+						),
+					)
+				),
+			),
+			'testimonials'  => array(
+				'title'       => 'Müşteri yorumları',
+				'icon'        => 'format-quote',
+				'description' => 'Kaydırdıkça üst üste binen yorum kartları. Yalnızca gerçek ve izinli yorumlar ekleyin; yorum yoksa bölüm görünmez.',
+				'fields'      => array_merge(
+					$heading,
+					array(
+						'items' => array(
+							'type'   => 'repeater',
+							'label'  => 'Yorumlar',
+							'fields' => array(
+								'quote' => array(
+									'type'  => 'textarea',
+									'label' => 'Yorum',
+								),
+								'name'  => array(
+									'type'  => 'text',
+									'label' => 'Ad soyad',
+								),
+								'role'  => array(
+									'type'  => 'text',
+									'label' => 'Unvan / firma',
+								),
+								'photo' => array(
+									'type'  => 'image',
+									'label' => 'Fotoğraf (isteğe bağlı)',
+								),
+							),
+						),
+					)
+				),
+			),
+			'team'          => array(
+				'title'       => 'Ekip',
+				'icon'        => 'groups',
+				'description' => 'Ekip fotoğrafları ve unvanları. Kişi eklenmezse bölüm görünmez.',
+				'fields'      => array_merge(
+					$heading,
+					array(
+						'items' => array(
+							'type'   => 'repeater',
+							'label'  => 'Ekip üyeleri',
+							'fields' => array(
+								'photo' => array(
+									'type'  => 'image',
+									'label' => 'Fotoğraf',
+								),
+								'name'  => array(
+									'type'  => 'text',
+									'label' => 'Ad soyad',
+								),
+								'role'  => array(
+									'type'  => 'text',
+									'label' => 'Unvan',
+								),
+							),
 						),
 					)
 				),

@@ -14,19 +14,19 @@ defined( 'ABSPATH' ) || exit;
  */
 function akilli_theme_defaults() {
 	return array(
-		'akilli_color_primary' => '#15130f',
-		'akilli_color_accent'  => '#8c5a34',
-		'akilli_color_ink'     => '#15130f',
-		'akilli_color_paper'   => '#f3efe7',
-		'akilli_color_tint'    => '#d8c6a6',
-		'akilli_font_display'  => 'instrument',
+		'akilli_color_primary' => '#ff5b2e',
+		'akilli_color_accent'  => '#ff5b2e',
+		'akilli_color_ink'     => '#0e1530',
+		'akilli_color_paper'   => '#faf8f5',
+		'akilli_color_tint'    => '#ffe7dc',
+		'akilli_font_display'  => 'jost',
 		'akilli_font_body'     => 'hanken',
 		'akilli_font_scale'    => '100',
 		'akilli_header_cta'    => 'Teklif al',
 		'akilli_header_cta_url' => '/teklif-al/',
 		'akilli_header_phone'  => true,
-		'akilli_footer_title'  => 'Bir sonraki projenizi <em>ölçüyle</em> tasarlayalım.',
-		'akilli_footer_text'   => 'Antalya merkezli dijital ajans. Markalar için web siteleri, e-ticaret altyapıları, kimlik sistemleri ve dijital büyüme çalışmalarını hazır kalıplarla değil, ölçüye göre tasarlıyoruz.',
+		'akilli_footer_title'  => 'Fikrinizi birlikte <em>canlandıralım.</em>',
+		'akilli_footer_text'   => 'Antalya merkezli dijital ajans. Web siteleri, e-ticaret altyapıları, marka kimlikleri ve dijital büyüme çalışmalarını; hızlı, ölçülebilir ve markanıza özel üretiyoruz.',
 		'akilli_copyright'     => '© {yil} Akıllı Creative. Tüm hakları saklıdır.',
 		'akilli_mobile_bar'    => true,
 		'akilli_motion'        => 'full',
@@ -62,7 +62,9 @@ function akilli_mod( $key ) {
 function akilli_font_choices() {
 	return array(
 		'display' => array(
-			'instrument' => array( 'Instrument Serif (editoryal, önerilen)', '"Instrument Serif", "Cormorant Garamond", Georgia, serif' ),
+			'jost'       => array( 'Jost (geometrik, canlı — önerilen)', '"Jost", "Hanken Grotesk", system-ui, sans-serif' ),
+			'hanken'     => array( 'Hanken Grotesk (modern grotesk)', '"Hanken Grotesk", system-ui, sans-serif' ),
+			'instrument' => array( 'Instrument Serif (editoryal)', '"Instrument Serif", "Cormorant Garamond", Georgia, serif' ),
 			'bodoni'     => array( 'Bodoni Moda (moda dergisi, didone)', '"Bodoni Moda", Didot, Georgia, serif' ),
 			'cormorant'  => array( 'Cormorant Garamond (klasik, zarif)', '"Cormorant Garamond", Garamond, Georgia, serif' ),
 			'system'     => array( 'Sistem serif (en hızlı)', 'Georgia, "Times New Roman", serif' ),
@@ -126,11 +128,11 @@ add_action(
 		};
 
 		// Colours.
-		$wp->add_section( 'akilli_colors', array( 'title' => 'Renkler', 'panel' => 'akilli', 'description' => 'Açık tema için tasarlanmış marka renkleri. Metin okunurluğu için "Ana renk" ve "Metin rengi" koyu tonlarda kalmalıdır (beyaz zeminde en az 4.5:1 kontrast).' ) );
-		$add( 'akilli_color_primary', 'akilli_colors', 'Ana renk (butonlar, koyu yüzeyler)', 'color' );
-		$add( 'akilli_color_accent', 'akilli_colors', 'Vurgu rengi (ince detaylar, bağlantı üzeri)', 'color' );
-		$add( 'akilli_color_tint', 'akilli_colors', 'Saten / ışık tonu (giriş plakası, dokular)', 'color' );
-		$add( 'akilli_color_ink', 'akilli_colors', 'Metin rengi', 'color' );
+		$wp->add_section( 'akilli_colors', array( 'title' => 'Renkler', 'panel' => 'akilli', 'description' => 'Açık tema için tasarlanmış marka renkleri. Buton ve renkli blok metinleri "Metin rengi" ile yazılır; bu yüzden ana renk canlı/açık, metin rengi koyu kalmalıdır. Vurgu rengi metinde kullanıldığında okunurluk için otomatik olarak koyulaştırılır.' ) );
+		$add( 'akilli_color_primary', 'akilli_colors', 'Ana renk (butonlar, renkli bloklar)', 'color' );
+		$add( 'akilli_color_accent', 'akilli_colors', 'Vurgu rengi (vurgulu kelimeler, detaylar)', 'color' );
+		$add( 'akilli_color_tint', 'akilli_colors', 'Yumuşak ton (açık renkli bloklar, rozetler)', 'color' );
+		$add( 'akilli_color_ink', 'akilli_colors', 'Metin rengi (koyu lacivert önerilir)', 'color' );
 		$add( 'akilli_color_paper', 'akilli_colors', 'Zemin rengi', 'color', array( 'description' => 'Açık bir ton seçin. Tema koyu zemine göre tasarlanmamıştır.' ) );
 
 		// Typography.
@@ -242,7 +244,7 @@ function akilli_custom_css() {
 		'--ak-ink'      => sanitize_hex_color( akilli_mod( 'akilli_color_ink' ) ),
 		'--ak-paper'    => sanitize_hex_color( akilli_mod( 'akilli_color_paper' ) ),
 		'--ak-tint'     => sanitize_hex_color( akilli_mod( 'akilli_color_tint' ) ),
-		'--ak-f-display' => isset( $fonts['display'][ $display ] ) ? $fonts['display'][ $display ][1] : $fonts['display']['instrument'][1],
+		'--ak-f-display' => isset( $fonts['display'][ $display ] ) ? $fonts['display'][ $display ][1] : $fonts['display']['jost'][1],
 		'--ak-f-body'   => isset( $fonts['body'][ $body ] ) ? $fonts['body'][ $body ][1] : $fonts['body']['hanken'][1],
 		'--ak-scale'    => ( (int) akilli_mod( 'akilli_font_scale' ) / 100 ),
 	);

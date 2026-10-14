@@ -8,11 +8,11 @@
 			"defaultPalette": false,
 			"defaultGradients": false,
 			"palette": [
-				{ "slug": "ink", "name": "Mürekkep", "color": "#0f1430" },
-				{ "slug": "primary", "name": "Akıllı mavi", "color": "#3b46f1" },
-				{ "slug": "tint", "name": "Periwinkle", "color": "#8698ff" },
-				{ "slug": "accent", "name": "Mercan", "color": "#ff6b3d" },
-				{ "slug": "paper", "name": "Kâğıt", "color": "#f6f5f1" },
+				{ "slug": "ink", "name": "Lacivert", "color": "#0e1530" },
+				{ "slug": "primary", "name": "Mercan", "color": "#ff5b2e" },
+				{ "slug": "tint", "name": "Şeftali", "color": "#ffe7dc" },
+				{ "slug": "accent", "name": "Koyu mercan (metin)", "color": "#b8401d" },
+				{ "slug": "paper", "name": "Sıcak beyaz", "color": "#faf8f5" },
 				{ "slug": "white", "name": "Beyaz", "color": "#ffffff" }
 			]
 		},

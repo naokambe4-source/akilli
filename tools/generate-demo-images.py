@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Generate quiet, editorial demo imagery for the Akıllı Creative demo content.
+"""Generate colourful demo imagery for the Akıllı Creative demo content.
 
 Usage: python3 -I tools/generate-demo-images.py <output-dir> <fonts-dir>
-Everything is procedural: a lit satin height-field (numpy) and restrained
+Everything is procedural: a lit satin height-field (numpy) and
 "presentation board" compositions. No third-party photography.
 """
 import os
@@ -106,7 +106,7 @@ def shadow(img, box, radius, blur, offset, strength=70):
     x0, y0, x1, y1 = box
     ImageDraw.Draw(sh).rounded_rectangle([x0 + offset[0], y0 + offset[1], x1 + offset[0], y1 + offset[1]], radius=radius, fill=strength)
     sh = sh.filter(ImageFilter.GaussianBlur(blur))
-    dark = Image.new('RGB', img.size, (40, 32, 24))
+    dark = Image.new('RGB', img.size, (24, 28, 60))
     img.paste(dark, (0, 0), sh)
 
 
@@ -191,18 +191,19 @@ def plate(name, tone, seed, size=(1600, 900), light=(0.35, -0.55, 0.76), contras
     satin(size[0], size[1], tone, seed, light=light, contrast=contrast).save(os.path.join(OUT, name + '.jpg'), quality=84, optimize=True, progressive=True)
 
 
-project('proje-hukuk', 'Örnek Hukuk', ('Hukukta', 'açıklık.'), (176, 168, 152), (226, 221, 211), 11)
-project('proje-klinik', 'Örnek Klinik', ('Sakin bir', 'gülümseme.'), (171, 186, 176), (229, 230, 224), 22)
-project('proje-moda', 'Örnek Atelier', ('Yeni sezon', 'koleksiyon.'), (196, 160, 140), (236, 226, 216), 33)
-project('proje-b2b', 'Örnek Tedarik', ('Siparişten', 'sevkiyata.'), (150, 156, 164), (226, 226, 224), 44)
-project('proje-otel', 'Örnek Konak', ('Taşın ve', 'denizin evi.'), (206, 184, 150), (238, 230, 216), 55)
-project('proje-dernek', 'Örnek Vakıf', ('Birlikte', 'daha güçlü.'), (176, 150, 150), (234, 226, 222), 66)
-plate('blog-web', (214, 204, 186), 101)
-plate('blog-pos', (170, 170, 172), 102, light=(-0.4, -0.5, 0.8))
-plate('blog-altyapi', (196, 166, 140), 103)
-plate('blog-seo', (172, 184, 170), 104, light=(0.6, -0.3, 0.7))
-plate('blog-logo', (40, 36, 32), 105, contrast=1.3)
-plate('blog-saglik', (210, 196, 190), 106)
-plate('studio-katmanlar', (226, 214, 194), 7, size=(1400, 1750))
-plate('hero-saten', (232, 222, 204), 3, size=(2400, 1200), contrast=0.85)
+# Vivid, light palette matching the "Canlı" theme: saturated satin, pastel backdrops.
+project('proje-hukuk', 'Örnek Hukuk', ('Hukukta', 'açıklık.'), (52, 72, 150), (208, 222, 255), 11)
+project('proje-klinik', 'Örnek Klinik', ('Sakin bir', 'gülümseme.'), (44, 186, 164), (206, 244, 233), 22)
+project('proje-moda', 'Örnek Atelier', ('Yeni sezon', 'koleksiyon.'), (255, 112, 80), (255, 222, 208), 33)
+project('proje-b2b', 'Örnek Tedarik', ('Siparişten', 'sevkiyata.'), (250, 186, 40), (255, 239, 196), 44)
+project('proje-otel', 'Örnek Konak', ('Taşın ve', 'denizin evi.'), (48, 146, 226), (212, 232, 252), 55)
+project('proje-dernek', 'Örnek Vakıf', ('Birlikte', 'daha güçlü.'), (146, 104, 232), (232, 222, 253), 66)
+plate('blog-web', (255, 128, 92), 101)
+plate('blog-pos', (84, 124, 240), 102, light=(-0.4, -0.5, 0.8))
+plate('blog-altyapi', (252, 186, 64), 103)
+plate('blog-seo', (60, 192, 140), 104, light=(0.6, -0.3, 0.7))
+plate('blog-logo', (36, 44, 96), 105, contrast=1.3)
+plate('blog-saglik', (240, 140, 170), 106)
+plate('studio-katmanlar', (255, 160, 128), 7, size=(1400, 1750))
+plate('hero-saten', (255, 214, 196), 3, size=(2400, 1200), contrast=0.85)
 print('ok')

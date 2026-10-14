@@ -11,13 +11,57 @@ if ( ! $tree ) {
 	return;
 }
 $uid    = 'aksvc-' . substr( md5( wp_json_encode( $a ) ), 0, 6 );
-$layout = 'grid' === $a['layout'] ? 'grid' : 'explorer';
+$layout = in_array( $a['layout'], array( 'grid', 'showcase' ), true ) ? $a['layout'] : 'explorer';
+$illus  = array( 'web', 'cart', 'pen', 'growth' );
 ?>
-<section class="ak-section ak-services ak-services--<?php echo esc_attr( $layout ); ?>"<?php echo $a['_id'] ? ' id="' . esc_attr( $a['_id'] ) . '"' : ''; ?>>
+<section class="ak-section ak-services ak-services--<?php echo esc_attr( $layout ); ?><?php echo 'showcase' === $layout ? ' ak-block-coral' : ''; ?>"<?php echo $a['_id'] ? ' id="' . esc_attr( $a['_id'] ) . '"' : ''; ?>>
 	<div class="ak-wrap">
 		<?php akilli_section_head( $a ); ?>
 
-		<?php if ( 'explorer' === $layout ) : ?>
+		<?php if ( 'showcase' === $layout ) : ?>
+			<div class="ak-show" data-ak-show>
+				<div class="ak-show__stage" aria-hidden="true">
+					<?php
+					$n = 0;
+					foreach ( $tree as $node ) :
+						$icon = get_post_meta( $node['post']->ID, '_ak_icon', true );
+						$kind = in_array( $icon, $illus, true ) ? $icon : $illus[ $n % 4 ];
+						?>
+						<div class="ak-illus ak-illus--<?php echo esc_attr( $kind ); ?><?php echo 0 === $n ? ' is-active' : ''; ?>" data-ak-illus="<?php echo (int) $n; ?>">
+							<?php akilli_service_illustration( $kind ); ?>
+						</div>
+						<?php
+						++$n;
+					endforeach;
+					?>
+				</div>
+				<ol class="ak-show__list">
+					<?php
+					$n = 0;
+					foreach ( $tree as $node ) :
+						$p = $node['post'];
+						?>
+						<li class="ak-show__item<?php echo 0 === $n ? ' is-active' : ''; ?>" data-ak-show-item="<?php echo (int) $n; ?>">
+							<span class="ak-show__num" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $n + 1 ) ); ?></span>
+							<h3 class="ak-show__title"><a href="<?php echo esc_url( get_permalink( $p ) ); ?>"><?php echo esc_html( get_the_title( $p ) ); ?></a></h3>
+							<?php if ( has_excerpt( $p ) ) : ?>
+								<p class="ak-show__text"><?php echo esc_html( get_the_excerpt( $p ) ); ?></p>
+							<?php endif; ?>
+							<?php if ( $node['children'] ) : ?>
+								<ul class="ak-show__subs">
+									<?php foreach ( $node['children'] as $child ) : ?>
+										<li><a href="<?php echo esc_url( get_permalink( $child ) ); ?>"><?php echo esc_html( get_the_title( $child ) ); ?></a></li>
+									<?php endforeach; ?>
+								</ul>
+							<?php endif; ?>
+						</li>
+						<?php
+						++$n;
+					endforeach;
+					?>
+				</ol>
+			</div>
+		<?php elseif ( 'explorer' === $layout ) : ?>
 			<div class="ak-explorer" data-ak-tabs>
 				<ul class="ak-explorer__index" data-ak-tablist>
 					<?php
@@ -90,7 +134,7 @@ $layout = 'grid' === $a['layout'] ? 'grid' : 'explorer';
 		<?php endif; ?>
 
 		<?php if ( $a['btn1_text'] ) : ?>
-			<div class="ak-section__foot"><?php echo akilli_button( $a['btn1_text'], $a['btn1_url'], 'ghost' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
+			<div class="ak-section__foot"><?php echo akilli_button( $a['btn1_text'], $a['btn1_url'], 'showcase' === $layout ? 'dark' : 'ghost' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
 		<?php endif; ?>
 	</div>
 </section>

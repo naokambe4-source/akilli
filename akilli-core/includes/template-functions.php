@@ -186,3 +186,65 @@ function akilli_contact_links( $class = '' ) {
 	}
 }
 endif;
+
+/**
+ * Decorative, CSS-animated UI illustration for a service category.
+ * Pure markup (no images); animations live in the theme stylesheet and stop
+ * under reduced motion.
+ *
+ * @param string $kind web|cart|pen|growth.
+ */
+if ( ! function_exists( 'akilli_service_illustration' ) ) :
+function akilli_service_illustration( $kind ) {
+	switch ( $kind ) {
+		case 'cart':
+			?>
+			<div class="ak-ui ak-ui--cart">
+				<div class="ak-ui__product">
+					<span class="ak-ui__photo"></span>
+					<span class="ak-ui__line ak-ui__line--w70"></span>
+					<span class="ak-ui__line ak-ui__line--w40"></span>
+					<span class="ak-ui__price">₺1.240</span>
+					<span class="ak-ui__add">Sepete ekle</span>
+				</div>
+				<div class="ak-ui__bag"><?php echo akilli_icon( 'cart' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><b>1</b></div>
+				<div class="ak-ui__toast"><?php echo akilli_icon( 'check' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>Ödeme alındı</div>
+			</div>
+			<?php
+			break;
+		case 'pen':
+			?>
+			<div class="ak-ui ak-ui--pen">
+				<div class="ak-ui__canvas">
+					<svg viewBox="0 0 240 160" fill="none"><path class="ak-ui__draw" d="M20 120 C 60 20, 110 20, 120 80 S 190 150, 220 40" /><circle cx="20" cy="120" r="5"/><circle cx="120" cy="80" r="5"/><circle cx="220" cy="40" r="5"/></svg>
+					<span class="ak-ui__type">Aa</span>
+				</div>
+				<div class="ak-ui__swatches"><span></span><span></span><span></span><span></span></div>
+			</div>
+			<?php
+			break;
+		case 'growth':
+			?>
+			<div class="ak-ui ak-ui--growth">
+				<div class="ak-ui__chart">
+					<span style="--h:30%"></span><span style="--h:45%"></span><span style="--h:38%"></span><span style="--h:62%"></span><span style="--h:74%"></span><span style="--h:92%"></span>
+					<svg viewBox="0 0 240 120" fill="none" preserveAspectRatio="none"><path class="ak-ui__draw" d="M0 100 L48 80 L96 88 L144 52 L192 38 L240 8" /></svg>
+				</div>
+				<div class="ak-ui__kpi"><?php echo akilli_icon( 'arrow-up-right' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><span>Kampanya</span><b>Yayında</b></div>
+			</div>
+			<?php
+			break;
+		default:
+			?>
+			<div class="ak-ui ak-ui--web">
+				<div class="ak-ui__browser">
+					<div class="ak-ui__bar"><i></i><i></i><i></i><span></span></div>
+					<div class="ak-ui__hero"><span class="ak-ui__line ak-ui__line--w60"></span><span class="ak-ui__line ak-ui__line--w40"></span><span class="ak-ui__btn"></span></div>
+					<div class="ak-ui__cards"><span></span><span></span><span></span></div>
+				</div>
+				<div class="ak-ui__pointer"><?php echo akilli_icon( 'arrow-up-right' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
+			</div>
+			<?php
+	}
+}
+endif;

@@ -116,6 +116,7 @@ class Akilli_Leads_Admin {
 			'Telefon'      => $phone ? '<a href="' . esc_url( 'tel:' . preg_replace( '/[^0-9+]/', '', $phone ) ) . '">' . esc_html( $phone ) . '</a>' : '',
 			'Hizmet'       => esc_html( $m( 'service_name' ) ),
 			'Bütçe aralığı' => esc_html( $m( 'budget' ) ),
+			'Görüşme günü'  => esc_html( Akilli_Forms::format_day( $m( 'day' ) ) ),
 			'Mesaj'        => esc_html( $m( 'message' ) ),
 			'Kaynak sayfa' => $m( 'source' ) ? '<a href="' . esc_url( $m( 'source' ) ) . '" target="_blank" rel="noopener">' . esc_html( $m( 'source' ) ) . '</a>' : '',
 			'Onay zamanı'  => esc_html( $m( 'consent' ) ),
@@ -478,7 +479,7 @@ class Akilli_Leads_Admin {
 		$data = array();
 		foreach ( self::leads_by_email( $email ) as $id ) {
 			$item = array();
-			foreach ( array( 'name' => 'Ad soyad', 'company' => 'Firma', 'email' => 'E-posta', 'phone' => 'Telefon', 'service_name' => 'Hizmet', 'budget' => 'Bütçe', 'message' => 'Mesaj', 'consent' => 'Onay zamanı' ) as $k => $label ) {
+			foreach ( array( 'name' => 'Ad soyad', 'company' => 'Firma', 'email' => 'E-posta', 'phone' => 'Telefon', 'service_name' => 'Hizmet', 'budget' => 'Bütçe', 'day' => 'Görüşme günü', 'message' => 'Mesaj', 'consent' => 'Onay zamanı' ) as $k => $label ) {
 				$item[] = array(
 					'name'  => $label,
 					'value' => (string) get_post_meta( $id, '_ak_' . $k, true ),

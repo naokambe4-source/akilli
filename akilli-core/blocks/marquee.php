@@ -19,10 +19,20 @@ $row = function ( $hidden ) use ( $items ) {
 };
 ?>
 <div class="ak-marquee"<?php echo $a['_id'] ? ' id="' . esc_attr( $a['_id'] ) . '"' : ''; ?>>
-	<div class="ak-marquee__track">
-		<?php
-		$row( false );
-		$row( true );
-		?>
+	<div class="ak-marquee__band ak-marquee__band--alt" aria-hidden="true">
+		<div class="ak-marquee__track ak-marquee__track--reverse">
+			<?php
+			$row( true );
+			$row( true );
+			?>
+		</div>
+	</div>
+	<div class="ak-marquee__band">
+		<div class="ak-marquee__track">
+			<?php
+			$row( false );
+			$row( true );
+			?>
+		</div>
 	</div>
 </div>

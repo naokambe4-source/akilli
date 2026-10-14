@@ -75,6 +75,48 @@ class Akilli_Forms {
 	}
 
 	/**
+	 * Meeting day preselected via ?gun=YYYY-MM-DD (from the booking block).
+	 *
+	 * @return string
+	 */
+	private static function preselected_day() {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only prefill.
+		$day = isset( $_GET['gun'] ) ? sanitize_text_field( wp_unslash( $_GET['gun'] ) ) : '';
+		return self::valid_day( $day ) ? $day : '';
+	}
+
+	/**
+	 * Is the value a Y-m-d date between today and 120 days ahead?
+	 *
+	 * @param string $day Date.
+	 * @return bool
+	 */
+	public static function valid_day( $day ) {
+		if ( ! preg_match( '/^\d{4}-\d{2}-\d{2}$/', (string) $day ) ) {
+			return false;
+		}
+		list( $y, $mo, $d ) = array_map( 'intval', explode( '-', $day ) );
+		if ( ! checkdate( $mo, $d, $y ) ) {
+			return false;
+		}
+		return $day >= wp_date( 'Y-m-d' ) && $day <= wp_date( 'Y-m-d', time() + 120 * DAY_IN_SECONDS );
+	}
+
+	/**
+	 * Human date (e.g. "16 Ekim 2026 Cuma") for a stored Y-m-d value.
+	 *
+	 * @param string $day Date.
+	 * @return string
+	 */
+	public static function format_day( $day ) {
+		if ( ! preg_match( '/^\d{4}-\d{2}-\d{2}$/', (string) $day ) ) {
+			return '';
+		}
+		$dt = date_create_immutable( $day . ' 12:00:00', wp_timezone() );
+		return $dt ? wp_date( 'j F Y l', $dt->getTimestamp() ) : '';
+	}
+
+	/**
 	 * Resolve ?hizmet=slug|id to a service ID.
 	 *
 	 * @return int
@@ -130,6 +172,7 @@ class Akilli_Forms {
 			'telefon'  => array( 'Telefon', (bool) akilli_get_setting( 'q_req_phone' ), 'tel', 'tel' ),
 			'hizmet'   => array( 'İlgilendiğiniz hizmet', true, 'service', 'off' ),
 			'butce'    => array( 'Bütçe aralığı', (bool) akilli_get_setting( 'q_req_budget' ), 'budget', 'off' ),
+			'gun'      => array( 'Tercih ettiğiniz görüşme günü', false, 'date', 'off' ),
 			'aciklama' => array( 'Proje açıklaması', true, 'textarea', 'off' ),
 		);
 	}
@@ -152,6 +195,9 @@ class Akilli_Forms {
 		$options = 'teklif' === $type ? self::service_options() : array();
 		if ( ! isset( $values['hizmet'] ) ) {
 			$values['hizmet'] = self::preselected_service();
+		}
+		if ( ! isset( $values['gun'] ) ) {
+			$values['gun'] = self::preselected_day();
 		}
 		$budgets = akilli_lines( akilli_get_setting( 'q_budgets' ) );
 
@@ -204,6 +250,8 @@ class Akilli_Forms {
 								<option value="<?php echo esc_attr( $b ); ?>"<?php selected( $val, $b ); ?>><?php echo esc_html( $b ); ?></option>
 							<?php endforeach; ?>
 						</select>
+					<?php elseif ( 'date' === $kind ) : ?>
+						<input id="<?php echo esc_attr( $fid ); ?>" type="date" name="<?php echo esc_attr( $key ); ?>" value="<?php echo esc_attr( $val ); ?>" min="<?php echo esc_attr( wp_date( 'Y-m-d' ) ); ?>" max="<?php echo esc_attr( wp_date( 'Y-m-d', time() + 120 * DAY_IN_SECONDS ) ); ?>"<?php echo $attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 					<?php else : ?>
 						<input id="<?php echo esc_attr( $fid ); ?>" type="<?php echo esc_attr( $kind ); ?>" name="<?php echo esc_attr( $key ); ?>" value="<?php echo esc_attr( $val ); ?>" autocomplete="<?php echo esc_attr( $ac ); ?>" maxlength="<?php echo 'email' === $kind ? 190 : 120; ?>"<?php echo 'tel' === $kind ? ' inputmode="tel"' : ''; ?><?php echo $attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 					<?php endif; ?>
@@ -377,6 +425,7 @@ class Akilli_Forms {
 			'telefon'  => isset( $_POST['telefon'] ) ? sanitize_text_field( wp_unslash( $_POST['telefon'] ) ) : '',
 			'hizmet'   => isset( $_POST['hizmet'] ) ? sanitize_text_field( wp_unslash( $_POST['hizmet'] ) ) : '',
 			'butce'    => isset( $_POST['butce'] ) ? sanitize_text_field( wp_unslash( $_POST['butce'] ) ) : '',
+			'gun'      => isset( $_POST['gun'] ) ? sanitize_text_field( wp_unslash( $_POST['gun'] ) ) : '',
 			'aciklama' => isset( $_POST['aciklama'] ) ? sanitize_textarea_field( wp_unslash( $_POST['aciklama'] ) ) : '',
 			'onay'     => empty( $_POST['onay'] ) ? '' : '1',
 		);
@@ -454,6 +503,9 @@ class Akilli_Forms {
 		if ( 'teklif' === $type && '' !== $values['butce'] && ! in_array( $values['butce'], akilli_lines( akilli_get_setting( 'q_budgets' ) ), true ) ) {
 			$errors['butce'] = 'Lütfen listeden bir bütçe aralığı seçin.';
 		}
+		if ( 'teklif' === $type && '' !== $values['gun'] && ! self::valid_day( $values['gun'] ) ) {
+			$errors['gun'] = 'Lütfen bugünden itibaren geçerli bir tarih seçin.';
+		}
 		if ( ! isset( $errors['aciklama'] ) ) {
 			$len = mb_strlen( trim( $values['aciklama'] ) );
 			if ( $len < 10 ) {
@@ -514,6 +566,7 @@ class Akilli_Forms {
 					'_ak_service_id'   => $service_id,
 					'_ak_service_name' => $service_name,
 					'_ak_budget'       => $values['butce'],
+					'_ak_day'          => 'teklif' === $type ? $values['gun'] : '',
 					'_ak_message'      => $values['aciklama'],
 					'_ak_consent'      => current_time( 'mysql' ),
 					'_ak_source'       => $source,
@@ -570,6 +623,7 @@ class Akilli_Forms {
 			'Telefon'       => $m( 'phone' ),
 			'Hizmet'        => $m( 'service_name' ),
 			'Bütçe'         => $m( 'budget' ),
+			'Görüşme günü'  => self::format_day( $m( 'day' ) ),
 			'Kaynak sayfa'  => $m( 'source' ),
 			'Tarih'         => get_the_date( 'd.m.Y H:i', $lead_id ),
 		);

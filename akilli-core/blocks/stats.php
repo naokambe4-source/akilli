@@ -20,7 +20,7 @@ if ( ! $items ) {
 			<?php foreach ( $items as $item ) : ?>
 				<div class="ak-stats__item" data-reveal>
 					<dt><?php echo esc_html( $item['label'] ); ?></dt>
-					<dd><?php echo esc_html( $item['value'] ); ?></dd>
+					<dd data-ak-count><?php echo esc_html( $item['value'] ); ?></dd>
 				</div>
 			<?php endforeach; ?>
 		</dl>
