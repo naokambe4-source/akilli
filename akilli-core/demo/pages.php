@@ -98,25 +98,19 @@ return function ( $img ) {
 			'content' => akilli_demo_block(
 				'hero',
 				array(
-					'eyebrow'       => 'Antalya’dan Türkiye’ye dijital ajans',
-					'title'         => 'Markanızı dijitalde <em>harekete</em> geçirelim.',
+					'eyebrow'       => '360° Kreatif Ajans · Antalya',
+					'title'         => 'Sadece bir site değil, <em>yeni müşteriler</em> kazanın.',
 					'words'         => '',
-					'text'          => 'Web siteleri, e-ticaret altyapıları, marka kimlikleri ve dijital büyüme. Hızlı, ölçülebilir ve tamamen markanıza özel.',
-					'btn1_text'     => 'Ücretsiz teklif alın',
+					'text'          => 'İşletmenize özel, satış odaklı web tasarım. Yapay zekâ aramalarına da hazır.',
+					'btn1_text'     => 'Projenizi konuşalım',
 					'btn1_url'      => '/teklif-al/',
 					'btn2_text'     => 'Neler yapıyoruz?',
 					'btn2_url'      => '#hizmetler',
-					'visual'        => 'cards',
-					'chips'         => "Ücretsiz ön görüşme\n1 iş gününde dönüş\nAntalya ofis · Türkiye geneli",
-					'cards'         => array(
-						array( 'image' => $img['proje-otel'], 'title' => 'Butik otel kimliği', 'text' => 'Örnek proje' ),
-						array( 'image' => $img['proje-moda'], 'title' => 'Moda e-ticaret', 'text' => 'Örnek proje' ),
-						array( 'image' => $img['proje-klinik'], 'title' => 'Klinik web sitesi', 'text' => 'Örnek proje' ),
-						array( 'image' => $img['proje-b2b'], 'title' => 'B2B sipariş paneli', 'text' => 'Örnek proje' ),
-						array( 'image' => $img['proje-hukuk'], 'title' => '', 'text' => '' ),
-						array( 'image' => $img['proje-dernek'], 'title' => '', 'text' => '' ),
-					),
-					'image'         => 0,
+					'visual'        => 'poster',
+					'chips'         => "Mobil uyumlu\nHızlı ve yönetilebilir\nTeklif almaya yönlendiren tasarım",
+					'image'         => $img['ekran-masaustu'],
+					'image_mobile'  => $img['ekran-mobil'],
+					'show_whatsapp' => true,
 					'show_services' => true,
 				)
 			)
@@ -139,7 +133,7 @@ return function ( $img ) {
 					'title'     => 'Dört uzmanlık, <em>tek</em> ekip.',
 					'text'      => 'Tasarım, yazılım ve büyüme aynı masada. Bir alan seçin; her hizmet kendi sayfasında tüm ayrıntısıyla anlatılıyor.',
 					'layout'    => 'showcase',
-					'btn1_text' => 'Tüm 24 hizmeti gör',
+					'btn1_text' => 'Tüm 25 hizmeti gör',
 					'btn1_url'  => '/hizmetlerimiz/',
 				)
 			)
@@ -156,6 +150,17 @@ return function ( $img ) {
 				)
 			)
 			. $process
+			. akilli_demo_block(
+				'split',
+				array(
+					'eyebrow'   => 'AEO · GEO · LLM',
+					'title'     => 'Google’da da, <em>ChatGPT’de</em> de bulunun.',
+					'text'      => "Müşterileriniz artık sorularını yapay zekâ asistanlarına soruyor. Sitelerimizi yalnızca arama motorları için değil; ChatGPT, Gemini, Perplexity ve Google’ın yapay zekâ özetleri için de okunabilir kuruyoruz.\n\nHer sitede kısa cevaplı içerik yapısı, Schema.org yapılandırılmış veri ve otomatik llms.txt dosyası hazır gelir. Yapay zekâ yanıtlarında yer almayı kimse garanti edemez; biz sitenizi buna en iyi şekilde hazırlıyoruz.",
+					'items'     => "Kısa cevap + SSS içerik mimarisi\nSchema.org: Organization, Service, FAQPage\nOtomatik /llms.txt ve /llms-full.txt\nYapay zekâ bot tercihleri (robots.txt)",
+					'btn1_text' => 'AEO / GEO hizmetini incele',
+					'btn1_url'  => '/hizmetlerimiz/dijital-buyume/aeo-geo-yapay-zeka-arama-optimizasyonu/',
+				)
+			)
 			. $stats
 			. $testimonials
 			. $team
@@ -307,8 +312,8 @@ return function ( $img ) {
 				'page-hero',
 				array(
 					'eyebrow'   => 'Hizmetlerimiz',
-					'title'     => 'Dört disiplin, <em>yirmi dört</em> hizmet.',
-					'text'      => 'Dört ana alanda 24 hizmet sunuyoruz. İster tek bir hizmetle başlayın, ister tasarımdan yazılıma ve büyümeye kadar uçtan uca bir proje planlayalım.',
+					'title'     => 'Dört disiplin, <em>yirmi beş</em> hizmet.',
+					'text'      => 'Dört ana alanda 25 hizmet sunuyoruz. İster tek bir hizmetle başlayın, ister tasarımdan yazılıma ve büyümeye kadar uçtan uca bir proje planlayalım.',
 					'btn1_text' => 'Teklif al',
 					'btn1_url'  => '/teklif-al/',
 				)

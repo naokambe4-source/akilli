@@ -99,6 +99,16 @@ endif;
 if ( ! function_exists( 'akilli_demo_service_blocks' ) ) :
 function akilli_demo_service_blocks( $s ) {
 	$out = '';
+	if ( ! empty( $s['answer'] ) ) {
+		$out .= akilli_demo_block(
+			'answer',
+			array(
+				'question' => $s['answer'][0],
+				'answer'   => $s['answer'][1],
+				'points'   => isset( $s['answer'][2] ) ? $s['answer'][2] : '',
+			)
+		);
+	}
 	foreach ( (array) $s['intro'] as $p ) {
 		$out .= akilli_demo_p( $p );
 	}

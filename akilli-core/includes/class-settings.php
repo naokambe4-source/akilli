@@ -70,6 +70,16 @@ class Akilli_Settings {
 					'rate_limit'    => array( 'Spam koruması: 10 dakikada en fazla gönderim', 'number', 'Aynı IP adresinden.' ),
 				),
 			),
+			'ai'       => array(
+				'label'  => 'Yapay zekâ (AEO / GEO)',
+				'intro'  => 'ChatGPT, Gemini, Claude, Perplexity gibi yapay zekâ asistanları ve yanıt motorlarının sitenizi doğru anlaması için ayarlar. /llms.txt dosyası hizmetlerinizden, sayfalarınızdan ve yazılarınızdan otomatik oluşturulur. Hiçbir ayar yapay zekâ yanıtlarında yer almayı garanti etmez; yalnızca içeriğinizi okunabilir ve tutarlı kılar.',
+				'fields' => array(
+					'llms_enabled'      => array( '/llms.txt ve /llms-full.txt dosyalarını oluştur', 'checkbox', 'Sunucunuzda aynı adla gerçek bir dosya varsa o dosya öncelikli olur.' ),
+					'llms_summary'      => array( 'Firma özeti (yapay zekâ için)', 'textarea', 'Kim olduğunuzu, nerede ve kimlere hizmet verdiğinizi 2–3 net cümleyle anlatın. llms.txt dosyasının başında yer alır.' ),
+					'llms_facts'        => array( 'Doğrulanmış kısa bilgiler', 'textarea', 'Her satıra bir bilgi (örn. "Kuruluş yılı: 2019"). Yalnızca doğru ve güncel bilgiler yazın; boş bırakabilirsiniz.' ),
+					'ai_block_training' => array( 'Model eğitimi için içerik toplayan botları engelle', 'checkbox', 'GPTBot, Google-Extended, CCBot, ClaudeBot, Applebot-Extended, meta-externalagent ve Bytespider için robots.txt kuralı ekler. Arama/yanıt botları (OAI-SearchBot, ChatGPT-User, PerplexityBot, Claude-SearchBot) engellenmez.' ),
+				),
+			),
 			'bildirim' => array(
 				'label'  => 'Bildirimler',
 				'intro'  => 'Yeni talep geldiğinde e-posta bildirimi gönderilir. E-posta gönderilemese bile talep "Talepler" ekranında saklanır ve durumu gösterilir. Güvenilir gönderim için bir SMTP eklentisi (ör. WP Mail SMTP) kullanmanızı öneririz.',

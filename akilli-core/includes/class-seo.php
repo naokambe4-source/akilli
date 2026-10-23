@@ -256,6 +256,8 @@ class Akilli_SEO {
 				),
 			),
 			'sameAs'    => array_values( akilli_social_links() ),
+			'knowsAbout' => Akilli_AI::knows_about(),
+			'description' => akilli_get_setting( 'llms_summary' ),
 		);
 		$logo_id = get_theme_mod( 'custom_logo' );
 		if ( $logo_id ) {

@@ -141,13 +141,14 @@ class Akilli_Blocks {
 							'label'   => 'Arka plan görseli',
 							'options' => $opts(
 								array(
+									'poster' => 'Afiş: A logosu + yörünge + cihazlar',
 									'cards' => 'Yüzen kartlar (ekip / proje)',
 									'gl'    => 'Saten ışık plakası (WebGL)',
 									'image' => 'Görsel',
 									'none'  => 'Sade',
 								)
 							),
-							'default' => 'cards',
+							'default' => 'poster',
 							'group'   => 'Görsel',
 						),
 						'chips'         => array(
@@ -180,8 +181,18 @@ class Akilli_Blocks {
 						),
 						'image'         => array(
 							'type'  => 'image',
-							'label' => 'Görsel (görsel modu ve WebGL yedeği)',
+							'label' => 'Görsel (afiş modunda laptop ekranı; görsel/WebGL modunda arka plan)',
 							'group' => 'Görsel',
+						),
+						'image_mobile'  => array(
+							'type'  => 'image',
+							'label' => 'Telefon ekranı görseli (afiş modu)',
+							'group' => 'Görsel',
+						),
+						'show_whatsapp' => array(
+							'type'    => 'toggle',
+							'label'   => 'Butonun altında WhatsApp numarasını göster',
+							'default' => true,
 						),
 						'show_services' => array(
 							'type'    => 'toggle',
@@ -418,6 +429,33 @@ class Akilli_Blocks {
 							),
 						),
 					)
+				),
+			),
+			'answer'        => array(
+				'title'       => 'Kısa cevap (AEO)',
+				'icon'        => 'format-status',
+				'description' => 'Yapay zekâ asistanlarının ve arama motorlarının alıntılayabileceği net bir soru-cevap kutusu. FAQPage verisine eklenir.',
+				'fields'      => array(
+					'question' => array(
+						'type'  => 'text',
+						'label' => 'Soru',
+						'help'  => 'Kullanıcının gerçekten sorduğu biçimde yazın (örn. "Kurumsal web sitesi kaç günde hazır olur?").',
+					),
+					'answer'   => array(
+						'type'  => 'textarea',
+						'label' => 'Kısa cevap',
+						'help'  => '40–60 kelimelik, tek başına anlaşılır bir cevap. İlk cümle doğrudan cevap olsun.',
+					),
+					'points'   => array(
+						'type'  => 'textarea',
+						'label' => 'Öne çıkan maddeler (isteğe bağlı)',
+						'help'  => 'Her satıra bir madde.',
+					),
+					'updated'  => array(
+						'type'    => 'toggle',
+						'label'   => 'Sayfanın son güncellenme tarihini göster',
+						'default' => true,
+					),
 				),
 			),
 			'cta'           => array(

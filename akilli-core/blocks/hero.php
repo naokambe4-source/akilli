@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 
 $words  = akilli_lines( $a['words'] );
 $title  = (string) $a['title'];
-$visual = in_array( $a['visual'], array( 'cards', 'gl', 'image', 'none' ), true ) ? $a['visual'] : 'cards';
+$visual = in_array( $a['visual'], array( 'poster', 'cards', 'gl', 'image', 'none' ), true ) ? $a['visual'] : 'poster';
 if ( 'gl' === $visual ) {
 	wp_enqueue_script( 'akilli-hero-gl' );
 }
@@ -32,6 +32,63 @@ $positions  = array( 'tl', 'bl', 'tr', 'br', 'ml', 'mr' );
 ?>
 <section class="ak-hero ak-hero--<?php echo esc_attr( $visual ); ?>"<?php echo $a['_id'] ? ' id="' . esc_attr( $a['_id'] ) . '"' : ''; ?> data-ak-hero>
 	<div class="ak-hero__glow" aria-hidden="true"></div>
+
+	<?php if ( 'poster' === $visual ) : ?>
+		<div class="ak-wrap ak-poster">
+			<div class="ak-poster__copy">
+				<?php if ( $a['eyebrow'] ) : ?>
+					<p class="ak-hero__badge"><span class="ak-pulse" aria-hidden="true"></span><?php echo esc_html( $a['eyebrow'] ); ?></p>
+				<?php endif; ?>
+				<h1 class="ak-hero__title ak-poster__title" data-ak-split><?php echo $title_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- kses above. ?></h1>
+				<?php if ( $a['text'] ) : ?>
+					<p class="ak-hero__text ak-poster__text"><?php akilli_inline( $a['text'] ); ?></p>
+				<?php endif; ?>
+			</div>
+			<div class="ak-poster__stage" aria-hidden="true" data-ak-stage>
+				<?php akilli_orbit_mark( 'ak-poster__orbit' ); ?>
+				<div class="ak-device ak-device--laptop">
+					<div class="ak-device__screen">
+						<?php
+						if ( $a['image'] ) {
+							echo wp_get_attachment_image( (int) $a['image'], 'large', false, array( 'loading' => 'eager', 'fetchpriority' => 'high', 'alt' => '', 'sizes' => '(max-width:900px) 80vw, 560px' ) );
+						}
+						?>
+					</div>
+					<div class="ak-device__base"></div>
+				</div>
+				<div class="ak-device ak-device--phone">
+					<div class="ak-device__screen">
+						<?php
+						if ( $a['image_mobile'] ) {
+							echo wp_get_attachment_image( (int) $a['image_mobile'], 'medium_large', false, array( 'loading' => 'eager', 'alt' => '', 'sizes' => '180px' ) );
+						}
+						?>
+					</div>
+				</div>
+			</div>
+			<div class="ak-poster__foot">
+				<?php if ( $chips ) : ?>
+					<ul class="ak-poster__chips">
+						<?php foreach ( $chips as $chip ) : ?>
+							<li><span class="ak-poster__check"><?php echo akilli_icon( 'check' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><?php echo esc_html( $chip ); ?></li>
+						<?php endforeach; ?>
+					</ul>
+				<?php endif; ?>
+				<div class="ak-hero__actions">
+					<?php
+					echo akilli_button( $a['btn1_text'], $a['btn1_url'], 'primary ak-btn--xl' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo akilli_button( $a['btn2_text'], $a['btn2_url'], 'ghost', 'arrow-down' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					?>
+				</div>
+				<?php
+				$wa = akilli_whatsapp_url();
+				if ( ! empty( $a['show_whatsapp'] ) && $wa ) :
+					?>
+					<p class="ak-poster__wa"><a href="<?php echo esc_url( $wa ); ?>" target="_blank" rel="noopener"><?php echo akilli_icon( 'whatsapp' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>WhatsApp: <strong><?php echo esc_html( akilli_get_setting( 'whatsapp' ) ); ?></strong></a></p>
+				<?php endif; ?>
+			</div>
+		</div>
+	<?php endif; ?>
 
 	<?php if ( 'cards' === $visual && $cards ) : ?>
 		<div class="ak-hero__cards" aria-hidden="true">
@@ -55,6 +112,7 @@ $positions  = array( 'tl', 'bl', 'tr', 'br', 'ml', 'mr' );
 		</div>
 	<?php endif; ?>
 
+	<?php if ( 'poster' !== $visual ) : ?>
 	<div class="ak-wrap ak-hero__head">
 		<?php if ( $a['eyebrow'] ) : ?>
 			<p class="ak-hero__badge"><span class="ak-pulse" aria-hidden="true"></span><?php echo esc_html( $a['eyebrow'] ); ?></p>
@@ -77,6 +135,8 @@ $positions  = array( 'tl', 'bl', 'tr', 'br', 'ml', 'mr' );
 			</ul>
 		<?php endif; ?>
 	</div>
+
+	<?php endif; ?>
 
 	<?php if ( in_array( $visual, array( 'gl', 'image' ), true ) ) : ?>
 		<figure class="ak-hero__plate" data-ak-plate>

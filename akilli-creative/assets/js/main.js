@@ -548,7 +548,7 @@
 	}
 
 	/* Hero floating cards follow the pointer (depth parallax) ---------------- */
-	var heroCards = doc.querySelector( '.ak-hero__cards' );
+	var heroCards = doc.querySelector( '.ak-hero__cards, [data-ak-stage]' );
 	if ( heroCards && finePointer.matches ) {
 		var heroSec = heroCards.closest( '[data-ak-hero]' );
 		heroSec.addEventListener( 'pointermove', function ( e ) {

@@ -191,6 +191,86 @@ def plate(name, tone, seed, size=(1600, 900), light=(0.35, -0.55, 0.76), contras
     satin(size[0], size[1], tone, seed, light=light, contrast=contrast).save(os.path.join(OUT, name + '.jpg'), quality=84, optimize=True, progressive=True)
 
 
+def screenshots():
+    """Website screenshots for the hero laptop/phone mockups (replace with real ones)."""
+    H_ = 'inter-tight-latin-wght-normal.woff2'
+    HX = 'inter-tight-latin-ext-wght-normal.woff2'
+    B_ = 'plus-jakarta-sans-latin-wght-normal.woff2'
+    BX = 'plus-jakarta-sans-latin-ext-wght-normal.woff2'
+
+    def tr(d, xy, txt, size, fill, bold=True):
+        f = font(H_ if bold else B_, size)
+        fx = font(HX if bold else BX, size)
+        if bold:
+            for ff in (f, fx):
+                try:
+                    ff.set_variation_by_axes([800])
+                except Exception:
+                    pass
+        x, y = xy
+        for ch in txt:
+            g = fx if ord(ch) > 0xFF and ch != 'ı' else f
+            d.text((x, y), ch, font=g, fill=fill)
+            x += d.textlength(ch, font=g) - (size * 0.02 if bold else 0)
+        return x
+
+    ORANGE = (240, 78, 0)
+    for mobile in (False, True):
+        W, H = (1440, 900) if not mobile else (390, 844)
+        img = Image.new('RGB', (W, H), (255, 255, 255))
+        d = ImageDraw.Draw(img)
+        pad = 64 if not mobile else 24
+        logo = Image.open(os.path.join(os.path.dirname(FONTS.rstrip('/')), 'img', 'logo.png')).convert('RGBA')
+        lw = 150 if not mobile else 104
+        logo = logo.resize((lw, int(logo.height * lw / logo.width)), Image.LANCZOS)
+        img.paste(logo, (pad, 26 if not mobile else 22), logo)
+        if not mobile:
+            x = 700
+            for item in ['Hizmetlerimiz', 'Çalışmalar', 'Hakkımızda', 'Blog', 'İletişim']:
+                x = tr(d, (x, 42), item, 17, (60, 60, 60), bold=False) + 34
+            d.rounded_rectangle([W - pad - 140, 30, W - pad, 76], radius=23, fill=(13, 13, 13))
+            tr(d, (W - pad - 112, 42), 'Teklif Al', 17, (255, 255, 255))
+            tex = satin(700, 620, (255, 150, 90), 77, scale=0.7)
+            m = Image.new('L', tex.size, 0)
+            ImageDraw.Draw(m).rounded_rectangle([0, 0, 700, 620], radius=28, fill=255)
+            img.paste(tex, (W - pad - 700, 110), m)
+            y = 200
+            for line, col in (('Sadece bir site', (13, 13, 13)), ('değil, yeni', (13, 13, 13)), ('müşteriler.', ORANGE)):
+                tr(d, (pad, y), line, 74, col)
+                y += 80
+            tr(d, (pad, y + 20), 'İşletmenize özel, satış odaklı web tasarım.', 22, (90, 90, 90), bold=False)
+            d.rounded_rectangle([pad, y + 80, pad + 250, y + 140], radius=30, fill=ORANGE)
+            tr(d, (pad + 30, y + 97), 'Projenizi konuşalım', 19, (255, 255, 255))
+            y = 760
+            for i, t in enumerate(['Mobil uyumlu', 'Hızlı ve yönetilebilir', 'AEO / GEO hazır']):
+                x = pad + i * 300
+                d.ellipse([x, y, x + 52, y + 52], fill=(255, 241, 232))
+                d.ellipse([x + 18, y + 18, x + 34, y + 34], fill=ORANGE)
+                tr(d, (x + 68, y + 14), t, 20, (13, 13, 13))
+        else:
+            d.line([W - pad - 24, 38, W - pad, 38], fill=(13, 13, 13), width=3)
+            d.line([W - pad - 24, 47, W - pad, 47], fill=(13, 13, 13), width=3)
+            y = 110
+            for line, col in (('Sadece bir site', (13, 13, 13)), ('değil, yeni', (13, 13, 13)), ('müşteriler.', ORANGE)):
+                tr(d, (pad, y), line, 38, col)
+                y += 42
+            tr(d, (pad, y + 12), 'İşletmenize özel, satış', 16, (90, 90, 90), bold=False)
+            tr(d, (pad, y + 34), 'odaklı web tasarım.', 16, (90, 90, 90), bold=False)
+            d.rounded_rectangle([pad, y + 74, pad + 200, y + 120], radius=23, fill=ORANGE)
+            tr(d, (pad + 22, y + 87), 'Projenizi konuşalım', 15, (255, 255, 255))
+            tex = satin(W - 2 * pad, 360, (255, 150, 90), 78, scale=0.6)
+            m = Image.new('L', tex.size, 0)
+            ImageDraw.Draw(m).rounded_rectangle([0, 0, tex.size[0], tex.size[1]], radius=20, fill=255)
+            img.paste(tex, (pad, y + 150), m)
+        img.save(os.path.join(OUT, 'ekran-' + ('mobil' if mobile else 'masaustu') + '.jpg'), quality=86, optimize=True, progressive=True)
+
+
+if len(sys.argv) > 3 and sys.argv[3] == 'screens':
+    screenshots()
+    print('ok')
+    sys.exit(0)
+
+
 # Vivid, light palette matching the "Canlı" theme: saturated satin, pastel backdrops.
 project('proje-hukuk', 'Örnek Hukuk', ('Hukukta', 'açıklık.'), (52, 72, 150), (208, 222, 255), 11)
 project('proje-klinik', 'Örnek Klinik', ('Sakin bir', 'gülümseme.'), (44, 186, 164), (206, 244, 233), 22)
@@ -206,4 +286,5 @@ plate('blog-logo', (36, 44, 96), 105, contrast=1.3)
 plate('blog-saglik', (240, 140, 170), 106)
 plate('studio-katmanlar', (255, 160, 128), 7, size=(1400, 1750))
 plate('hero-saten', (255, 214, 196), 3, size=(2400, 1200), contrast=0.85)
+screenshots()
 print('ok')

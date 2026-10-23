@@ -93,7 +93,7 @@ class Akilli_Demo_Installer {
 			<h2>Neler oluşturulur?</h2>
 			<ul style="list-style:disc;margin-left:20px">
 				<li><strong>Sayfalar:</strong> Ana Sayfa, Hakkımızda, Hizmetlerimiz, Referanslarımız, Çalışmalarımız, Blog, Teklif Al, İletişim, Gizlilik Politikası, Çerez Politikası, KVKK Aydınlatma Metni</li>
-				<li><strong>Hizmetler:</strong> 4 kategori sayfası ve 24 alt hizmet detay sayfası (tamamlanmış içerik, SSS ve meta taslaklarıyla)</li>
+				<li><strong>Hizmetler:</strong> 4 kategori sayfası ve 25 alt hizmet detay sayfası (tamamlanmış içerik, SSS ve meta taslaklarıyla)</li>
 				<li><strong>Örnek projeler:</strong> 6 proje — sitede “Örnek çalışma” etiketiyle gösterilir; müşteri adı, yorum veya sonuç içermez</li>
 				<li><strong>Blog:</strong> 6 yazı, kategoriler ve etiketler</li>
 				<li><strong>Menüler:</strong> Ana menü (hizmetler mega menüsüyle), footer menüleri ve yasal bağlantılar</li>
@@ -599,7 +599,7 @@ class Akilli_Demo_Installer {
 	 * @return array slug => ID
 	 */
 	private function pages( $images ) {
-		$images  = wp_parse_args( $images, array_fill_keys( array( 'studio-katmanlar', 'hero-saten', 'proje-otel', 'proje-moda', 'proje-klinik', 'proje-b2b', 'proje-hukuk', 'proje-dernek' ), 0 ) );
+		$images  = wp_parse_args( $images, array_fill_keys( array( 'studio-katmanlar', 'hero-saten', 'ekran-masaustu', 'ekran-mobil', 'proje-otel', 'proje-moda', 'proje-klinik', 'proje-b2b', 'proje-hukuk', 'proje-dernek' ), 0 ) );
 		$builder = include AKILLI_CORE_DIR . 'demo/pages.php';
 		$out     = array();
 		foreach ( $builder( $images ) as $slug => $p ) {

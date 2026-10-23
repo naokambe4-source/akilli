@@ -94,9 +94,8 @@ add_action(
 	'wp_head',
 	function () {
 		$map     = array(
-			'instrument' => 'instrument-serif-latin-400-normal.woff2',
-			'bodoni'     => 'bodoni-moda-latin-wght-normal.woff2',
-			'cormorant'  => 'cormorant-garamond-latin-wght-normal.woff2',
+			'intertight' => 'inter-tight-latin-wght-normal.woff2',
+			'jakarta'    => 'plus-jakarta-sans-latin-wght-normal.woff2',
 			'hanken'     => 'hanken-grotesk-latin-wght-normal.woff2',
 			'jost'       => 'jost-latin-wght-normal.woff2',
 		);

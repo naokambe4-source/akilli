@@ -3,7 +3,7 @@
  * Plugin Name:       Akıllı Creative Çekirdek
  * Plugin URI:        https://www.akillicreative.com/
  * Description:       Akıllı Creative teması için hizmetler, projeler, referanslar, teklif/iletişim talepleri, Gutenberg blokları ve demo içerik kurulumu. Tema değişse bile içerikleriniz ve talepleriniz korunur.
- * Version:           1.1.0
+ * Version:           1.2.0
  * Requires at least: 6.4
  * Requires PHP:      7.4
  * Author:            Akıllı Creative
@@ -17,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AKILLI_CORE_VERSION', '1.1.0' );
+define( 'AKILLI_CORE_VERSION', '1.2.0' );
 define( 'AKILLI_CORE_FILE', __FILE__ );
 define( 'AKILLI_CORE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'AKILLI_CORE_URL', plugin_dir_url( __FILE__ ) );
@@ -31,6 +31,7 @@ require_once AKILLI_CORE_DIR . 'includes/class-forms.php';
 require_once AKILLI_CORE_DIR . 'includes/class-leads-admin.php';
 require_once AKILLI_CORE_DIR . 'includes/class-blocks.php';
 require_once AKILLI_CORE_DIR . 'includes/class-seo.php';
+require_once AKILLI_CORE_DIR . 'includes/class-ai.php';
 require_once AKILLI_CORE_DIR . 'includes/class-demo-installer.php';
 
 Akilli_Post_Types::init();
@@ -41,6 +42,7 @@ Akilli_Forms::init();
 Akilli_Leads_Admin::init();
 Akilli_Blocks::init();
 Akilli_SEO::init();
+Akilli_AI::init();
 Akilli_Demo_Installer::init();
 
 register_activation_hook( __FILE__, 'akilli_core_activate' );

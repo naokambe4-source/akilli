@@ -1,9 +1,18 @@
 # Akıllı Creative — Kurulum ve Yönetim Rehberi
 
-## Tasarım dili: "Canlı" (1.1.0)
-Açık zemin (#faf8f5), lacivert metin (#0e1530), mercan renk blokları (#ff5b2e) ve şeftali yüzeyler (#ffe7dc). Kalın geometrik başlıklar (Jost), hap butonlar, yuvarlak kartlar. Hareketler: yüzen proje kartları (fareyle derinlik), iki yönlü kayan bant, mercan blokta sabit duran animasyonlu hizmet illüstrasyonları, kaydırdıkça dolan süreç çizgisi, sayaçlar, mıknatıslı butonlar, kart eğimi ve imleç noktası. "Hareketi azalt" tercihinde hepsi durur.
+## Tasarım dili: "360°" (1.2.0)
+Bembeyaz zemin, derin siyah ve parlayan turuncu. Başlıklar çok kalın ve sıkı (Inter Tight), gövde metni Plus Jakarta Sans. Giriş ekranı afiş tarzındadır: büyük başlık (vurgulu kelimeler turuncu degrade), A yıldız logosu ve etrafında dönen ışıklı turuncu yörünge halkası, önünde laptop ve telefon maketi, onay işaretli üç madde, büyük turuncu "Projenizi konuşalım" butonu ve WhatsApp numarası.
 
-**Önceki sürümden güncelliyorsanız:** iki ZIP'i yükleyip "Değiştir" deyin, sonra **Akıllı Creative → Kurulum** ekranında "Ana Sayfa ve Hakkımızda sayfalarını güncel demo düzeniyle yenile" kutusunu işaretleyip çalıştırın (eski içerik Revizyonlar'da kalır).
+**Laptop ve telefon ekranları:** Ana Sayfa → Hero bloğu → "Görsel" (laptop ekranı, 16:10 önerilir) ve "Telefon ekranı görseli" (9:19). Kendi sitelerinizden ekran görüntüleri koyabilirsiniz; demo görselleri Akıllı Creative'in kendi tanıtımını gösterir.
+
+### Yapay zekâ görünürlüğü (AEO / GEO / LLM)
+- **/llms.txt** ve **/llms-full.txt** otomatik oluşturulur (hizmetler, sayfalar, çalışmalar, blog; tam metin sürümü). İçerik değişince kendini yeniler.
+- **Akıllı Creative → Ayarlar → Yapay zekâ (AEO / GEO):** firma özeti, doğrulanmış kısa bilgiler, llms.txt aç/kapat, model eğitimi botlarını (GPTBot, Google-Extended, CCBot, ClaudeBot…) robots.txt ile engelleme. Yanıt/arama botları engellenmez.
+- **"Kısa cevap (AEO)" bloğu:** soru + 40–60 kelimelik net cevap + maddeler + son güncelleme tarihi. FAQPage yapılandırılmış verisine eklenir. AEO/GEO hizmet sayfasında örneği var.
+- Organization şemasına hizmetleriniz `knowsAbout`, firma özeti `description` olarak eklenir.
+- Yeni hizmet: **Dijital Büyüme → AEO / GEO — Yapay Zekâ Arama Optimizasyonu** (tam içerik). Hiçbir yerde yapay zekâ yanıtlarında yer alma garantisi verilmez.
+
+**Önceki sürümden güncelliyorsanız:** iki ZIP'i yükleyip "Değiştir" deyin, sonra **Akıllı Creative → Kurulum** ekranında "Ana Sayfa ve Hakkımızda sayfalarını güncel demo düzeniyle yenile" kutusunu işaretleyip çalıştırın (eski içerik Revizyonlar'da kalır). Yeni AEO/GEO hizmet sayfası da bu adımda eklenir; ana menüye kendiniz eklemeniz gerekir (Görünüm → Menüler).
 
 ### Gerçek içeriklerinizi ekleme
 - **Ekip fotoğrafları:** Ana Sayfa / Hakkımızda → "Ekip" bloğu → sağ panelden kişi ekleyin (fotoğraf, ad, görev) → "Bu bölümü sitede gizle" işaretini kaldırın.

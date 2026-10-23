@@ -8,12 +8,12 @@
 			"defaultPalette": false,
 			"defaultGradients": false,
 			"palette": [
-				{ "slug": "ink", "name": "Lacivert", "color": "#0e1530" },
-				{ "slug": "primary", "name": "Mercan", "color": "#ff5b2e" },
-				{ "slug": "tint", "name": "Şeftali", "color": "#ffe7dc" },
-				{ "slug": "accent", "name": "Koyu mercan (metin)", "color": "#b8401d" },
-				{ "slug": "paper", "name": "Sıcak beyaz", "color": "#faf8f5" },
-				{ "slug": "white", "name": "Beyaz", "color": "#ffffff" }
+				{ "slug": "ink", "name": "Siyah", "color": "#0d0d0d" },
+				{ "slug": "primary", "name": "Turuncu", "color": "#f04e00" },
+				{ "slug": "tint", "name": "Açık turuncu", "color": "#fff1e8" },
+				{ "slug": "accent", "name": "Koyu turuncu (metin)", "color": "#b83b00" },
+				{ "slug": "paper", "name": "Beyaz", "color": "#ffffff" },
+				{ "slug": "white", "name": "Gri yüzey", "color": "#f5f5f3" }
 			]
 		},
 		"typography": {

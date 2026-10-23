@@ -248,3 +248,45 @@ function akilli_service_illustration( $kind ) {
 	}
 }
 endif;
+
+/**
+ * Brand "A-star" mark with the glowing orange orbit ring (decorative SVG).
+ * The ring is split in two layers so its lower arc passes in front of the mark.
+ *
+ * @param string $class Extra class.
+ */
+if ( ! function_exists( 'akilli_orbit_mark' ) ) :
+function akilli_orbit_mark( $class = '' ) {
+	$uid = 'akorb' . wp_unique_id();
+	?>
+	<svg class="ak-orbit <?php echo esc_attr( $class ); ?>" viewBox="0 0 640 600" aria-hidden="true" focusable="false">
+		<defs>
+			<linearGradient id="<?php echo esc_attr( $uid ); ?>-ring" x1="0" y1="0" x2="1" y2="0">
+				<stop offset="0" stop-color="#ff3d00"/>
+				<stop offset=".45" stop-color="#ffa04d"/>
+				<stop offset=".7" stop-color="#ff6a00"/>
+				<stop offset="1" stop-color="#ff3d00"/>
+			</linearGradient>
+			<linearGradient id="<?php echo esc_attr( $uid ); ?>-a" x1="0" y1="0" x2="1" y2="1">
+				<stop offset="0" stop-color="#3a3a3a"/>
+				<stop offset=".55" stop-color="#121212"/>
+				<stop offset="1" stop-color="#050505"/>
+			</linearGradient>
+			<mask id="<?php echo esc_attr( $uid ); ?>-m">
+				<rect width="640" height="600" fill="#fff"/>
+				<polygon fill="#000" points="320,146 361,261 484,265 387,340 421,457 320,388 219,457 253,340 156,265 279,261"/>
+				<polygon fill="#000" points="276,560 320,470 364,560"/>
+			</mask>
+		</defs>
+		<g class="ak-orbit__ring ak-orbit__ring--back">
+			<ellipse cx="320" cy="330" rx="300" ry="112" fill="none" stroke="url(#<?php echo esc_attr( $uid ); ?>-ring)" stroke-width="20"/>
+		</g>
+		<polygon class="ak-orbit__a" mask="url(#<?php echo esc_attr( $uid ); ?>-m)" fill="url(#<?php echo esc_attr( $uid ); ?>-a)" points="270,40 370,40 560,560 80,560"/>
+		<g class="ak-orbit__ring ak-orbit__ring--front">
+			<path d="M20 330 A300 112 0 0 0 620 330" fill="none" stroke="url(#<?php echo esc_attr( $uid ); ?>-ring)" stroke-width="20" stroke-linecap="round"/>
+			<path class="ak-orbit__spark" d="M20 330 A300 112 0 0 0 620 330" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" pathLength="100" stroke-dasharray="6 94"/>
+		</g>
+	</svg>
+	<?php
+}
+endif;

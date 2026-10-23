@@ -52,6 +52,11 @@ function akilli_settings_defaults() {
 		'privacy_page'    => 0,
 		// Contact form.
 		'c_success'       => 'Mesajınız için teşekkürler! En kısa sürede size dönüş yapacağız.',
+		// AI / answer engines.
+		'llms_enabled'      => 1,
+		'llms_summary'      => 'Akıllı Creative, Antalya merkezli bir dijital ajanstır. Türkiye genelindeki işletmeler için web tasarım, e-ticaret yazılımı, kurumsal kimlik ve grafik tasarım, SEO, AEO/GEO (yapay zekâ arama görünürlüğü), dijital reklam ve sosyal medya hizmetleri sunar.',
+		'llms_facts'        => '',
+		'ai_block_training' => 0,
 		// Spam.
 		'min_seconds'     => 3,
 		'rate_limit'      => 5,
