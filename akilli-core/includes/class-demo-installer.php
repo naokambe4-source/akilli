@@ -599,7 +599,7 @@ class Akilli_Demo_Installer {
 	 * @return array slug => ID
 	 */
 	private function pages( $images ) {
-		$images  = wp_parse_args( $images, array_fill_keys( array( 'studio-katmanlar', 'hero-saten', 'ekran-masaustu', 'ekran-mobil', 'proje-otel', 'proje-moda', 'proje-klinik', 'proje-b2b', 'proje-hukuk', 'proje-dernek' ), 0 ) );
+		$images  = wp_parse_args( $images, array_fill_keys( array( 'studio-katmanlar', 'hero-saten', 'ekran-masaustu', 'ekran-mobil', 'site-klinik-mobil', 'site-moda-mobil', 'site-hukuk-mobil', 'site-otel-mobil', 'site-b2b-mobil', 'site-dernek-mobil', 'proje-otel', 'proje-moda', 'proje-klinik', 'proje-b2b', 'proje-hukuk', 'proje-dernek' ), 0 ) );
 		$builder = include AKILLI_CORE_DIR . 'demo/pages.php';
 		$out     = array();
 		foreach ( $builder( $images ) as $slug => $p ) {

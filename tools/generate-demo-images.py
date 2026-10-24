@@ -265,6 +265,130 @@ def screenshots():
         img.save(os.path.join(OUT, 'ekran-' + ('mobil' if mobile else 'masaustu') + '.jpg'), quality=86, optimize=True, progressive=True)
 
 
+SITES = [
+    # key, brand, domain, headline lines, sub, button, accent, satin tone
+    ('hukuk', 'Örnek Hukuk', 'ornekhukuk.com', ('Hukuki süreçlerinizde', 'güvenilir rehber.'), 'Ticaret, iş ve aile hukukunda danışmanlık.', 'Randevu alın', (32, 48, 104), (70, 96, 190)),
+    ('klinik', 'Örnek Klinik', 'ornekklinik.com', ('Sağlıklı gülüşler', 'için modern klinik.'), 'İmplant, ortodonti ve estetik diş hekimliği.', 'Randevu oluştur', (10, 140, 122), (44, 186, 164)),
+    ('moda', 'Örnek Atelier', 'ornekatelier.com', ('Yeni sezon', 'koleksiyonu yayında.'), 'Ücretsiz kargo ve 14 gün içinde iade.', 'Alışverişe başla', (205, 70, 50), (255, 112, 80)),
+    ('b2b', 'Örnek Tedarik', 'ornektedarik.com', ('Yedek parça siparişi', 'tek panelde.'), 'Bayilere özel fiyat, stok ve sipariş takibi.', 'Bayi girişi', (20, 20, 20), (250, 186, 40)),
+    ('otel', 'Örnek Konak', 'ornekkonak.com', ('Denize sıfır', 'butik konaklama.'), 'Taş konakta 12 oda, kahvaltı ve plaj dahil.', 'Rezervasyon yap', (22, 100, 175), (48, 146, 226)),
+    ('dernek', 'Örnek Vakıf', 'ornekvakif.org', ('Birlikte', 'daha güçlüyüz.'), 'Eğitim burslarıyla öğrencilere destek oluyoruz.', 'Bağış yap', (100, 62, 190), (146, 104, 232)),
+]
+
+
+def sites():
+    """Realistic demo website screens (mobile + desktop) and project covers."""
+    P = {w: font('poppins-latin-%d-normal.woff2' % w, 10).path for w in (400, 500, 600, 700)}
+    PX = {w: font('poppins-latin-ext-%d-normal.woff2' % w, 10).path for w in (400, 500, 600, 700)}
+
+    def tx(d, xy, txt, size, fill, w=400):
+        f = ImageFont.truetype(P[w], size)
+        fx = ImageFont.truetype(PX[w], size)
+        x, y = xy
+        for ch in txt:
+            g = fx if ord(ch) > 0xFF and ch != 'ı' else f
+            d.text((x, y), ch, font=g, fill=fill)
+            x += d.textlength(ch, font=g)
+        return x
+
+    def tlen(d, txt, size, w=400):
+        f = ImageFont.truetype(P[w], size)
+        fx = ImageFont.truetype(PX[w], size)
+        return sum(d.textlength(ch, font=(fx if ord(ch) > 0xFF and ch != 'ı' else f)) for ch in txt)
+
+    def soft(c, k):
+        return tuple(int(v + (255 - v) * k) for v in c)
+
+    def rounded(im, r):
+        m = Image.new('L', im.size, 0)
+        ImageDraw.Draw(m).rounded_rectangle([0, 0, im.size[0] - 1, im.size[1] - 1], radius=r, fill=255)
+        return m
+
+    out = {}
+    for i, (key, brand, domain, head, sub, btn, acc, tone) in enumerate(SITES):
+        # Mobile 390x844 ------------------------------------------------------
+        W, H = 390, 844
+        m = Image.new('RGB', (W, H), (255, 255, 255))
+        d = ImageDraw.Draw(m)
+        tx(d, (22, 22), brand, 19, (16, 16, 16), 700)
+        for k in range(3):
+            d.rounded_rectangle([340, 26 + k * 7, 366, 28 + k * 7], radius=1, fill=(16, 16, 16))
+        hero = satin(W - 32, 300, tone, 300 + i, scale=0.6)
+        m.paste(hero, (16, 66), rounded(hero, 22))
+        y = 392
+        for line in head:
+            tx(d, (22, y), line, 27, (16, 16, 16), 700)
+            y += 36
+        tx(d, (22, y + 8), sub, 13, (95, 95, 95))
+        d.rounded_rectangle([22, y + 44, 22 + tlen(d, btn, 14, 600) + 48, y + 90], radius=23, fill=acc)
+        tx(d, (46, y + 56), btn, 14, (255, 255, 255), 600)
+        y += 118
+        for k, lab in enumerate(['Hizmetler', 'Hakkımızda']):
+            x0 = 22 + k * 178
+            d.rounded_rectangle([x0, y, x0 + 168, y + 120], radius=18, fill=soft(acc, .9))
+            d.ellipse([x0 + 14, y + 14, x0 + 50, y + 50], fill=acc)
+            tx(d, (x0 + 14, y + 64), lab, 14, (16, 16, 16), 600)
+            d.rounded_rectangle([x0 + 14, y + 92, x0 + 120, y + 100], radius=4, fill=soft(acc, .7))
+        mp = os.path.join(OUT, 'site-%s-mobil.jpg' % key)
+        m.save(mp, quality=86, optimize=True, progressive=True)
+
+        # Desktop 1440x900 ----------------------------------------------------
+        W, H = 1440, 900
+        dk = Image.new('RGB', (W, H), (255, 255, 255))
+        d = ImageDraw.Draw(dk)
+        tx(d, (64, 36), brand, 26, (16, 16, 16), 700)
+        x = 720
+        for item in ['Hizmetler', 'Hakkımızda', 'Blog', 'İletişim']:
+            x = tx(d, (x, 42), item, 16, (70, 70, 70), 500) + 36
+        d.rounded_rectangle([W - 64 - tlen(d, btn, 16, 600) - 52, 28, W - 64, 76], radius=24, fill=acc)
+        tx(d, (W - 64 - tlen(d, btn, 16, 600) - 26, 40), btn, 16, (255, 255, 255), 600)
+        y = 230
+        for line in head:
+            tx(d, (64, y), line, 60, (16, 16, 16), 700)
+            y += 76
+        tx(d, (64, y + 14), sub, 20, (95, 95, 95))
+        d.rounded_rectangle([64, y + 70, 64 + tlen(d, btn, 18, 600) + 60, y + 128], radius=29, fill=acc)
+        tx(d, (94, y + 85), btn, 18, (255, 255, 255), 600)
+        hero = satin(620, 660, tone, 400 + i, scale=0.7)
+        dk.paste(hero, (W - 64 - 620, 120), rounded(hero, 28))
+        for k, lab in enumerate(['Uzman ekip', 'Hızlı iletişim', 'Şeffaf süreç']):
+            x0 = 64 + k * 220
+            d.ellipse([x0, 800, x0 + 40, 840], fill=soft(acc, .85))
+            d.ellipse([x0 + 13, 813, x0 + 27, 827], fill=acc)
+            tx(d, (x0 + 52, 808), lab, 16, (16, 16, 16), 600)
+
+        # Cover: browser frame + phone on a pastel backdrop -------------------
+        CW, CH = 1600, 1000
+        cv = Image.new('RGB', (CW, CH), soft(tone, .8))
+        g = ImageDraw.Draw(cv)
+        g.ellipse([CW - 700, -300, CW + 300, 700], fill=soft(tone, .68))
+        bw, bh = 1120, 700 + 44
+        bx, by = 120, 150
+        shadow(cv, (bx, by, bx + bw, by + bh), 18, 30, (0, 26), 60)
+        frame = Image.new('RGB', (bw, bh), (255, 255, 255))
+        fd = ImageDraw.Draw(frame)
+        fd.rectangle([0, 0, bw, 44], fill=(242, 242, 242))
+        for k, c in enumerate([(255, 95, 87), (254, 188, 46), (40, 200, 64)]):
+            fd.ellipse([18 + k * 22, 16, 30 + k * 22, 28], fill=c)
+        fd.rounded_rectangle([380, 10, 740, 34], radius=12, fill=(255, 255, 255))
+        tx(fd, (400, 13), domain, 13, (110, 110, 110))
+        frame.paste(dk.resize((bw, 700), Image.LANCZOS), (0, 44))
+        cv.paste(frame, (bx, by), rounded(frame, 18))
+        pw_, ph_ = 280, 600
+        px_, py_ = 1180, 300
+        shadow(cv, (px_, py_, px_ + pw_, py_ + ph_), 40, 28, (0, 24), 80)
+        ph = Image.new('RGB', (pw_, ph_), (18, 18, 18))
+        ph.paste(m.resize((pw_ - 16, ph_ - 16), Image.LANCZOS), (8, 8), rounded(m.resize((pw_ - 16, ph_ - 16)), 30))
+        cv.paste(ph, (px_, py_), rounded(ph, 38))
+        cv.save(os.path.join(OUT, 'proje-%s.jpg' % key), quality=86, optimize=True, progressive=True)
+    print('sites ok')
+
+
+if len(sys.argv) > 3 and sys.argv[3] == 'sites':
+    sites()
+    sys.exit(0)
+
+
 if len(sys.argv) > 3 and sys.argv[3] == 'screens':
     screenshots()
     print('ok')

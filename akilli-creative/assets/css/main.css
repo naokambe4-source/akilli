@@ -1317,3 +1317,27 @@ h1,h2,h3,h4,h5,h6{font-weight:700;letter-spacing:-.025em;line-height:1.12}
 .ak-mobilebar a:last-child{background:var(--ak-ink);color:#fff}
 @media (max-width:560px){.ak-hero--agency .ak-hero__actions .ak-btn{width:100%;white-space:normal}.ak-agency__title{font-size:clamp(2rem,1rem + 5vw,2.6rem)}}
 .ak-system__nodes li>span>.ak-icon{max-width:none;flex:none}
+
+/* Hero collage (project screens) + 360° badge */
+.ak-agency__visual.has-collage{aspect-ratio:auto;height:clamp(440px,52vw,640px);width:100%;max-width:620px}
+.ak-collage{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;overflow:hidden;-webkit-mask-image:linear-gradient(transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(transparent,#000 12%,#000 88%,transparent)}
+.ak-collage__col{position:relative;overflow:hidden}
+.ak-collage__col--1{margin-top:-60px}
+.ak-collage__track{display:grid;gap:14px}
+.ak-collage__shot{margin:0;border-radius:18px;overflow:hidden;background:#fff;border:1px solid var(--ak-line);box-shadow:0 12px 30px -16px rgba(16,16,16,.35)}
+.ak-collage__shot img{width:100%;height:auto;aspect-ratio:390/844;object-fit:cover}
+.ak-motion .ak-collage__track{animation:ak-scroll-up 48s linear infinite}
+.ak-motion .ak-collage__col--1 .ak-collage__track{animation-name:ak-scroll-down;animation-duration:56s}
+.ak-motion .ak-collage__col--2 .ak-collage__track{animation-duration:44s}
+.ak-motion .ak-collage:hover .ak-collage__track{animation-play-state:paused}
+@keyframes ak-scroll-up{from{transform:translateY(0)}to{transform:translateY(calc(-50% - 7px))}}
+@keyframes ak-scroll-down{from{transform:translateY(calc(-50% - 7px))}to{transform:translateY(0)}}
+.ak-badge360{position:absolute;z-index:4;left:-48px;top:50%;width:150px;height:150px;margin-top:-75px;border-radius:50%;background:#fff;box-shadow:var(--ak-shadow-lg);display:grid;place-items:center}
+.ak-badge360__text{position:absolute;inset:6px;width:calc(100% - 12px);height:calc(100% - 12px);font-family:var(--ak-f-display);font-size:15.5px;font-weight:700;letter-spacing:.14em;fill:var(--ak-ink)}
+.ak-motion .ak-badge360__text{animation:ak-turn 22s linear infinite}
+.ak-badge360__core{width:62px;height:62px;display:grid;place-items:center}
+.ak-badge360__mark{position:relative;inset:auto;top:auto;width:100%;height:auto;overflow:visible}
+.ak-badge360 .ak-orbit__ring{filter:none}
+.ak-agency__visual.has-collage .ak-uicard--audit{left:auto;right:-14px;bottom:10%}
+.ak-agency__visual.has-collage .ak-uicard--lead{right:auto;left:18%;top:6%}
+@media (max-width:999px){.ak-agency__visual.has-collage{height:460px;margin-top:8px}.ak-badge360{left:8px;top:auto;bottom:8px;margin:0;width:118px;height:118px}.ak-badge360__core{width:48px;height:48px}.ak-badge360__text{font-size:15px}}

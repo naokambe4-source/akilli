@@ -1,9 +1,9 @@
 # Akıllı Creative — Kurulum ve Yönetim Rehberi
 
-## Tasarım dili: Kurumsal ajans (1.3.0)
+## Tasarım dili: Kurumsal ajans (1.4.0)
 Kurumsal Türk dijital ajans sitelerini referans alır: beyaz zemin, siyah metin, marka turuncusu; Poppins yazı tipi; havada duran yuvarlak header; sade kartlar; abartılı dönme/zıplama efekti yok.
 
-**Giriş (Hero → "Ajans" modu):** solda satış odaklı başlık, iki buton, **"Sitenizi ücretsiz inceleyelim"** kutusu (yazılan adres teklif formunun açıklamasına otomatik yazılır) ve kısa güven maddeleri; sağda A logonuz ve etrafında yavaşça dönen hizmet ikonları (SEO, reklam, e-ticaret, yapay zekâ…). Altında "Çalıştığımız altyapılar" satırı. Bu satırı Hero bloğunun "Çalıştığınız altyapılar" alanından düzenleyin; yalnızca gerçekten kullandığınız altyapıları yazın. Afiş modu ve diğer modlar Hero → "Arka plan görseli" seçeneğinden hâlâ seçilebilir.
+**Giriş (Hero → "Ajans" modu):** solda satış odaklı başlık, iki buton, **"Sitenizi ücretsiz inceleyelim"** kutusu (yazılan adres teklif formunun açıklamasına otomatik yazılır) ve kısa güven maddeleri; sağda üç sütunda yavaşça kayan proje ekranları ve dönen "360° KREATİF AJANS" rozeti. Ekranları Hero bloğu → "Yüzen kartlar" listesinden değiştirin (telefon ekranı görüntüsü, 390×844 oran önerilir). Liste boşsa yerine A logosu ve dönen hizmet ikonları gösterilir. Altında "Çalıştığımız altyapılar" satırı. Bu satırı Hero bloğunun "Çalıştığınız altyapılar" alanından düzenleyin; yalnızca gerçekten kullandığınız altyapıları yazın. Afiş modu ve diğer modlar Hero → "Arka plan görseli" seçeneğinden hâlâ seçilebilir.
 
 Masaüstünde sağ altta sabit **WhatsApp** butonu, mobilde alt çubuk bulunur.
 

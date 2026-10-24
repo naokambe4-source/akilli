@@ -81,7 +81,33 @@ $positions  = array( 'tl', 'bl', 'tr', 'br', 'ml', 'mr' );
 					</ul>
 				<?php endif; ?>
 			</div>
-			<div class="ak-agency__visual" aria-hidden="true" data-ak-stage>
+			<?php
+			$shots = array_values( array_filter( wp_list_pluck( $cards, 'image' ) ) );
+			?>
+			<div class="ak-agency__visual<?php echo $shots ? ' has-collage' : ''; ?>" aria-hidden="true" data-ak-stage>
+				<?php if ( $shots ) : ?>
+					<div class="ak-collage">
+						<?php
+						for ( $col = 0; $col < 3; $col++ ) :
+							$off = ( $col * 2 ) % count( $shots );
+							$set = array_merge( array_slice( $shots, $off ), array_slice( $shots, 0, $off ) );
+							?>
+							<div class="ak-collage__col ak-collage__col--<?php echo (int) $col; ?>">
+								<div class="ak-collage__track">
+									<?php
+									foreach ( array_merge( $set, $set ) as $sid ) {
+										echo '<figure class="ak-collage__shot">' . wp_get_attachment_image( (int) $sid, 'medium_large', false, array( 'alt' => '', 'loading' => 'lazy', 'sizes' => '200px' ) ) . '</figure>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+									}
+									?>
+								</div>
+							</div>
+						<?php endfor; ?>
+					</div>
+					<div class="ak-badge360">
+						<svg class="ak-badge360__text" viewBox="0 0 200 200"><defs><path id="ak360p" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#ak360p">360° KREATİF AJANS • AKILLI CREATIVE • </textPath></text></svg>
+						<span class="ak-badge360__core"><?php akilli_orbit_mark( 'ak-badge360__mark' ); ?></span>
+					</div>
+				<?php else : ?>
 				<div class="ak-system">
 					<span class="ak-system__ring ak-system__ring--1"></span>
 					<span class="ak-system__ring ak-system__ring--2"></span>
@@ -94,6 +120,7 @@ $positions  = array( 'tl', 'bl', 'tr', 'br', 'ml', 'mr' );
 						<?php endforeach; ?>
 					</ul>
 				</div>
+				<?php endif; ?>
 				<div class="ak-uicard ak-uicard--audit">
 					<strong>Site analizi</strong>
 					<ul>
