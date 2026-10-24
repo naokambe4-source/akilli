@@ -1,5 +1,12 @@
 # Akıllı Creative — Kurulum ve Yönetim Rehberi
 
+## Tasarım dili: Kurumsal ajans (1.3.0)
+Kurumsal Türk dijital ajans sitelerini referans alır: beyaz zemin, siyah metin, marka turuncusu; Poppins yazı tipi; havada duran yuvarlak header; sade kartlar; abartılı dönme/zıplama efekti yok.
+
+**Giriş (Hero → "Ajans" modu):** solda satış odaklı başlık, iki buton, **"Sitenizi ücretsiz inceleyelim"** kutusu (yazılan adres teklif formunun açıklamasına otomatik yazılır) ve kısa güven maddeleri; sağda A logonuz ve etrafında yavaşça dönen hizmet ikonları (SEO, reklam, e-ticaret, yapay zekâ…). Altında "Çalıştığımız altyapılar" satırı. Bu satırı Hero bloğunun "Çalıştığınız altyapılar" alanından düzenleyin; yalnızca gerçekten kullandığınız altyapıları yazın. Afiş modu ve diğer modlar Hero → "Arka plan görseli" seçeneğinden hâlâ seçilebilir.
+
+Masaüstünde sağ altta sabit **WhatsApp** butonu, mobilde alt çubuk bulunur.
+
 ## Tasarım dili: "360°" (1.2.0)
 Bembeyaz zemin, derin siyah ve parlayan turuncu. Başlıklar çok kalın ve sıkı (Inter Tight), gövde metni Plus Jakarta Sans. Giriş ekranı afiş tarzındadır: büyük başlık (vurgulu kelimeler turuncu degrade), A yıldız logosu ve etrafında dönen ışıklı turuncu yörünge halkası, önünde laptop ve telefon maketi, onay işaretli üç madde, büyük turuncu "Projenizi konuşalım" butonu ve WhatsApp numarası.
 

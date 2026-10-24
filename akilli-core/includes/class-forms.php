@@ -199,6 +199,14 @@ class Akilli_Forms {
 		if ( ! isset( $values['gun'] ) ) {
 			$values['gun'] = self::preselected_day();
 		}
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only prefill from the hero "free analysis" box.
+		$site = isset( $_GET['site'] ) ? trim( sanitize_text_field( wp_unslash( $_GET['site'] ) ) ) : '';
+		if ( 'teklif' === $type && ! isset( $values['aciklama'] ) && '' !== $site && preg_match( '/^[\p{L}0-9.\-:\/]{3,190}$/u', $site ) ) {
+			$values['aciklama'] = 'Web sitemin ücretsiz analizini rica ediyorum: ' . $site;
+			if ( ! isset( $values['hizmet'] ) || ! $values['hizmet'] ) {
+				$values['hizmet'] = 'diger';
+			}
+		}
 		$budgets = akilli_lines( akilli_get_setting( 'q_budgets' ) );
 
 		ob_start();

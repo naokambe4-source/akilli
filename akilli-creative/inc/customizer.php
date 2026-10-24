@@ -19,13 +19,13 @@ function akilli_theme_defaults() {
 		'akilli_color_ink'     => '#0d0d0d',
 		'akilli_color_paper'   => '#ffffff',
 		'akilli_color_tint'    => '#fff1e8',
-		'akilli_font_display'  => 'intertight',
-		'akilli_font_body'     => 'jakarta',
+		'akilli_font_display'  => 'poppins',
+		'akilli_font_body'     => 'poppins',
 		'akilli_font_scale'    => '100',
-		'akilli_header_cta'    => 'Teklif al',
+		'akilli_header_cta'    => 'Ücretsiz görüşme',
 		'akilli_header_cta_url' => '/teklif-al/',
 		'akilli_header_phone'  => true,
-		'akilli_footer_title'  => 'Sadece bir site değil, <em>yeni müşteriler.</em>',
+		'akilli_footer_title'  => 'Projenizi konuşalım, <em>ilk adımları birlikte belirleyelim.</em>',
 		'akilli_footer_text'   => 'Antalya merkezli dijital ajans. Web siteleri, e-ticaret altyapıları, marka kimlikleri ve dijital büyüme çalışmalarını; hızlı, ölçülebilir ve markanıza özel üretiyoruz.',
 		'akilli_copyright'     => '© {yil} Akıllı Creative. Tüm hakları saklıdır.',
 		'akilli_mobile_bar'    => true,
@@ -62,13 +62,15 @@ function akilli_mod( $key ) {
 function akilli_font_choices() {
 	return array(
 		'display' => array(
-			'intertight' => array( 'Inter Tight (kalın, sıkı — önerilen)', '"Inter Tight", "Plus Jakarta Sans", system-ui, sans-serif' ),
+			'poppins'    => array( 'Poppins (kurumsal ajans — önerilen)', '"Poppins", system-ui, sans-serif' ),
+			'intertight' => array( 'Inter Tight (kalın, sıkı)', '"Inter Tight", "Plus Jakarta Sans", system-ui, sans-serif' ),
 			'jakarta'    => array( 'Plus Jakarta Sans (yuvarlak hatlı)', '"Plus Jakarta Sans", system-ui, sans-serif' ),
 			'jost'       => array( 'Jost (geometrik)', '"Jost", system-ui, sans-serif' ),
 			'system'     => array( 'Sistem yazı tipi (en hızlı)', 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif' ),
 		),
 		'body'    => array(
-			'jakarta' => array( 'Plus Jakarta Sans (önerilen)', '"Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif' ),
+			'poppins' => array( 'Poppins (önerilen)', '"Poppins", system-ui, -apple-system, "Segoe UI", sans-serif' ),
+			'jakarta' => array( 'Plus Jakarta Sans', '"Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif' ),
 			'hanken'  => array( 'Hanken Grotesk', '"Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif' ),
 			'system'  => array( 'Sistem yazı tipi (en hızlı)', 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif' ),
 		),
@@ -242,8 +244,8 @@ function akilli_custom_css() {
 		'--ak-ink'      => sanitize_hex_color( akilli_mod( 'akilli_color_ink' ) ),
 		'--ak-paper'    => sanitize_hex_color( akilli_mod( 'akilli_color_paper' ) ),
 		'--ak-tint'     => sanitize_hex_color( akilli_mod( 'akilli_color_tint' ) ),
-		'--ak-f-display' => isset( $fonts['display'][ $display ] ) ? $fonts['display'][ $display ][1] : $fonts['display']['intertight'][1],
-		'--ak-f-body'   => isset( $fonts['body'][ $body ] ) ? $fonts['body'][ $body ][1] : $fonts['body']['jakarta'][1],
+		'--ak-f-display' => isset( $fonts['display'][ $display ] ) ? $fonts['display'][ $display ][1] : $fonts['display']['poppins'][1],
+		'--ak-f-body'   => isset( $fonts['body'][ $body ] ) ? $fonts['body'][ $body ][1] : $fonts['body']['poppins'][1],
 		'--ak-scale'    => ( (int) akilli_mod( 'akilli_font_scale' ) / 100 ),
 	);
 	$css = ':root{';

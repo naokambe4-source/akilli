@@ -94,6 +94,7 @@ add_action(
 	'wp_head',
 	function () {
 		$map     = array(
+			'poppins'    => 'poppins-latin-700-normal.woff2',
 			'intertight' => 'inter-tight-latin-wght-normal.woff2',
 			'jakarta'    => 'plus-jakarta-sans-latin-wght-normal.woff2',
 			'hanken'     => 'hanken-grotesk-latin-wght-normal.woff2',

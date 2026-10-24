@@ -12,7 +12,7 @@ return function ( $img ) {
 		'process',
 		array(
 			'eyebrow' => 'Nasıl çalışıyoruz',
-			'title'   => 'Fikirden yayına <em>5 adım</em>.',
+			'title'   => 'İlk görüşmeden yayına <em>5 adım</em>.',
 			'text'    => 'Net bir yol haritası, düzenli ara teslimler ve her adımda sizin onayınız. Sürpriz yok, belirsizlik yok.',
 			'steps'   => akilli_demo_pairs(
 				array(
@@ -26,7 +26,7 @@ return function ( $img ) {
 		)
 	);
 
-	$cta = function ( $title = 'Hadi, <em>başlayalım!</em>' ) {
+	$cta = function ( $title = 'Projenizi konuşalım, <em>yol haritanızı</em> çıkaralım.' ) {
 		return akilli_demo_block(
 			'cta',
 			array(
@@ -98,42 +98,33 @@ return function ( $img ) {
 			'content' => akilli_demo_block(
 				'hero',
 				array(
-					'eyebrow'       => '360° Kreatif Ajans · Antalya',
-					'title'         => 'Sadece bir site değil, <em>yeni müşteriler</em> kazanın.',
+					'eyebrow'       => 'Web · E-Ticaret · SEO · Reklam · Yapay Zekâ',
+					'title'         => 'Size müşteri kazandıran <em>web siteleri</em> ve dijital pazarlama.',
 					'words'         => '',
-					'text'          => 'İşletmenize özel, satış odaklı web tasarım. Yapay zekâ aramalarına da hazır.',
-					'btn1_text'     => 'Projenizi konuşalım',
+					'text'          => 'Akıllı Creative; web tasarım, e-ticaret, SEO, reklam ve yapay zekâ görünürlüğünü tek ekipte birleştiren Antalya merkezli 360° dijital ajanstır. Hedefiniz satışsa, planımız da ona göre.',
+					'btn1_text'     => 'Ücretsiz görüşme alın',
 					'btn1_url'      => '/teklif-al/',
-					'btn2_text'     => 'Neler yapıyoruz?',
+					'btn2_text'     => 'Hizmetleri keşfedin',
 					'btn2_url'      => '#hizmetler',
-					'visual'        => 'poster',
-					'chips'         => "Mobil uyumlu\nHızlı ve yönetilebilir\nTeklif almaya yönlendiren tasarım",
+					'visual'        => 'agency',
+					'analysis'      => true,
+					'chips'         => "Ücretsiz ön görüşme\n1 iş gününde dönüş\nYazılı kapsam ve teklif",
+					'platforms'     => "WordPress\nWooCommerce\nGoogle Ads\nMeta Ads\nGoogle Analytics 4\nFigma",
 					'image'         => $img['ekran-masaustu'],
 					'image_mobile'  => $img['ekran-mobil'],
 					'show_whatsapp' => true,
-					'show_services' => true,
-				)
-			)
-			. akilli_demo_block( 'marquee', array( 'items' => "Web Tasarım\nE-Ticaret\nKurumsal Kimlik\nUX / UI\nSEO\nDijital Reklam\nSosyal Medya\nÖzel Yazılım" ) )
-			. akilli_demo_block(
-				'booking',
-				array(
-					'eyebrow' => 'Hemen planlayın',
-					'title'   => 'Size uygun günü <em>seçin</em>.',
-					'text'    => 'Bir gün seçin, teklif formunda o gün işaretli gelsin. Ekibimiz sizi arayıp saati birlikte belirlesin.',
-					'days'    => 10,
-					'note'    => 'Görüşmeler yaklaşık 20 dakika sürer, ücretsizdir.',
+					'show_services' => false,
 				)
 			)
 			. akilli_demo_block(
 				'services',
 				array(
 					'anchor'    => 'hizmetler',
-					'eyebrow'   => 'Neler yapıyoruz?',
-					'title'     => 'Dört uzmanlık, <em>tek</em> ekip.',
-					'text'      => 'Tasarım, yazılım ve büyüme aynı masada. Bir alan seçin; her hizmet kendi sayfasında tüm ayrıntısıyla anlatılıyor.',
-					'layout'    => 'showcase',
-					'btn1_text' => 'Tüm 25 hizmeti gör',
+					'eyebrow'   => 'Hizmetlerimiz',
+					'title'     => 'İhtiyacınız ne olursa, <em>tek ekip</em> çözer.',
+					'text'      => 'Yeni bir site, satış yapan bir mağaza, daha fazla talep ya da yapay zekâ aramalarında görünürlük. Hedefinizi dinliyor, doğru hizmetten başlıyoruz.',
+					'layout'    => 'cards',
+					'btn1_text' => 'Tüm 25 hizmeti görün',
 					'btn1_url'  => '/hizmetlerimiz/',
 				)
 			)
@@ -141,7 +132,7 @@ return function ( $img ) {
 				'projects',
 				array(
 					'eyebrow'   => 'Çalışmalar',
-					'title'     => 'Neler <em>üretiyoruz?</em>',
+					'title'     => 'Yaklaşımımızı <em>işlerimizde</em> görün.',
 					'text'      => 'Bu bölümdeki çalışmalar yaklaşımımızı göstermek için hazırlanmış örnek projelerdir; her birinde “Örnek proje” etiketi yer alır.',
 					'layout'    => 'showcase',
 					'count'     => 4,
@@ -168,7 +159,7 @@ return function ( $img ) {
 				'features',
 				array(
 					'eyebrow' => 'Neden Akıllı Creative?',
-					'title'   => 'Bizimle çalışmanın <em>altı</em> güzel yanı.',
+					'title'   => 'Güvenle çalışmanız için <em>altı neden</em>.',
 					'style'   => 'cards',
 					'items'   => array(
 						array(
@@ -216,7 +207,7 @@ return function ( $img ) {
 				'posts',
 				array(
 					'eyebrow'   => 'Blog',
-					'title'     => 'Dijitalde doğru kararlar için <em>ipuçları</em>.',
+					'title'     => 'Karar vermeden önce <em>okuyun</em>.',
 					'count'     => 3,
 					'btn1_text' => 'Tüm yazılar',
 					'btn1_url'  => '/blog/',

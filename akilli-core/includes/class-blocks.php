@@ -141,6 +141,7 @@ class Akilli_Blocks {
 							'label'   => 'Arka plan görseli',
 							'options' => $opts(
 								array(
+									'agency' => 'Ajans: logo yörüngesi + ücretsiz analiz kutusu',
 									'poster' => 'Afiş: A logosu + yörünge + cihazlar',
 									'cards' => 'Yüzen kartlar (ekip / proje)',
 									'gl'    => 'Saten ışık plakası (WebGL)',
@@ -148,7 +149,7 @@ class Akilli_Blocks {
 									'none'  => 'Sade',
 								)
 							),
-							'default' => 'poster',
+							'default' => 'agency',
 							'group'   => 'Görsel',
 						),
 						'chips'         => array(
@@ -188,6 +189,16 @@ class Akilli_Blocks {
 							'type'  => 'image',
 							'label' => 'Telefon ekranı görseli (afiş modu)',
 							'group' => 'Görsel',
+						),
+						'analysis'      => array(
+							'type'    => 'toggle',
+							'label'   => '"Ücretsiz site analizi" kutusunu göster',
+							'default' => true,
+						),
+						'platforms'     => array(
+							'type'  => 'textarea',
+							'label' => 'Çalıştığınız altyapılar',
+							'help'  => 'Her satıra bir ad (örn. WordPress). Yalnızca gerçekten çalıştığınız altyapıları yazın; resmî iş ortaklığı ima etmez.',
 						),
 						'show_whatsapp' => array(
 							'type'    => 'toggle',
@@ -245,12 +256,13 @@ class Akilli_Blocks {
 							'label'   => 'Yerleşim',
 							'options' => $opts(
 								array(
+									'cards'    => 'Kartlar (kurumsal)',
 									'showcase' => 'Renkli vitrin (animasyonlu)',
 									'explorer' => 'Gezgin (kategori sekmeleri)',
 									'grid'     => 'Tüm hizmetler (ızgara)',
 								)
 							),
-							'default' => 'showcase',
+							'default' => 'cards',
 						),
 					),
 					$btn( 1, 'Buton' )

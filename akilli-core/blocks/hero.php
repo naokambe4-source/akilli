@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 
 $words  = akilli_lines( $a['words'] );
 $title  = (string) $a['title'];
-$visual = in_array( $a['visual'], array( 'poster', 'cards', 'gl', 'image', 'none' ), true ) ? $a['visual'] : 'poster';
+$visual = in_array( $a['visual'], array( 'agency', 'poster', 'cards', 'gl', 'image', 'none' ), true ) ? $a['visual'] : 'agency';
 if ( 'gl' === $visual ) {
 	wp_enqueue_script( 'akilli-hero-gl' );
 }
@@ -32,6 +32,93 @@ $positions  = array( 'tl', 'bl', 'tr', 'br', 'ml', 'mr' );
 ?>
 <section class="ak-hero ak-hero--<?php echo esc_attr( $visual ); ?>"<?php echo $a['_id'] ? ' id="' . esc_attr( $a['_id'] ) . '"' : ''; ?> data-ak-hero>
 	<div class="ak-hero__glow" aria-hidden="true"></div>
+
+	<?php
+	if ( 'agency' === $visual ) :
+		$orbit_icons = array(
+			array( 'growth', 'SEO' ),
+			array( 'megaphone', 'Reklam' ),
+			array( 'cart', 'E-ticaret' ),
+			array( 'spark', 'Yapay zekâ' ),
+			array( 'instagram', 'Sosyal medya' ),
+			array( 'web', 'Web' ),
+			array( 'figma', 'Tasarım' ),
+			array( 'code', 'Yazılım' ),
+		);
+		$platforms   = akilli_lines( $a['platforms'] );
+		?>
+		<div class="ak-wrap ak-agency">
+			<div class="ak-agency__copy">
+				<?php if ( $a['eyebrow'] ) : ?>
+					<p class="ak-agency__kicker"><?php echo esc_html( $a['eyebrow'] ); ?></p>
+				<?php endif; ?>
+				<h1 class="ak-hero__title ak-agency__title" data-ak-split><?php echo $title_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- kses above. ?></h1>
+				<?php if ( $a['text'] ) : ?>
+					<p class="ak-agency__text"><?php akilli_inline( $a['text'] ); ?></p>
+				<?php endif; ?>
+				<div class="ak-hero__actions">
+					<?php
+					echo akilli_button( $a['btn1_text'], $a['btn1_url'], 'primary' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo akilli_button( $a['btn2_text'], $a['btn2_url'], 'ghost' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					?>
+				</div>
+				<?php if ( ! empty( $a['analysis'] ) ) : ?>
+					<form class="ak-analyze" action="<?php echo esc_url( strtok( akilli_quote_url(), '#' ) ); ?>" method="get">
+						<p class="ak-analyze__label" id="ak-analyze-label">Sitenizi ücretsiz inceleyelim</p>
+						<div class="ak-analyze__row">
+							<label class="screen-reader-text" for="ak-analyze-site">Web sitenizin adresi</label>
+							<input id="ak-analyze-site" type="text" name="site" inputmode="url" autocomplete="url" placeholder="siteniz.com" maxlength="190" aria-describedby="ak-analyze-label">
+							<button type="submit" class="ak-btn ak-btn--dark"><span class="ak-btn__label">Ücretsiz analiz</span><?php echo akilli_icon( 'arrow-right' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></button>
+						</div>
+						<p class="ak-analyze__hint">Siteniz yok mu? <a href="<?php echo esc_url( akilli_quote_url() ); ?>">Kurulum teklifi alın</a></p>
+					</form>
+				<?php endif; ?>
+				<?php if ( $chips ) : ?>
+					<ul class="ak-agency__chips">
+						<?php foreach ( $chips as $chip ) : ?>
+							<li><?php echo akilli_icon( 'check' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( $chip ); ?></li>
+						<?php endforeach; ?>
+					</ul>
+				<?php endif; ?>
+			</div>
+			<div class="ak-agency__visual" aria-hidden="true" data-ak-stage>
+				<div class="ak-system">
+					<span class="ak-system__ring ak-system__ring--1"></span>
+					<span class="ak-system__ring ak-system__ring--2"></span>
+					<span class="ak-system__ring ak-system__ring--3"></span>
+					<span class="ak-system__beam"></span>
+					<div class="ak-system__core"><?php akilli_orbit_mark( 'ak-system__mark' ); ?></div>
+					<ul class="ak-system__nodes">
+						<?php foreach ( $orbit_icons as $i => $node ) : ?>
+							<li style="--a:<?php echo (int) ( $i * 45 ); ?>deg"><span><?php echo akilli_icon( $node[0] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><em><?php echo esc_html( $node[1] ); ?></em></span></li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+				<div class="ak-uicard ak-uicard--audit">
+					<strong>Site analizi</strong>
+					<ul>
+						<li><span>Mobil hız</span><i class="is-ok"></i></li>
+						<li><span>Teknik SEO</span><i class="is-ok"></i></li>
+						<li><span>Yapay zekâ görünürlüğü</span><i class="is-warn"></i></li>
+					</ul>
+				</div>
+				<div class="ak-uicard ak-uicard--lead">
+					<span class="ak-uicard__dot"><?php echo akilli_icon( 'mail' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+					<span><strong>Yeni teklif talebi</strong><small>Kurumsal web sitesi</small></span>
+				</div>
+			</div>
+		</div>
+		<?php if ( $platforms ) : ?>
+			<div class="ak-wrap ak-platforms">
+				<p>Çalıştığımız altyapılar</p>
+				<ul>
+					<?php foreach ( $platforms as $pl ) : ?>
+						<li><?php echo esc_html( $pl ); ?></li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+		<?php endif; ?>
+	<?php endif; ?>
 
 	<?php if ( 'poster' === $visual ) : ?>
 		<div class="ak-wrap ak-poster">
@@ -112,7 +199,7 @@ $positions  = array( 'tl', 'bl', 'tr', 'br', 'ml', 'mr' );
 		</div>
 	<?php endif; ?>
 
-	<?php if ( 'poster' !== $visual ) : ?>
+	<?php if ( ! in_array( $visual, array( 'poster', 'agency' ), true ) ) : ?>
 	<div class="ak-wrap ak-hero__head">
 		<?php if ( $a['eyebrow'] ) : ?>
 			<p class="ak-hero__badge"><span class="ak-pulse" aria-hidden="true"></span><?php echo esc_html( $a['eyebrow'] ); ?></p>

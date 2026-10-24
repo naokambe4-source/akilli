@@ -11,14 +11,46 @@ if ( ! $tree ) {
 	return;
 }
 $uid    = 'aksvc-' . substr( md5( wp_json_encode( $a ) ), 0, 6 );
-$layout = in_array( $a['layout'], array( 'grid', 'showcase' ), true ) ? $a['layout'] : 'explorer';
+$layout = in_array( $a['layout'], array( 'grid', 'showcase', 'cards' ), true ) ? $a['layout'] : 'explorer';
 $illus  = array( 'web', 'cart', 'pen', 'growth' );
 ?>
 <section class="ak-section ak-services ak-services--<?php echo esc_attr( $layout ); ?><?php echo 'showcase' === $layout ? ' ak-block-coral' : ''; ?>"<?php echo $a['_id'] ? ' id="' . esc_attr( $a['_id'] ) . '"' : ''; ?>>
 	<div class="ak-wrap">
 		<?php akilli_section_head( $a ); ?>
 
-		<?php if ( 'showcase' === $layout ) : ?>
+		<?php if ( 'cards' === $layout ) : ?>
+			<ul class="ak-svcards">
+				<?php
+				foreach ( $tree as $node ) :
+					$p    = $node['post'];
+					$icon = get_post_meta( $p->ID, '_ak_icon', true );
+					?>
+					<li class="ak-svcard" data-reveal>
+						<span class="ak-svcard__icon" aria-hidden="true"><?php echo akilli_icon( $icon ? $icon : 'spark' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+						<h3 class="ak-svcard__title"><a href="<?php echo esc_url( get_permalink( $p ) ); ?>"><?php echo esc_html( get_the_title( $p ) ); ?></a></h3>
+						<?php if ( has_excerpt( $p ) ) : ?>
+							<p class="ak-svcard__text"><?php echo esc_html( get_the_excerpt( $p ) ); ?></p>
+						<?php endif; ?>
+						<?php if ( $node['children'] ) : ?>
+							<ul class="ak-svcard__subs">
+								<?php foreach ( $node['children'] as $child ) : ?>
+									<li><a href="<?php echo esc_url( get_permalink( $child ) ); ?>"><?php echo esc_html( get_the_title( $child ) ); ?></a></li>
+								<?php endforeach; ?>
+							</ul>
+						<?php endif; ?>
+						<span class="ak-svcard__arrow" aria-hidden="true"><?php echo akilli_icon( 'arrow-up-right' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+					</li>
+				<?php endforeach; ?>
+				<?php if ( $a['btn1_text'] && $a['btn1_url'] ) : ?>
+					<li class="ak-svcard ak-svcard--all" data-reveal>
+						<span class="ak-svcard__icon" aria-hidden="true"><?php echo akilli_icon( 'layers' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+						<h3 class="ak-svcard__title"><a href="<?php echo esc_url( akilli_url( $a['btn1_url'] ) ); ?>"><?php echo esc_html( $a['btn1_text'] ); ?></a></h3>
+						<p class="ak-svcard__text">Tüm hizmetlerin kapsamını, kimler için uygun olduğunu ve nasıl çalıştığımızı kendi sayfasında görün.</p>
+						<span class="ak-svcard__arrow" aria-hidden="true"><?php echo akilli_icon( 'arrow-up-right' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+					</li>
+				<?php endif; ?>
+			</ul>
+		<?php elseif ( 'showcase' === $layout ) : ?>
 			<div class="ak-show" data-ak-show>
 				<div class="ak-show__stage" aria-hidden="true">
 					<?php
@@ -133,7 +165,7 @@ $illus  = array( 'web', 'cart', 'pen', 'growth' );
 			</div>
 		<?php endif; ?>
 
-		<?php if ( $a['btn1_text'] ) : ?>
+		<?php if ( $a['btn1_text'] && 'cards' !== $layout ) : ?>
 			<div class="ak-section__foot"><?php echo akilli_button( $a['btn1_text'], $a['btn1_url'], 'showcase' === $layout ? 'dark' : 'ghost' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
 		<?php endif; ?>
 	</div>

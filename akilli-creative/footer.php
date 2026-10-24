@@ -102,6 +102,10 @@ $mail = akilli_get_setting( 'email' );
 	<p class="ak-footer__word" aria-hidden="true" data-word="akıllı creative"></p>
 </footer>
 
+<?php if ( $wa ) : ?>
+	<a class="ak-wafloat" href="<?php echo esc_url( $wa ); ?>" target="_blank" rel="noopener"><?php echo akilli_icon( 'whatsapp' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>WhatsApp’tan yazın<span class="screen-reader-text"> (yeni sekmede açılır)</span></a>
+<?php endif; ?>
+
 <?php if ( akilli_mod( 'akilli_mobile_bar' ) && ( $tel || $wa ) ) : ?>
 	<nav class="ak-mobilebar" aria-label="Hızlı iletişim" data-ak-mobilebar>
 		<?php if ( $tel ) : ?>
